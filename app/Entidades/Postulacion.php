@@ -5,7 +5,7 @@ namespace App\Entidades;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Postulacio extends Model
+class Postulacion extends Model
 {
       protected $table = 'postulaciones';
       public $timestamps = false;
