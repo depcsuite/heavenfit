@@ -125,20 +125,27 @@ class Menu extends Model
 
     public function guardar() {
         $sql = "UPDATE sistema_menues SET
-            nombre='$this->nombre',
-            id_padre='$this->id_padre',
-            orden=$this->orden,
-            activo='$this->activo',
-            url='$this->url',
-            css='$this->css'
+            nombre=?,
+            id_padre=?,
+            orden=?,
+            activo=?,
+            url=?,
+            css=?
             WHERE idmenu=?";
-        $affected = DB::update($sql, [$this->idmenu]);
+        $affected = DB::update($sql, [
+            $this->nombre, 
+            $this->id_padre, 
+            $this->orden,
+            $this->activo,
+            $this->url,
+            $this->css,
+            $this->idmenu
+        ]);
     }
 
     public function eliminar()
     {
-        $sql = "DELETE FROM sistema_menues WHERE
-            idmenu=?";
+        $sql = "DELETE FROM sistema_menues WHERE idmenu=?";
         $affected = DB::delete($sql, [$this->idmenu]);
     }
 
