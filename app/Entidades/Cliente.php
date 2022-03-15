@@ -73,7 +73,7 @@ class Cliente extends Model
         return $lstRetorno;
     }
 
-    public function obtenerPorId($idmenu)
+    public function obtenerPorId($idcliente)
     {
       $sql = "SELECT 
                 idcliente,
@@ -91,11 +91,11 @@ class Cliente extends Model
                 foto,
                 clave
               FROM clientes 
-              WHERE idcliente=$idmenu";
+              WHERE idcliente=$idcliente";
       $lstRetorno = DB::select($sql);
 
       if (count($lstRetorno) > 0) {
-        $this->idcliente = $lstRetorno[0]->idmenu;
+        $this->idcliente = $lstRetorno[0]->idcliente;
         $this->nombre = $lstRetorno[0]->nombre;
         $this->edad = $lstRetorno[0]->edad;
         $this->peso = $lstRetorno[0]->peso;
