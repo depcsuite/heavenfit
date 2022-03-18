@@ -39,8 +39,7 @@ class Profesor extends Model{
             $this->foto = $request->input('txtFoto');
           }
 
-      public function obtenerTodos()
-      {
+      public function obtenerTodos() {
             $sql = "SELECT 
                   A.idprofesor,
                   A.nombre,
@@ -57,20 +56,94 @@ class Profesor extends Model{
             $lstRetorno = DB::select($sql);
             return $lstRetorno;
       }
-      public function obtenerPorId($idprofesor)
-      {
-      $sql = "SELECT 
-                  
-                  FROM profesores 
-                  WHERE idcliente=$idprofesor";
-      $lstRetorno = DB::select($sql);
 
-      if (count($lstRetorno) > 0) {
-            $this->idprofesor = $lstRetorno[0]->idprofesor;
-            
-            return $this;
+      public function obtenerPorId($idprofesor) {
+            $sql = "SELECT 
+                        idprofesor,
+                        nombre,
+                        nacionalidad,
+                        idioma,
+                        telefono,
+                        dni,
+                        fk_idmodalidad,
+                        edad,
+                        descripcion,
+                        foto
+                        FROM profesores 
+                        WHERE idprofesor=$idprofesor";
+            $lstRetorno = DB::select($sql);
+
+            if (count($lstRetorno) > 0) {
+                  $this->idprofesor = $lstRetorno[0]->idprofesor;
+                  $this->nombre = $lstRetorno[0]->nombre;
+                  $this->nacionalidad = $lstRetorno[0]->nacionalidad;
+                  $this->idioma = $lstRetorno[0]->idioma;
+                  $this->telefono = $lstRetorno[0]->telefono;
+                  $this->dni = $lstRetorno[0]->dni;
+                  $this->fk_idmodalidad = $lstRetorno[0]->fk_modalidad;
+                  $this->edad = $lstRetorno[0]->edad;
+                  $this->descripcion = $lstRetorno[0]->descripcion;
+                  $this->foto = $lstRetorno[0]->foto;
+                  return $this;
+            }
+            return null;
       }
-      return null;
+
+      public function guardar() {
+            $sql = "UPDATE profesores SET
+                        nombre=?,
+                        nacionalidad=?,
+                        idioma=?,
+                        telefono=?,
+                        dni=?,
+                        fk_idmodalidad=?,
+                        edad=?,
+                        descripcion=?,
+                        foto=?
+                  WHERE idprofesor=?";
+              $affected = DB::update($sql, [
+                $this->nombre,
+                $this->nacionalidad,
+                $this->idioma,
+                $this->telefono,
+                $this->dni,
+                $this->fk_idmodalidad,
+                $this->edad,
+                $this->descripcion,
+                $this->foto,
+                $this->idprofesor
+              ]);
+      }
+      
+      public function eliminar() {
+            $sql = "DELETE FROM profesores WHERE idprofesor=?";
+            $affected = DB::delete($sql, [$this->idprofesor]);
+      }
+      
+      public function insertar() {
+            $sql = "INSERT INTO profesores (
+                        nombre,
+                        nacionalidad,
+                        idioma,
+                        telefono,
+                        dni,
+                        fk_idmodalidad,
+                        edad,
+                        descripcion,
+                        foto
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            $result = DB::insert($sql, [
+                  $this->nombre,
+                  $this->nacionalidad,
+                  $this->idioma,
+                  $this->telefono,
+                  $this->dni,
+                  $this->fk_idmodalidad,
+                  $this->edad,
+                  $this->descripcion,
+                  $this->foto
+            ]);
+            return $this->idprofesor = DB::getPdo()->lastInsertId();
       }
 }
 
