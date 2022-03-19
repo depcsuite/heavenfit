@@ -5,15 +5,15 @@ namespace App\Entidades;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-Class Plan extends Model{
-      protected $table = 'planes';
+Class Reserva extends Model{
+      protected $table = 'disciplinas';
       public $timestamps = false;
 
       protected $fillable = [
-            'idplan',
+            'iddisciplina',
             'nombre',
             'descripcion',
-            'precio'
+            'foto'
       ];
   
       protected $hidden = [
@@ -21,75 +21,75 @@ Class Plan extends Model{
       ];
 
       public function cargarDesdeRequest($request) {
-            $this->idplan = $request->input('id') != "0" ? $request->input('id') : $this->idplan;
+            $this->iddisciplina = $request->input('id') != "0" ? $request->input('id') : $this->iddisciplina;
             $this->nombre = $request->input('txtNombre');
             $this->descripcion = $request->input('txtDescripcion');
-            $this->precio = $request->input('txtPrecio');
+            $this->foto = $request->input('txtFoto');
           }
 
       public function obtenerTodos() {
             $sql = "SELECT 
-                  A.idplan,
+                  A.iddisciplina,
                   A.nombre,
                   A.descripcion,
-                  A.precio
-                  FROM planes A
-                  ORDER BY A.precio";
+                  A.foto
+                  FROM disciplinas A
+                  ORDER BY A.nombre";
             $lstRetorno = DB::select($sql);
             return $lstRetorno;
       }
 
-      public function obtenerPorId($idplan) {
+      public function obtenerPorId($iddisciplina) {
             $sql = "SELECT 
-                        idplan,
+                        iddisciplina,
                         nombre,
                         descripcion,
-                        precio
-                        FROM planes 
-                        WHERE idplan=$idplan";
+                        foto
+                        FROM disciplinas
+                        WHERE iddisciplina=$iddisciplina";
             $lstRetorno = DB::select($sql);
       
             if (count($lstRetorno) > 0) {
-                  $this->idplan = $lstRetorno[0]->idplan;
+                  $this->iddisciplina = $lstRetorno[0]->iddisciplina;
                   $this->nombre = $lstRetorno[0]->nombre;
                   $this->descripcion = $lstRetorno[0]->descripcion;
-                  $this->precio = $lstRetorno[0]->precio;
+                  $this->foto = $lstRetorno[0]->foto;
                   return $this;
             }
             return null;
       }
 
       public function guardar() {
-            $sql = "UPDATE planes SET
+            $sql = "UPDATE disciplinas SET
                         nombre=?,
                         descripcion=?,
-                        precio=?
-                  WHERE idplan=?";
+                        foto=?
+                  WHERE iddisciplina=?";
               $affected = DB::update($sql, [
                 $this->nombre,
                 $this->descripcion,
-                $this->precio,
-                $this->idplan
+                $this->foto,
+                $this->iddisciplina
               ]);
       }
 
       public function eliminar() {
-            $sql = "DELETE FROM planes WHERE idplan=?";
-            $affected = DB::delete($sql, [$this->idplan]);
+            $sql = "DELETE FROM disciplinas WHERE iddisciplina=?";
+            $affected = DB::delete($sql, [$this->iddisciplina]);
       }
 
       public function insertar() {
-            $sql = "INSERT INTO planes (
+            $sql = "INSERT INTO disciplinas (
                         nombre,
                         descripcion,
-                        precio
+                        foto
                         ) VALUES (?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->nombre,
                   $this->descripcion,
-                  $this->precio
+                  $this->foto
             ]);
-            return $this->idplan = DB::getPdo()->lastInsertId();
+            return $this->iddisciplina = DB::getPdo()->lastInsertId();
       }
 }
 
