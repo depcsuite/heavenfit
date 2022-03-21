@@ -24,10 +24,10 @@ class Postulacion extends Model
       public function cargarDesdeRequest($request)
       {
             $this->idpostulacion = $request->input('id') != "0" ? $request->input('id') : $this->idpostulacion;
-            $this->nombre = $request->input('txtnombre');
+            $this->nombre = $request->input('txtNombre');
             $this->edad = $request->input('txtEdad');
             $this->sexo = $request->input('txtSexo');
-            $this->disponibilidad = $request->input('txtdisponibilidad');
+            $this->disponibilidad = $request->input('txtDisponibilidad');
             $this->cv = $request->input('txtCv');
       }
 
@@ -85,7 +85,6 @@ class Postulacion extends Model
                   $this->sexo,
                   $this->disponibilidad,
                   $this->cv,
-                  $this->fk_idestado_pago,
                   $this->idpostulacion
             ]);
       }
@@ -104,7 +103,7 @@ class Postulacion extends Model
                   sexo,
                   disponibilidad,
                   cv
-              ) VALUES (?, ?, ?, ?, ?, ?);";
+              ) VALUES (?, ?, ?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->nombre,
                   $this->edad,

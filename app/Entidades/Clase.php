@@ -27,7 +27,7 @@ class Clase extends Model
       {
             $this->idclase = $request->input('id') != "0" ? $request->input('id') : $this->idclase;
             $this->fk_iddiciplina = $request->input('lstDisciplina');
-            $this->fk_idprofesor = $request->input('lstprofesor');
+            $this->fk_idprofesor = $request->input('lstProfesor');
             $this->fecha_desde = $request->input('txtFecha_desde');
             $this->fecha_hasta = $request->input('txtFecha_hasta');
             $this->fk_idmodalidad = $request->input('lstModalidad');
@@ -116,8 +116,9 @@ class Clase extends Model
                   fecha_desde,
                   fecha_hasta,
                   fk_idmodalidad,
-                  duracion
-              ) VALUES (?, ?, ?, ?, ?, ?);";
+                  duracion,
+                  descripcion
+              ) VALUES (?, ?, ?, ?, ?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->fk_iddiciplina,
                   $this->fk_idprofesor,
@@ -125,7 +126,7 @@ class Clase extends Model
                   $this->fecha_hasta,
                   $this->fk_idmodalidad,
                   $this->duracion,
-                  $this->descripcion,
+                  $this->descripcion
             ]);
             return $this->idclase = DB::getPdo()->lastInsertId();
       }
