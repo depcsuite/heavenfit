@@ -2,8 +2,8 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-    globalId = '<?php echo isset($menu->idmenu) && $menu->idmenu > 0 ? $menu->idmenu : 0; ?>';
-    <?php $globalId = isset($menu->idmenu) ? $menu->idmenu : "0";?>
+    globalId = '<?php echo isset($menu->idcliente) && $menu->idcliente > 0 ? $menu->idcliente : 0; ?>';
+    <?php $globalId = isset($menu->idcliente) ? $menu->idcliente : "0";?>
 </script>
 @endsection
 @section('breadcrumb')
@@ -54,7 +54,69 @@ if (isset($msg)) {
             <label for="txtNombre">Nombre: *</label>
             <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
         </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtEdad">Edad: *</label>
+            <input type="text" name="txtEdad" id="txtEdad" class="form-control" required>
         </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtPeso">Peso (kg): *</label>
+            <input type="text" name="txtPeso" id="txtPeso" class="form-control" required>
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtAltura">Altura(cm): *</label>
+            <input type="text" name="txtAltura" id="txtAltura" class="form-control" required>
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtDeportes">Deportes: </label>
+            <input type="text" name="txtDeportes" id="txtDeportes" class="form-control" >
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtLesiones">Lesiones: </label>
+            <input type="text" name="txtLesiones" id="txtLesiones" class="form-control" >
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtEnfermedades">Enfermedades: </label>
+            <input type="text" name="txtEnfermedades" id="txtEnfermedades" class="form-control" >
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtMedicamento">Medicamento: </label>
+            <input type="text" name="txtMedicamento" id="txtMedicamento" class="form-control" >
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtMateriales">Materiales: </label>
+            <input type="text" name="txtMateriales" id="txtMateriales" class="form-control" >
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtObjetivo">Objetivo: </label>
+            <input type="text" name="txtObjetivo" id="txtObjetivo" class="form-control" >
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtFecha_nac">Fecha nacimiento: *</label>
+            <input type="date" name="txtFecha_nac" id="txtFecha_nac" class="form-control" required>
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtNutricion">Nutrición: </label>
+            <input type="text" name="txtNutricion" id="txtNutricion" class="form-control" >
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtFoto">Foto: *</label>
+            <input type="file" name="txtFoto" id="txtFoto" class="form-control" required>
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="lstNacionalidad">Nacionalidad: </label>
+            <select name="lstNacionalidad" id="lstNacionalidad" class="form-control">Nacionalidad
+                @for ($i = 0; $i < count($array_nacionalidad); $i++)
+                    @if (isset($cliente) and $array_nacionalidad[$i]->idpais == $cliente->fk_idpais)
+                        <option selected value="{{ $array_nacionalidad[$i]->idpais }}">{{ $array_nacionalidad[$i]->nombre }}</option>
+                    @else
+                        <option value="{{ $array_nacionalidad[$i]->idpais }}">{{ $array_nacionalidad[$i]->nombre }}</option>
+                    @endif
+                @endfor
+            </select>
+            
+        </div>
+        </div>
+        
     </form>
     <div class="modal fade" id="mdlEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">

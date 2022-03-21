@@ -104,6 +104,11 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     /* CONTROLADOR PROFESOR                          */
     /* --------------------------------------------- */
     Route::get('/admin/profesor/nuevo', 'ControladorProfesor@nuevo');
+
+    /* ------------------------------------------------ */
+    /* CONTROLADOR DISCIPLINAS                          */
+    /* ------------------------------------------------ */
+    Route::get('/admin/disciplina/nuevo', 'ControladorDisciplina@nuevo');
     
     
 });
