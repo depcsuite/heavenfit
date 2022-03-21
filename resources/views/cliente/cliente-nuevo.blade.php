@@ -115,6 +115,10 @@ if (isset($msg)) {
             </select>
             
         </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtClave">clave: *</label>
+            <input type="password" name="txtClave" id="txtClave" class="form-control" required>
+        </div>
         </div>
         
     </form>

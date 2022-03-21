@@ -110,6 +110,7 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     /* CONTROLADOR DISCIPLINAS                          */
     /* ------------------------------------------------ */
     Route::get('/admin/disciplina/nuevo', 'ControladorDisciplina@nuevo');
+    Route::post('/admin/disciplina/nuevo', 'ControladorDisciplina@guardar');
     
     
 });

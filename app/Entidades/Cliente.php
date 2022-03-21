@@ -61,6 +61,7 @@ class Cliente extends Model
                   A.lesiones,
                   A.enfermedades,
                   A.medicamento,
+                  A.materiales,
                   A.objetivo,
                   A.fecha_nac,
                   A.nutricion,
@@ -83,6 +84,7 @@ class Cliente extends Model
                 lesiones,
                 enfermedades,
                 medicamento,
+                materiales,
                 objetivo,
                 fecha_nac,
                 nutricion,
@@ -102,6 +104,7 @@ class Cliente extends Model
         $this->lesiones = $lstRetorno[0]->lesiones;
         $this->enfermedades = $lstRetorno[0]->enfermedades;
         $this->medicamento = $lstRetorno[0]->medicamento;
+        $this->materiales = $lstRetorno[0]->materiales;
         $this->objetivo = $lstRetorno[0]->objetivo;
         $this->fecha_nac = $lstRetorno[0]->fecha_nac;
         $this->nutricion = $lstRetorno[0]->nutricion;
@@ -122,6 +125,7 @@ class Cliente extends Model
             lesiones=?,
             enfermedades=?,
             medicamento=?,
+            materiales=?,
             objetivo=?,
             fecha_nac=?,
             nutricion=?,
@@ -137,11 +141,12 @@ class Cliente extends Model
           $this->lesiones,
           $this->enfermedades,
           $this->medicamento,
+          $this->materiales,
           $this->objetivo,
           $this->fecha_nac,
           $this->nutricion,
           $this->foto,
-          $this->clave,
+          password_hash($this->clave, PASSWORD_DEFAULT),
           $this->idcliente
         ]);
     }
@@ -161,12 +166,13 @@ class Cliente extends Model
               lesiones,
               enfermedades,
               medicamento,
+              materiales,
               objetivo,
               fecha_nac,
               nutricion,
               foto,
               clave
-              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
       $result = DB::insert($sql, [
         $this->nombre,
         $this->edad,
@@ -176,11 +182,12 @@ class Cliente extends Model
         $this->lesiones,
         $this->enfermedades,
         $this->medicamento,
+        $this->materiales,
         $this->objetivo,
         $this->fecha_nac,
         $this->nutricion,
         $this->foto,
-        $this->clave
+        password_hash($this->clave, PASSWORD_DEFAULT)
       ]);
       return $this->idcliente = DB::getPdo()->lastInsertId();
     }
