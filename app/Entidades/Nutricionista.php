@@ -5,7 +5,7 @@ namespace App\Entidades;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Clase extends Model
+class Nutricionista extends Model
 {
       protected $table = 'nutricionistas';
       public $timestamps = false;
@@ -32,7 +32,7 @@ class Clase extends Model
             $this->nacionalidad = $request->input('txtNacionalidad');
             $this->telefono = $request->input('txtTelefono');
             $this->idioma = $request->input('txtIdioma');
-            $this->foto = $request->input('txtDescpricion');
+            $this->foto = $request->input('txtFoto');
       }
 
       public function obtenerTodos()

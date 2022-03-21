@@ -5,7 +5,7 @@ namespace App\Entidades;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-Class Reserva extends Model{
+Class Diciplina extends Model{
       protected $table = 'disciplinas';
       public $timestamps = false;
 
