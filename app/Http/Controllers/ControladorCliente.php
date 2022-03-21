@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Entidades\Sistema\Cliente; //include_once "app/Entidades/Sistema/Menu.php";
+use App\Entidades\Cliente; //include_once "app/Entidades/Sistema/Menu.php";
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
 use App\Entidades\Pais;
@@ -19,5 +19,48 @@ class ControladorCliente extends Controller
             $array_nacionalidad = $pais->obtenerTodos();
             return view("cliente.cliente-nuevo", compact('titulo', 'array_nacionalidad'));
       }
+
+       public function guardar(Request $request) {
+        try {
+            //Define la entidad servicio
+            $titulo = "Modificar cliente";
+            $entidad = new Cliente();
+            $entidad->cargarDesdeRequest($request);
+
+            //validaciones
+            if ($entidad->nombre == "") {
+                $msg["ESTADO"] = MSG_ERROR;
+                $msg["MSG"] = "Complete todos los datos";
+            } else {
+                if ($_POST["id"] > 0) {
+                    //Es actualizacion
+                    $entidad->guardar();
+
+                    $msg["ESTADO"] = MSG_SUCCESS;
+                    $msg["MSG"] = OKINSERT;
+                } else {
+                    //Es nuevo
+                    $entidad->insertar();
+
+                    $msg["ESTADO"] = MSG_SUCCESS;
+                    $msg["MSG"] = OKINSERT;
+                }
+                $_POST["id"] = $entidad->idcliente;
+                return view('cliente.cliente-listar', compact('titulo', 'msg'));
+            }
+        } catch (Exception $e) {
+            $msg["ESTADO"] = MSG_ERROR;
+            $msg["MSG"] = ERRORINSERT;
+        }
+
+        $id = $entidad->idcliente;
+        $cliente = new Cliente();
+        $cliente->obtenerPorId($id);
+
+        $pais = new Pais();
+        $array_nacionalidad = $pais->obtenerTodos();    
+
+        return view('cliente.cliente-nuevo', compact('msg', 'cliente', 'titulo', 'array_nacionalidad')) . '?id=' . $cliente->idcliente;
+    }
 
 }
