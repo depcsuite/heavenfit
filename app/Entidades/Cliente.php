@@ -50,8 +50,7 @@ class Cliente extends Model
       $this->clave = $request->input('txtClave');
     }
 
-    public function obtenerTodos()
-    {
+    public function obtenerTodos() {
         $sql = "SELECT 
                   A.idcliente,
                   A.nombre,
@@ -73,8 +72,7 @@ class Cliente extends Model
         return $lstRetorno;
     }
 
-    public function obtenerPorId($idmenu)
-    {
+    public function obtenerPorId($idcliente) {
       $sql = "SELECT 
                 idcliente,
                 nombre,
@@ -91,11 +89,11 @@ class Cliente extends Model
                 foto,
                 clave
               FROM clientes 
-              WHERE idcliente=$idmenu";
+              WHERE idcliente=$idcliente";
       $lstRetorno = DB::select($sql);
 
       if (count($lstRetorno) > 0) {
-        $this->idcliente = $lstRetorno[0]->idmenu;
+        $this->idcliente = $lstRetorno[0]->idcliente;
         $this->nombre = $lstRetorno[0]->nombre;
         $this->edad = $lstRetorno[0]->edad;
         $this->peso = $lstRetorno[0]->peso;
@@ -110,7 +108,7 @@ class Cliente extends Model
         $this->foto = $lstRetorno[0]->foto;
         $this->clave = $lstRetorno[0]->clave;
         return $this;
-    }
+      }
       return null;
     }
 
@@ -148,14 +146,12 @@ class Cliente extends Model
         ]);
     }
 
-    public function eliminar()
-    {
+    public function eliminar() {
       $sql = "DELETE FROM clientes WHERE idcliente=?";
       $affected = DB::delete($sql, [$this->idcliente]);
     }
 
-    public function insertar()
-    {
+    public function insertar() {
       $sql = "INSERT INTO clientes (
               nombre,
               edad,
@@ -170,23 +166,23 @@ class Cliente extends Model
               nutricion,
               foto,
               clave
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    $result = DB::insert($sql, [
-      $this->nombre,
-      $this->edad,
-      $this->peso,
-      $this->altura,
-      $this->deportes,
-      $this->lesiones,
-      $this->enfermedades,
-      $this->medicamento,
-      $this->objetivo,
-      $this->fecha_nac,
-      $this->nutricion,
-      $this->foto,
-      $this->clave
-    ]);
-    return $this->idcliente = DB::getPdo()->lastInsertId();
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+      $result = DB::insert($sql, [
+        $this->nombre,
+        $this->edad,
+        $this->peso,
+        $this->altura,
+        $this->deportes,
+        $this->lesiones,
+        $this->enfermedades,
+        $this->medicamento,
+        $this->objetivo,
+        $this->fecha_nac,
+        $this->nutricion,
+        $this->foto,
+        $this->clave
+      ]);
+      return $this->idcliente = DB::getPdo()->lastInsertId();
     }
 
 }

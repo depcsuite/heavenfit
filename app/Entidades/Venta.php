@@ -103,7 +103,7 @@ class Venta extends Model
 
       public function insertar()
       {
-            $sql = "INSERT INTO venta (
+            $sql = "INSERT INTO ventas (
                   fecha,
                   fk_idcliente,
                   fk_idplan,
