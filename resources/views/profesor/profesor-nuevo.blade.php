@@ -55,8 +55,9 @@ if (isset($msg)) {
                   <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
             </div>
             <div class="col-12 col-sm-6">
-                 <select name="lstNacionalidad" id="lstNacionalidad" class="form-control">
-                 <option selected value=""></option>
+                  <label for="">Nacionalidad: *</label>
+                  <select name="lstNacionalidad" id="lstNacionalidad" class="form-control"> 
+                  <option selected value=""></option>
                         @for ($i = 0; $i < count($array_nacionalidad); $i++)
                         @if (isset($profesor) and $array_nacionalidad[$i]->idpais == $profesor->fk_idpais)
                               <option selected value="{{ $array_nacionalidad[$i]->idpais }}">{{ $array_nacionalidad[$i]->nombre }}</option>
@@ -65,6 +66,30 @@ if (isset($msg)) {
                         @endif
                         @endfor
                   </select>
+            </div>
+            <div class="col-12 col-sm-6">
+                  <label for="txtIdioma">Idioma: *</label>
+                  <input type="text" name="txtIdioma" id="txtIdioma" class="form-control" required>
+            </div>
+            <div class="col-12 col-sm-6">
+                  <label for="txtTelefono">Telefono: *</label>
+                  <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" required>
+            </div>
+            <div class="col-12 col-sm-6">
+                  <label for="txtDNI">DNI: *</label>
+                  <input type="text" name="txtDNI" id="txtDNI" class="form-control" required>
+            </div>
+            <div class="col-12 col-sm-6">
+                  <label for="txtEdad">Edad: *</label>
+                  <input type="number" name="txtEdad" id="txtEdad" class="form-control" required>
+            </div>
+            <div class="col-12 col-sm-6">
+                  <label for="txtDescripcion">Descripcion: </label>
+                  <input type="number" name="txtDescripcion" id="txtDescripcion" class="form-control">
+            </div>
+            <div class="col-12 col-sm-6">
+                  <label for="txtFoto">Foto: </label>
+                  <input type="file" name="txtFoto" id="txtFoto" class="form-control">
             </div>
         </div>
     </form>
