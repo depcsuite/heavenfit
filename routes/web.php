@@ -123,8 +123,8 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     /* ----------------------------------------- */
     /* CONTROLADOR CLASES                        */
     /* ----------------------------------------- */
-    Route::get('/admin/clase/nuevo', 'ControladorClase@nuevo');
-    Route::post('/admin/clase/nuevo', 'ControladorClase@guardar');
+    Route::get('/admin/clases/nuevo', 'ControladorClase@nuevo');
+    Route::post('/admin/clases/nuevo', 'ControladorClase@guardar');
     
     
 });
