@@ -12,7 +12,7 @@ class Profesor extends Model{
       protected $fillable = [
             'idprofesor',
             'nombre',
-            'nacionalidad',
+            'fk_idpais',
             'idioma',
             'telefono',
             'dni',
@@ -29,7 +29,7 @@ class Profesor extends Model{
       public function cargarDesdeRequest($request) {
             $this->idprofesor = $request->input('id') != "0" ? $request->input('id') : $this->idprofesor;
             $this->nombre = $request->input('txtNombre');
-            $this->nacionalidad = $request->input('txtNacionalidad');
+            $this->fk_idpais = $request->input('txtfk_idpais');
             $this->idioma = $request->input('txtIdioma');
             $this->telefono = $request->input('txtTelefono');
             $this->dni = $request->input('txtDni');
@@ -43,7 +43,7 @@ class Profesor extends Model{
             $sql = "SELECT 
                   A.idprofesor,
                   A.nombre,
-                  A.nacionalidad,
+                  A.fk_idpais,
                   A.idioma,
                   A.telefono,
                   A.dni,
@@ -61,7 +61,7 @@ class Profesor extends Model{
             $sql = "SELECT 
                         idprofesor,
                         nombre,
-                        nacionalidad,
+                        fk_idpais,
                         idioma,
                         telefono,
                         dni,
@@ -76,7 +76,7 @@ class Profesor extends Model{
             if (count($lstRetorno) > 0) {
                   $this->idprofesor = $lstRetorno[0]->idprofesor;
                   $this->nombre = $lstRetorno[0]->nombre;
-                  $this->nacionalidad = $lstRetorno[0]->nacionalidad;
+                  $this->fk_idpais = $lstRetorno[0]->fk_idpais;
                   $this->idioma = $lstRetorno[0]->idioma;
                   $this->telefono = $lstRetorno[0]->telefono;
                   $this->dni = $lstRetorno[0]->dni;
@@ -92,7 +92,7 @@ class Profesor extends Model{
       public function guardar() {
             $sql = "UPDATE profesores SET
                         nombre=?,
-                        nacionalidad=?,
+                        fk_idpais=?,
                         idioma=?,
                         telefono=?,
                         dni=?,
@@ -103,7 +103,7 @@ class Profesor extends Model{
                   WHERE idprofesor=?";
               $affected = DB::update($sql, [
                 $this->nombre,
-                $this->nacionalidad,
+                $this->fk_idpais,
                 $this->idioma,
                 $this->telefono,
                 $this->dni,
@@ -123,7 +123,7 @@ class Profesor extends Model{
       public function insertar() {
             $sql = "INSERT INTO profesores (
                         nombre,
-                        nacionalidad,
+                        fk_idpais,
                         idioma,
                         telefono,
                         dni,
@@ -134,7 +134,7 @@ class Profesor extends Model{
                         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->nombre,
-                  $this->nacionalidad,
+                  $this->fk_idpais,
                   $this->idioma,
                   $this->telefono,
                   $this->dni,

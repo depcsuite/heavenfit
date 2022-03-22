@@ -53,6 +53,7 @@ if (isset($msg)) {
                   <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
 
                   <div class="col-12 col-sm-6">
+                        <label for="Disciplina">Disciplina: </label>
                         <select name="lstDisciplina" id="lstDisciplina" class="form-control">Disciplina
                               <option selected value=""></option>
                               @for ($i = 0; $i < count($array_disciplina); $i++) @if (isset($clase) and $array_disciplina[$i]->iddisciplina == $clase->fk_iddisciplina)
@@ -65,6 +66,7 @@ if (isset($msg)) {
                   </div>
 
                   <div class="col-12 col-sm-6">
+                        <label for="lstProfesor">Profesor: </label>
                         <select name="lstProfesor" id="lstProfesor" class="form-control">Profesor
                               <option selected value=""></option>
                               @for ($i = 0; $i < count($array_profesor); $i++) @if (isset($clase) and $array_profesor[$i]->idprofesor == $clase->fk_idprofesor)
@@ -77,10 +79,37 @@ if (isset($msg)) {
                   </div>
 
                   <div class="col-12 col-sm-6">
-                        <label for="txtPrecio">Precio: *</label>
-                        <input type="text" name="txtPrecio" id="txtPrecio" class="form-control">
+                        <label for="txtFecha_desde">Fecha desde: *</label>
+                        <input type="datetime-local" name="txtFecha_desde" id="txtFecha_desde" class="form-control">
+                  </div>
+                  
+                  <div class="col-12 col-sm-6">
+                        <label for="txtFecha_hasta">Fecha hasta: *</label>
+                        <input type="datetime-local" name="txtFecha_hasta" id="txtFecha_hasta" class="form-control">
                   </div>
 
+                  <div class="col-12 col-sm-6">
+                        <label for="lstModalidad">Modalidad: </label>
+                        <select name="lstModalidad" id="lstModalidad" class="form-control">Modalidad
+                              <option selected value=""></option>
+                              @for ($i = 0; $i < count($array_modalidad); $i++) @if (isset($clase) and $array_modalidad[$i]->idmodalidad == $clase->fk_idmodalidad)
+                                    <option selected value="{{ $array_modalidad[$i]->idmodalidad }}">{{ $array_modalidad[$i]->nombre }}</option>
+                                    @else
+                                    <option value="{{ $array_modalidad[$i]->idmodalidad }}">{{ $array_modalidad[$i]->nombre }}</option>
+                                    @endif
+                              @endfor
+                        </select>
+                  </div>
+
+                  <div class="col-12 col-sm-6">
+                        <label for="txtDuracion">Duracion: *</label>
+                        <input type="text" name="txtduracion" id="txtduracion" class="form-control">
+                  </div>
+
+                  <div class="col-12 col-sm-6">
+                        <label for="txtDescripcion">Fecha desde: *</label>
+                        <textarea name="txtDescripcion" id="txtDescripcion" class="form-control"> </textarea>
+                  </div>
 
             </div>
       </form>

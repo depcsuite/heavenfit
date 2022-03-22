@@ -20,8 +20,8 @@ class Modalidad extends Model{
 
       public function obtenerTodos(){
             $sql = "SELECT 
-                  A.idpais,
-                  A.nombre,
+                  A.idmodalidad,
+                  A.nombre
                 FROM modalidades A
                 ORDER BY A.nombre";
         $lstRetorno = DB::select($sql);

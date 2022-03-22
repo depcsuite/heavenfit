@@ -91,8 +91,8 @@ if (isset($msg)) {
             <input type="text" name="txtObjetivo" id="txtObjetivo" class="form-control" >
         </div>
         <div class="col-12 col-sm-6">
-            <label for="txtFecha_nac">Fecha nacimiento: *</label>
-            <input type="date" name="txtFecha_nac" id="txtFecha_nac" class="form-control" required>
+            <label for="txtFechaNac">Fecha nacimiento: *</label>
+            <input type="date" name="txtFechaNac" id="txtFechaNac" class="form-control" required>
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtNutricion">Nutrición: </label>
