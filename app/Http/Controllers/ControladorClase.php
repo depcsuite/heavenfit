@@ -65,6 +65,6 @@ class ControladorClase extends Controller
             $Clase = new Clase();
             $Clase->obtenerPorId($id);    
     
-            return view('Clase.Clase-nuevo', compact('msg', 'Clase', 'titulo')) . '?id=' . $Clase->idClase;
+            return view('Clase.Clase-nuevo', compact('msg', 'Clase', 'titulo', 'array_disciplina', 'array_profesor', 'array_modalidad')) . '?id=' . $Clase->idClase;
         }
 }

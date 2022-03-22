@@ -126,6 +126,12 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/admin/clases/nuevo', 'ControladorClase@nuevo');
     Route::post('/admin/clases/nuevo', 'ControladorClase@guardar');
     
+    /* ----------------------------------------- */
+    /* CONTROLADOR RESERVA                        */
+    /* ----------------------------------------- */
+    Route::get('/admin/reserva/nuevo', 'ControladorReserva@nuevo');
+    Route::post('/admin/reserva/nuevo', 'ControladorReserva@guardar');
+    
     
 });
 
