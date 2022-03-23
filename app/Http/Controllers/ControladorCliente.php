@@ -111,4 +111,26 @@ class ControladorCliente extends Controller
         return json_encode($json_data);
     }
 
+    public function editar($id)
+    {
+        $titulo = "Modificar cliente";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
+                $codigo = "MENUMODIFICACION";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $cliente = new Cliente();
+                $cliente->obtenerPorId($id);
+
+                $pais = new Pais();
+                $array_nacionalidad = $pais->obtenerTodos();
+
+                return view('cliente.cliente-nuevo', compact('cliente', 'titulo' ,'array_nacionalidad'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
+
 }

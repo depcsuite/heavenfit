@@ -2,8 +2,8 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-    globalId = '<?php echo isset($menu->idcliente) && $menu->idcliente > 0 ? $menu->idcliente : 0; ?>';
-    <?php $globalId = isset($menu->idcliente) ? $menu->idcliente : "0";?>
+    globalId = '<?php echo isset($cliente->idcliente) && $cliente->idcliente > 0 ? $cliente->idcliente : 0; ?>';
+    <?php $globalId = isset($cliente->idcliente) ? $cliente->idcliente : "0";?>
 </script>
 @endsection
 @section('breadcrumb')
@@ -52,59 +52,59 @@ if (isset($msg)) {
 
         <div class="col-12 col-sm-6">
             <label for="txtNombre">Nombre: *</label>
-            <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Nombre y Apellido" required>
+            <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Nombre y Apellido" required value="{{ $cliente->nombre }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtEdad">Edad: *</label>
-            <input type="text" name="txtEdad" id="txtEdad" class="form-control" required>
+            <input type="text" name="txtEdad" id="txtEdad" class="form-control" required value="{{ $cliente->edad }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtCorreo">Correo: *</label>
-            <input type="text" name="txtCorreo" id="txtCorreo" class="form-control" required>
+            <input type="text" name="txtCorreo" id="txtCorreo" class="form-control" required value="{{ $cliente->correo }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtTelefono">Telefono: *</label>
-            <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" required>
+            <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" required value="{{ $cliente->telefono }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtPeso">Peso (kg): *</label>
-            <input type="text" name="txtPeso" id="txtPeso" class="form-control" required>
+            <input type="text" name="txtPeso" id="txtPeso" class="form-control" required value="{{ $cliente->peso }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtAltura">Altura(cm): *</label>
-            <input type="text" name="txtAltura" id="txtAltura" class="form-control" required>
+            <input type="text" name="txtAltura" id="txtAltura" class="form-control" required value="{{ $cliente->altura }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtDeportes">Deportes: *</label>
-            <input type="text" name="txtDeportes" id="txtDeportes" class="form-control" placeholder="Indicar deportes que haya realizado">
+            <input type="text" name="txtDeportes" id="txtDeportes" class="form-control" placeholder="Indicar deportes que haya realizado" value="{{ $cliente->deportes }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtLesiones">Lesiones: *</label>
-            <input type="text" name="txtLesiones" id="txtLesiones" class="form-control" placeholder="Indicar lesiones que haya tenido" required>
+            <input type="text" name="txtLesiones" id="txtLesiones" class="form-control" placeholder="Indicar lesiones que haya tenido" required value="{{ $cliente->lesiones }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtEnfermedades">Enfermedades: *</label>
-            <input type="text" name="txtEnfermedades" id="txtEnfermedades" class="form-control" placeholder="Indicar enfermedades que le puedan dificultar el entrenamiento" required>
+            <input type="text" name="txtEnfermedades" id="txtEnfermedades" class="form-control" placeholder="Indicar enfermedades que le puedan dificultar el entrenamiento" required value="{{ $cliente->enfermedades }}"> 
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtMedicamento">Medicamento: </label>
-            <input type="text" name="txtMedicamento" id="txtMedicamento" class="form-control" placeholder="indicar medicamentos que este tomando" >
+            <input type="text" name="txtMedicamento" id="txtMedicamento" class="form-control" placeholder="indicar medicamentos que este tomando" value="{{ $cliente->medicamentos }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtMateriales">Materiales: *</label>
-            <input type="text" name="txtMateriales" id="txtMateriales" class="form-control" placeholder="Mancuernas, cuerda, colchoneta. etc" required>
+            <input type="text" name="txtMateriales" id="txtMateriales" class="form-control" placeholder="Mancuernas, cuerda, colchoneta. etc" required value="{{ $cliente->materiales }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtObjetivo">Objetivo: </label>
-            <input type="text" name="txtObjetivo" id="txtObjetivo" class="form-control"  >
+            <input type="text" name="txtObjetivo" id="txtObjetivo" class="form-control" value="{{ $cliente->objetivos }}" >
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtFechaNac">Fecha nacimiento: *</label>
-            <input type="date" name="txtFechaNac" id="txtFechaNac" class="form-control" required>
+            <input type="date" name="txtFechaNac" id="txtFechaNac" class="form-control" required value="{{ $cliente->fecha_nac }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtNutricion">Nutrición: </label>
-            <input type="text" name="txtNutricion" id="txtNutricion" class="form-control" placeholder="tiene un plan nutricional? le interesa tener uno?" >
+            <input type="text" name="txtNutricion" id="txtNutricion" class="form-control" placeholder="tiene un plan nutricional? le interesa tener uno?" value="{{ $cliente->nutricion }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtFoto">Foto: </label>
