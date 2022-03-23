@@ -26,8 +26,8 @@ class Postulacion extends Model
             $this->idpostulacion = $request->input('id') != "0" ? $request->input('id') : $this->idpostulacion;
             $this->nombre = $request->input('txtNombre');
             $this->edad = $request->input('txtEdad');
-            $this->sexo = $request->input('txtSexo');
-            $this->disponibilidad = $request->input('txtDisponibilidad');
+            $this->sexo = $request->input('lstSexo');
+            $this->disponibilidad = $request->input('lstDisponibilidad');
             $this->cv = $request->input('txtCv');
       }
 
@@ -97,7 +97,7 @@ class Postulacion extends Model
 
       public function insertar()
       {
-            $sql = "INSERT INTO venta (
+            $sql = "INSERT INTO postulaciones (
                   nombre,
                   edad,
                   sexo,

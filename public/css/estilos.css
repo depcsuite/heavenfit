@@ -281,4 +281,7 @@ label {
     height: 20rem !important;
 }
 
+.txtarea{
+    height: auto !important;
+}
 

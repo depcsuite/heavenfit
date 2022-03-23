@@ -2,14 +2,14 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-      globalId = '<?php echo isset($menu->iddisciplina) && $menu->iddisciplina > 0 ? $menu->iddisciplina : 0; ?>';
-      <?php $globalId = isset($menu->iddisciplina) ? $menu->iddisciplina : "0"; ?>
+      globalId = '<?php echo isset($menu->idplan) && $menu->idplan > 0 ? $menu->idplan : 0; ?>';
+      <?php $globalId = isset($menu->idplan) ? $menu->idplan : "0"; ?>
 </script>
 @endsection
 @section('breadcrumb')
 <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/admin/home">Inicio</a></li>
-      <li class="breadcrumb-item"><a href="/admin/disciplinas">disciplinas</a></li>
+      <li class="breadcrumb-item"><a href="/admin/plan">Plan</a></li>
       @if($globalId > 0)
       <li class="breadcrumb-item active">Modificar</li>
       @else
@@ -17,17 +17,17 @@
       @endif
 </ol>
 <ol class="toolbar">
-      <li class="btn-item"><a title="Nuevo" href="/admin/disciplina/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
+      <li class="btn-item"><a title="Nuevo" href="/admin/plan/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
       <li class="btn-item"><a title="Guardar" href="#" class="fa fa-floppy-o" aria-hidden="true" onclick="javascript: $('#modalGuardar').modal('toggle');"><span>Guardar</span></a>
       </li>
       @if($globalId > 0)
-      <li class="btn-item"><a title="Eliminar" href="#" class="fa fa-trash-o" aria-hidden="true" onclick="javascript: $('#mdlEliminar').modal('toggle');"><span>Eliminar</span></a></li>
+            <li class="btn-item"><a title="Eliminar" href="#" class="fa fa-trash-o" aria-hidden="true" onclick="javascript: $('#mdlEliminar').modal('toggle');"><span>Eliminar</span></a></li>
       @endif
       <li class="btn-item"><a title="Salir" href="#" class="fa fa-arrow-circle-o-left" aria-hidden="true" onclick="javascript: $('#modalSalir').modal('toggle');"><span>Salir</span></a></li>
 </ol>
 <script>
       function fsalir() {
-            location.href = "/admin/disciplinas";
+            location.href = "/admin/plans";
       }
 </script>
 @endsection
@@ -56,15 +56,15 @@ if (isset($msg)) {
                         <label for="txtNombre">Nombre: *</label>
                         <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
                   </div>
-                  
+
                   <div class="col-12 col-sm-6">
-                        <label for="txtFoto">foto: *</label>
-                        <input type="file" name="txtFoto" id="txtFoto" class="form-control" required>
+                        <label for="txtDescripcion">Descripción: *</label>
+                        <input type="txt" name="txtDescripcion" id="txtDescripcion" class="form-control" required>
                   </div>
 
                   <div class="col-12 col-sm-6">
-                        <label for="txtDescripcion">Descrición: *</label>
-                        <textarea name="txtDescripcion" id="txtDescripcion"  class="form-control txtarea" ></textarea>
+                        <label for="txtPrecio">Precio: *</label>
+                        <input type="text" name="txtPrecio" id="txtPrecio" class="form-control">
                   </div>
 
 

@@ -2,31 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Entidades\Profesor; //include_once "app/Entidades/Sistema/Menu.php";
-use App\Entidades\Pais;
-use App\Entidades\Modalidad;
+use App\Entidades\Plan;
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
 use Illuminate\Http\Request;
 
+
 require app_path() . '/start/constants.php';
 
-class ControladorProfesor extends Controller
+class ControladorPlan extends Controller
 {
       public function nuevo(){
-            $pais = new Pais();
-            $array_nacionalidad = $pais->obtenerTodos();
-            $titulo = "Nuevo profesor";
-            $modalidad = new Modalidad();
-            $array_modalidad = $modalidad->obtenerTodos();
-            return view("profesor.profesor-nuevo", compact('titulo', 'array_nacionalidad','array_modalidad'));
-        }
+            $titulo = "Nueva Plan";
+            
+            return view("Plan.Plan-nuevo", compact('titulo'));
+      }
 
       public function guardar(Request $request) {
             try {
                 //Define la entidad servicio
-                $titulo = "Modificar profesor";
-                $entidad = new Profesor();
+                $titulo = "Modificar Plan";
+                $entidad = new Plan();
                 $entidad->cargarDesdeRequest($request);
     
                 //validaciones
@@ -47,20 +43,18 @@ class ControladorProfesor extends Controller
                         $msg["ESTADO"] = MSG_SUCCESS;
                         $msg["MSG"] = OKINSERT;
                     }
-                    
-                    $_POST["id"] = $entidad->idprofesor;
-                    return view('profesor.profesor-listar', compact('titulo', 'msg'));
+                    $_POST["id"] = $entidad->idPlan;
+                    return view('Plan.Plan-listar', compact('titulo', 'msg'));
                 }
             } catch (Exception $e) {
                 $msg["ESTADO"] = MSG_ERROR;
                 $msg["MSG"] = ERRORINSERT;
             }
     
-            $id = $entidad->idprofesor;
-            $profesor = new Profesor();
-            $profesor->obtenerPorId($id);
-            $pais = new Pais();
-            $array_nacionalidad = $pais->obtenerTodos();
-            return view('profesor.profesor-listar', compact('titulo', 'msg', 'profesor', 'array_nacionalidad','array_modalidad')). '?id=' . $profesor->idprofesor;
-      }
+            $id = $entidad->idPlan;
+            $Plan = new Plan();
+            $Plan->obtenerPorId($id);    
+    
+            return view('Plan.Plan-nuevo', compact('msg', 'Plan', 'titulo')) . '?id=' . $Plan->idPlan;
+        }
 }

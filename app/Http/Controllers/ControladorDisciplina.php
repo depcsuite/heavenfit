@@ -55,6 +55,6 @@ class ControladorDisciplina extends Controller
             $Disciplina = new Disciplina();
             $Disciplina->obtenerPorId($id);    
     
-            return view('Disciplina.Disciplina-nuevo', compact('msg', 'Disciplina', 'titulo', 'array_nacionalidad')) . '?id=' . $Disciplina->idDisciplina;
+            return view('Disciplina.Disciplina-nuevo', compact('msg', 'Disciplina', 'titulo',)) . '?id=' . $Disciplina->idDisciplina;
         }
 }

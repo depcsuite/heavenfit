@@ -2,14 +2,14 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-      globalId = '<?php echo isset($menu->iddisciplina) && $menu->iddisciplina > 0 ? $menu->iddisciplina : 0; ?>';
-      <?php $globalId = isset($menu->iddisciplina) ? $menu->iddisciplina : "0"; ?>
+      globalId = '<?php echo isset($menu->idclase) && $menu->idclase > 0 ? $menu->idclase : 0; ?>';
+      <?php $globalId = isset($menu->idclase) ? $menu->idclase : "0"; ?>
 </script>
 @endsection
 @section('breadcrumb')
 <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/admin/home">Inicio</a></li>
-      <li class="breadcrumb-item"><a href="/admin/disciplinas">disciplinas</a></li>
+      <li class="breadcrumb-item"><a href="/admin/clases">clases</a></li>
       @if($globalId > 0)
       <li class="breadcrumb-item active">Modificar</li>
       @else
@@ -17,7 +17,7 @@
       @endif
 </ol>
 <ol class="toolbar">
-      <li class="btn-item"><a title="Nuevo" href="/admin/disciplina/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
+      <li class="btn-item"><a title="Nuevo" href="/admin/clase/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
       <li class="btn-item"><a title="Guardar" href="#" class="fa fa-floppy-o" aria-hidden="true" onclick="javascript: $('#modalGuardar').modal('toggle');"><span>Guardar</span></a>
       </li>
       @if($globalId > 0)
@@ -27,7 +27,7 @@
 </ol>
 <script>
       function fsalir() {
-            location.href = "/admin/disciplinas";
+            location.href = "/admin/clases";
       }
 </script>
 @endsection
@@ -53,20 +53,63 @@ if (isset($msg)) {
                   <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
 
                   <div class="col-12 col-sm-6">
-                        <label for="txtNombre">Nombre: *</label>
-                        <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
+                        <label for="lstDisciplina">Disciplina: </label>
+                        <select name="lstDisciplina" id="lstDisciplina" class="form-control">Disciplina
+                              <option selected value=""></option>
+                              @for ($i = 0; $i < count($array_disciplina); $i++) @if (isset($clase) and $array_disciplina[$i]->iddisciplina == $clase->fk_iddisciplina)
+                                    <option selected value="{{ $array_disciplina[$i]->iddisciplina }}">{{ $array_disciplina[$i]->nombre }}</option>
+                                    @else
+                                    <option value="{{ $array_disciplina[$i]->iddisciplina }}">{{ $array_disciplina[$i]->nombre }}</option>
+                                    @endif
+                              @endfor
+                        </select>
+                  </div>
+
+                  <div class="col-12 col-sm-6">
+                        <label for="lstProfesor">Profesor: </label>
+                        <select name="lstProfesor" id="lstProfesor" class="form-control">Profesor
+                              <option selected value=""></option>
+                              @for ($i = 0; $i < count($array_profesor); $i++) @if (isset($clase) and $array_profesor[$i]->idprofesor == $clase->fk_idprofesor)
+                                    <option selected value="{{ $array_profesor[$i]->idprofesor }}">{{ $array_profesor[$i]->nombre }}</option>
+                                    @else
+                                    <option value="{{ $array_profesor[$i]->idprofesor }}">{{ $array_profesor[$i]->nombre }}</option>
+                                    @endif
+                              @endfor
+                        </select>
+                  </div>
+
+                  <div class="col-12 col-sm-6">
+                        <label for="txtFecha_desde">Fecha desde: *</label>
+                        <input type="datetime-local" name="txtFecha_desde" id="txtFecha_desde" class="form-control">
                   </div>
                   
                   <div class="col-12 col-sm-6">
-                        <label for="txtFoto">foto: *</label>
-                        <input type="file" name="txtFoto" id="txtFoto" class="form-control" required>
+                        <label for="txtFecha_hasta">Fecha hasta: *</label>
+                        <input type="datetime-local" name="txtFecha_hasta" id="txtFecha_hasta" class="form-control">
                   </div>
 
                   <div class="col-12 col-sm-6">
-                        <label for="txtDescripcion">Descrición: *</label>
-                        <textarea name="txtDescripcion" id="txtDescripcion"  class="form-control txtarea" ></textarea>
+                        <label for="lstModalidad">Modalidad: </label>
+                        <select name="lstModalidad" id="lstModalidad" class="form-control">Modalidad
+                              <option selected value=""></option>
+                              @for ($i = 0; $i < count($array_modalidad); $i++) @if (isset($clase) and $array_modalidad[$i]->idmodalidad == $clase->fk_idmodalidad)
+                                    <option selected value="{{ $array_modalidad[$i]->idmodalidad }}">{{ $array_modalidad[$i]->nombre }}</option>
+                                    @else
+                                    <option value="{{ $array_modalidad[$i]->idmodalidad }}">{{ $array_modalidad[$i]->nombre }}</option>
+                                    @endif
+                              @endfor
+                        </select>
                   </div>
 
+                  <div class="col-12 col-sm-6">
+                        <label for="txtDuracion">Duracion: *</label>
+                        <input type="text" name="txtduracion" id="txtduracion" class="form-control">
+                  </div>
+
+                  <div class="col-12 col-sm-6">
+                        <label for="txtDescripcion">Descripción *</label>
+                        <textarea name="txtDescripcion" id="txtDescripcion" class="form-control txtarea"> </textarea>
+                  </div>
 
             </div>
       </form>

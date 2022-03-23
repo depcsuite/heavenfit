@@ -2,35 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Entidades\Profesor; //include_once "app/Entidades/Sistema/Menu.php";
-use App\Entidades\Pais;
-use App\Entidades\Modalidad;
+use App\Entidades\Venta;
+use App\Entidades\Cliente;
+use App\Entidades\Plan;
+
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
 use Illuminate\Http\Request;
 
 require app_path() . '/start/constants.php';
 
-class ControladorProfesor extends Controller
-{
+class ControladorVenta extends Controller{
+
       public function nuevo(){
-            $pais = new Pais();
-            $array_nacionalidad = $pais->obtenerTodos();
-            $titulo = "Nuevo profesor";
-            $modalidad = new Modalidad();
-            $array_modalidad = $modalidad->obtenerTodos();
-            return view("profesor.profesor-nuevo", compact('titulo', 'array_nacionalidad','array_modalidad'));
-        }
+            $titulo = "Nueva Venta";
+            $cliente = new Cliente();
+            $array_clientes = $cliente->obtenerTodos();
+            $plan = new Plan();
+            $array_planes = $plan->obtenerTodos();
+            return view("venta.venta-nuevo", compact('titulo', 'array_clientes', 'array_planes'));
+      }
 
       public function guardar(Request $request) {
             try {
                 //Define la entidad servicio
-                $titulo = "Modificar profesor";
-                $entidad = new Profesor();
+                $titulo = "Modificar venta";
+                $entidad = new Venta();
                 $entidad->cargarDesdeRequest($request);
     
                 //validaciones
-                if ($entidad->nombre == "") {
+                if ($entidad->fecha == "") {
                     $msg["ESTADO"] = MSG_ERROR;
                     $msg["MSG"] = "Complete todos los datos";
                 } else {
@@ -48,19 +49,23 @@ class ControladorProfesor extends Controller
                         $msg["MSG"] = OKINSERT;
                     }
                     
-                    $_POST["id"] = $entidad->idprofesor;
-                    return view('profesor.profesor-listar', compact('titulo', 'msg'));
+                    $_POST["id"] = $entidad->idventa;
+                    return view('venta.venta-listar', compact('titulo', 'msg'));
                 }
             } catch (Exception $e) {
                 $msg["ESTADO"] = MSG_ERROR;
                 $msg["MSG"] = ERRORINSERT;
             }
-    
-            $id = $entidad->idprofesor;
-            $profesor = new Profesor();
-            $profesor->obtenerPorId($id);
-            $pais = new Pais();
-            $array_nacionalidad = $pais->obtenerTodos();
-            return view('profesor.profesor-listar', compact('titulo', 'msg', 'profesor', 'array_nacionalidad','array_modalidad')). '?id=' . $profesor->idprofesor;
+
+            $id = $entidad->idventa;
+            $venta = new Venta();
+            $venta->obtenerPorId($id);
+            $cliente = new Cliente();
+            $array_clientes = $cliente->obtenerTodos();
+            $plan = new Plan();
+            $array_planes = $plan->obtenerTodos();
+            return view('venta.venta-listar', compact('titulo', 'msg', 'venta', 'array_clientes', 'array_planes')). '?id=' . $venta->idventa;;
       }
 }
+
+?>

@@ -2,8 +2,8 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-    globalId = '<?php echo isset($menu->idcliente) && $menu->idcliente > 0 ? $menu->idcliente : 0; ?>';
-    <?php $globalId = isset($menu->idcliente) ? $menu->idcliente : "0";?>
+    globalId = '<?php echo isset($menu->idnutricionista) && $menu->idnutricionista > 0 ? $menu->idnutricionista : 0; ?>';
+    <?php $globalId = isset($menu->idnutricionista) ? $menu->idnutricionista : "0";?>
 </script>
 @endsection
 @section('breadcrumb')
@@ -17,7 +17,7 @@
     @endif
 </ol>
 <ol class="toolbar">
-    <li class="btn-item"><a title="Nuevo" href="/admin/cliente/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
+    <li class="btn-item"><a title="Nuevo" href="/admin/nutricionista/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
     <li class="btn-item"><a title="Guardar" href="#" class="fa fa-floppy-o" aria-hidden="true" onclick="javascript: $('#modalGuardar').modal('toggle');"><span>Guardar</span></a>
     </li>
     @if($globalId > 0)
@@ -27,7 +27,7 @@
 </ol>
 <script>
 function fsalir(){
-    location.href ="/admin/clientes";
+    location.href ="/admin/nutricionistas";
 }
 </script>
 @endsection
@@ -56,72 +56,37 @@ if (isset($msg)) {
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtEdad">Edad: *</label>
-            <input type="text" name="txtEdad" id="txtEdad" class="form-control" required>
+            <input type="number" name="txtEdad" id="txtEdad" class="form-control" required>
         </div>
         <div class="col-12 col-sm-6">
-            <label for="txtPeso">Peso (kg): *</label>
-            <input type="text" name="txtPeso" id="txtPeso" class="form-control" required>
+            <label for="txtDni">DNI: *</label>
+            <input type="text" name="txtDni" id="txtDni" class="form-control" required>
         </div>
         <div class="col-12 col-sm-6">
-            <label for="txtAltura">Altura(cm): *</label>
-            <input type="text" name="txtAltura" id="txtAltura" class="form-control" required>
+            <label for="txtTelefono">Telefono: </label>
+            <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" >
         </div>
         <div class="col-12 col-sm-6">
-            <label for="txtDeportes">Deportes: *</label>
-            <input type="text" name="txtDeportes" id="txtDeportes" class="form-control" placeholder="Indicar deportes que haya realizado">
-        </div>
-        <div class="col-12 col-sm-6">
-            <label for="txtLesiones">Lesiones: *</label>
-            <input type="text" name="txtLesiones" id="txtLesiones" class="form-control" placeholder="Indicar lesiones que haya tenido" required>
-        </div>
-        <div class="col-12 col-sm-6">
-            <label for="txtEnfermedades">Enfermedades: *</label>
-            <input type="text" name="txtEnfermedades" id="txtEnfermedades" class="form-control" placeholder="Indicar enfermedades que le puedan dificultar el entrenamiento" required>
-        </div>
-        <div class="col-12 col-sm-6">
-            <label for="txtMedicamento">Medicamento: </label>
-            <input type="text" name="txtMedicamento" id="txtMedicamento" class="form-control" placeholder="indicar medicamentos que este tomando" >
-        </div>
-        <div class="col-12 col-sm-6">
-            <label for="txtMateriales">Materiales: *</label>
-            <input type="text" name="txtMateriales" id="txtMateriales" class="form-control" placeholder="Mancuernas, cuerda, colchoneta. etc" required>
-        </div>
-        <div class="col-12 col-sm-6">
-            <label for="txtObjetivo">Objetivo: </label>
-            <input type="text" name="txtObjetivo" id="txtObjetivo" class="form-control"  >
-        </div>
-        <div class="col-12 col-sm-6">
-            <label for="txtFechaNac">Fecha nacimiento: *</label>
-            <input type="date" name="txtFechaNac" id="txtFechaNac" class="form-control" required>
-        </div>
-        <div class="col-12 col-sm-6">
-            <label for="txtNutricion">Nutrición: </label>
-            <input type="text" name="txtNutricion" id="txtNutricion" class="form-control" placeholder="tiene un plan nutricional? le interesa tener uno?" >
-        </div>
-        <div class="col-12 col-sm-6">
-            <label for="txtFoto">Foto: </label>
-            <input type="file" name="txtFoto" id="txtFoto" class="form-control" >
-        </div>
-        <div class="col-12 col-sm-6">
-            <label for="lstNacionalidad">Nacionalidad: </label>
-            <select name="lstNacionalidad" id="lstNacionalidad" class="form-control">Nacionalidad
-            <option selected value=""></option>
+            <label for="lstPais">Nacionalidad: </label>
+            <select name="lstPais" id="lstPais" class="form-control">Nacionalidad
+                  <option selected value=""></option>
                 @for ($i = 0; $i < count($array_nacionalidad); $i++)
-                    @if (isset($cliente) and $array_nacionalidad[$i]->idpais == $cliente->fk_idpais)
+                    @if (isset($nutricionista) and $array_nacionalidad[$i]->idpais == $nutricionista->fk_idpais)
                         <option selected value="{{ $array_nacionalidad[$i]->idpais }}">{{ $array_nacionalidad[$i]->nombre }}</option>
                     @else
                         <option value="{{ $array_nacionalidad[$i]->idpais }}">{{ $array_nacionalidad[$i]->nombre }}</option>
                     @endif
                 @endfor
-            </select>
-            
+            </select>   
         </div>
         <div class="col-12 col-sm-6">
-            <label for="txtClave">Clave: *</label>
-            <input type="password" name="txtClave" id="txtClave" class="form-control" required>
+            <label for="txtIdioma">Idioma: </label>
+            <input type="text" name="txtIdioma" id="txtIdioma" class="form-control" >
         </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtFoto">Foto: </label>
+            <input type="file" name="txtFoto" id="txtFoto" class="form-control" >
         </div>
-        
     </form>
     <div class="modal fade" id="mdlEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
