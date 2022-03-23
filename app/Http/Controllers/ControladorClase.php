@@ -36,7 +36,7 @@ class ControladorClase extends Controller
                 $entidad->cargarDesdeRequest($request);
     
                 //validaciones
-                if ($entidad->nombre == "") {
+                if ($entidad->fk_iddisciplina == "" || $entidad->fk_idprofesor == "" || $entidad->fk_idmodalidad == "") {
                     $msg["ESTADO"] = MSG_ERROR;
                     $msg["MSG"] = "Complete todos los datos";
                 } else {
@@ -53,7 +53,7 @@ class ControladorClase extends Controller
                         $msg["ESTADO"] = MSG_SUCCESS;
                         $msg["MSG"] = OKINSERT;
                     }
-                    $_POST["id"] = $entidad->idClase;
+                    $_POST["id"] = $entidad->idclase;
                     return view('Clase.Clase-listar', compact('titulo', 'msg'));
                 }
             } catch (Exception $e) {
@@ -61,10 +61,10 @@ class ControladorClase extends Controller
                 $msg["MSG"] = ERRORINSERT;
             }
     
-            $id = $entidad->idClase;
-            $Clase = new Clase();
-            $Clase->obtenerPorId($id);    
+            $id = $entidad->idclase;
+            $clase = new Clase();
+            $clase->obtenerPorId($id);    
     
-            return view('Clase.Clase-nuevo', compact('msg', 'Clase', 'titulo', 'array_disciplina', 'array_profesor', 'array_modalidad')) . '?id=' . $Clase->idClase;
+            return view('Clase.Clase-nuevo', compact('msg', 'clase', 'titulo', 'array_disciplina', 'array_profesor', 'array_modalidad')) . '?id=' . $Clase->idclase;
         }
 }

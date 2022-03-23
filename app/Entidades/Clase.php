@@ -12,7 +12,7 @@ class Clase extends Model
 
       protected $fillable = [
             'idclase',
-            'fk_iddiciplina',
+            'fk_iddisciplina',
             'fk_idprofesor',
             'fecha_desde',
             'fecha_hasta',
@@ -26,7 +26,7 @@ class Clase extends Model
       public function cargarDesdeRequest($request)
       {
             $this->idclase = $request->input('id') != "0" ? $request->input('id') : $this->idclase;
-            $this->fk_iddiciplina = $request->input('lstDisciplina');
+            $this->fk_iddisciplina = $request->input('lstDisciplina');
             $this->fk_idprofesor = $request->input('lstProfesor');
             $this->fecha_desde = $request->input('txtFecha_desde');
             $this->fecha_hasta = $request->input('txtFecha_hasta');
@@ -39,7 +39,7 @@ class Clase extends Model
       {
             $sql = "SELECT
                   idclase,
-                  fk_iddiciplina,
+                  fk_iddisciplina,
                   fk_idprofesor,
                   fecha_desde,
                   fecha_hasta,
@@ -55,7 +55,7 @@ class Clase extends Model
       {
             $sql = "SELECT
                   idclase,
-                  fk_iddiciplina,
+                  fk_iddisciplina,
                   fk_idprofesor,
                   fecha_desde,
                   fecha_hasta,
@@ -67,7 +67,7 @@ class Clase extends Model
 
             if (count($lstRetorno) > 0) {
                   $this->idclase = $lstRetorno[0]->idclase;
-                  $this->fk_iddiciplina = $lstRetorno[0]->fk_iddiciplina;
+                  $this->fk_iddisciplina = $lstRetorno[0]->fk_iddisciplina;
                   $this->fk_idprofesor = $lstRetorno[0]->fk_idprofesor;
                   $this->fecha_desde = $lstRetorno[0]->fecha_desde;
                   $this->fecha_hasta = $lstRetorno[0]->fecha_hasta;
@@ -82,7 +82,7 @@ class Clase extends Model
       public function guardar()
       {
             $sql = "UPDATE clases SET
-            fk_iddiciplina=?,
+            fk_iddisciplina=?,
             fk_idprofesor=?,
             fecha_desde=?,
             fecha_hasta=?,
@@ -91,7 +91,7 @@ class Clase extends Model
             descripcion=?
             WHERE idclase=?";
             $affected = DB::update($sql, [
-                  $this->fk_iddiciplina,
+                  $this->fk_iddisciplina,
                   $this->fk_idprofesor,
                   $this->fecha_desde,
                   $this->fecha_hasta,
@@ -111,7 +111,7 @@ class Clase extends Model
       public function insertar()
       {
             $sql = "INSERT INTO clases (
-                  fk_iddiciplina,
+                  fk_iddisciplina,
                   fk_idprofesor,
                   fecha_desde,
                   fecha_hasta,
@@ -120,7 +120,7 @@ class Clase extends Model
                   descripcion
               ) VALUES (?, ?, ?, ?, ?, ?, ?);";
             $result = DB::insert($sql, [
-                  $this->fk_iddiciplina,
+                  $this->fk_iddisciplina,
                   $this->fk_idprofesor,
                   $this->fecha_desde,
                   $this->fecha_hasta,

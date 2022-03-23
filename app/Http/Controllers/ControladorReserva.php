@@ -6,7 +6,10 @@ use App\Entidades\Reserva; //include_once "app/Entidades/Sistema/Menu.php";
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
 use App\Entidades\Cliente;
-use App\Entidades\Clase;
+use App\Entidades\Modalidad;
+use App\Entidades\Profesor;
+use App\Entidades\Disciplina;
+
 use Illuminate\Http\Request;
 
 
@@ -15,12 +18,16 @@ require app_path() . '/start/constants.php';
 class ControladorReserva extends Controller
 {
       public function nuevo(){
-            $titulo = "Nuevo cliente";
-            $Cliente = new Cliente();
-            $array_cliente = $Cliente->obtenerTodos();
-            $Clase = new Clase();
-            $array_clase = $Clase->obtenerTodos();
-            return view("reserva.reserva-nuevo", compact('titulo', 'array_cliente', 'array_clase'));
+            $titulo = "Nueva Reserva";
+            $cliente = new Cliente();
+            $array_cliente = $cliente->obtenerTodos();
+            $modalidad = new Modalidad();
+            $array_modalidad = $modalidad->obtenerTodos();
+            $profesor = new Profesor();
+            $array_profesor = $profesor->obtenerTodos();
+            $disciplina = new Disciplina();
+            $array_disciplina = $disciplina->obtenerTodos();
+            return view("reserva.reserva-nuevo", compact('titulo', 'array_cliente', 'array_modalidad', 'array_profesor', 'array_disciplina'));
       }
 
        public function guardar(Request $request) {
@@ -31,7 +38,7 @@ class ControladorReserva extends Controller
             $entidad->cargarDesdeRequest($request);
 
             //validaciones
-            if ($entidad->nombre == "") {
+            if ($entidad->fk_idcliente == "" || $entidad->fk_idmodalidad == "" || $entidad->fk_iddisciplina == "") {
                 $msg["ESTADO"] = MSG_ERROR;
                 $msg["MSG"] = "Complete todos los datos";
             } else {
@@ -56,14 +63,20 @@ class ControladorReserva extends Controller
             $msg["MSG"] = ERRORINSERT;
         }
 
-        $id = $entidad->idcliente;
+        $id = $entidad->idreserva;
+        $reserva = new Reserva();
+        $reserva->obtenerPorId($id);
+
         $cliente = new Cliente();
-        $cliente->obtenerPorId($id);
+        $array_cliente = $cliente->obtenerTodos();
+        $modalidad = new Modalidad();
+        $array_modalidad = $modalidad->obtenerTodos();
+        $profesor = new Profesor();
+        $array_profesor = $profesor->obtenerTodos();
+        $disciplina = new Disciplina();
+        $array_disciplina = $disciplina->obtenerTodos();
 
-        $Cliente = new Cliente();
-        $array_cliente = $Cliente->obtenerTodos();    
-
-        return view('reserva.reserva-nuevo', compact('msg', 'cliente', 'titulo', 'array_cliente' , 'array_clase')) . '?id=' . $cliente->idcliente;
+        return view('reserva.reserva-nuevo', compact('msg', 'reserva', 'titulo', 'array_cliente' , 'array_modalidad', 'array_profesor', 'array_disciplina')) . '?id=' . $reserva->idcliente;
     }
 
 }
