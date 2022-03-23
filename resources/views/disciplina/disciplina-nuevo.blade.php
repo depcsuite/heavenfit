@@ -64,7 +64,7 @@ if (isset($msg)) {
 
                   <div class="col-12 col-sm-6">
                         <label for="txtDescripcion">Descrición: *</label>
-                        <textarea name="txtDescripcion" id="txtDescripcion"  class="form-control" ></textarea>
+                        <textarea name="txtDescripcion" id="txtDescripcion"  class="form-control txtarea" ></textarea>
                   </div>
 
 
