@@ -38,6 +38,8 @@ class Cliente extends Model
       $this->idcliente = $request->input('id') != "0" ? $request->input('id') : $this->idcliente;
       $this->nombre = $request->input('txtNombre');
       $this->edad = $request->input('txtEdad');
+      $this->correo = $request->input('txtCorreo');
+      $this->telefono = $request->input('txtTelefono');      
       $this->peso = $request->input('txtPeso');
       $this->altura = $request->input('txtAltura');
       $this->deportes = $request->input('txtDeportes');
@@ -57,6 +59,8 @@ class Cliente extends Model
                   A.idcliente,
                   A.nombre,
                   A.edad,
+                  A.correo,
+                  A.telefono,
                   A.peso,
                   A.altura,
                   A.deportes,
@@ -80,6 +84,8 @@ class Cliente extends Model
                 idcliente,
                 nombre,
                 edad,
+                correo,
+                telefono,
                 peso,
                 altura,
                 deportes,
@@ -100,6 +106,8 @@ class Cliente extends Model
         $this->idcliente = $lstRetorno[0]->idcliente;
         $this->nombre = $lstRetorno[0]->nombre;
         $this->edad = $lstRetorno[0]->edad;
+        $this->correo = $lstRetorno[0]->correo;
+        $this->telefono = $lstRetorno[0]->telefono;
         $this->peso = $lstRetorno[0]->peso;
         $this->altura = $lstRetorno[0]->altura;
         $this->deportes = $lstRetorno[0]->deportes;
@@ -121,6 +129,8 @@ class Cliente extends Model
       $sql = "UPDATE clientes SET
             nombre=?,
             edad=?,
+            correo=?,
+            telefono=?,
             peso=?,
             altura=?,
             deportes=?,
@@ -137,6 +147,8 @@ class Cliente extends Model
         $affected = DB::update($sql, [
           $this->nombre,
           $this->edad,
+          $this->correo,
+          $this->telefono,
           $this->peso,
           $this->altura,
           $this->deportes,
@@ -162,6 +174,8 @@ class Cliente extends Model
       $sql = "INSERT INTO clientes (
               nombre,
               edad,
+              correo,
+              telefono,
               peso,
               altura,
               deportes,
@@ -174,10 +188,12 @@ class Cliente extends Model
               nutricion,
               foto,
               clave
-              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
       $result = DB::insert($sql, [
         $this->nombre,
         $this->edad,
+        $this->correo,
+        $this->telefono,
         $this->peso,
         $this->altura,
         $this->deportes,

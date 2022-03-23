@@ -59,6 +59,14 @@ if (isset($msg)) {
             <input type="text" name="txtEdad" id="txtEdad" class="form-control" required>
         </div>
         <div class="col-12 col-sm-6">
+            <label for="txtCorreo">Correo: *</label>
+            <input type="text" name="txtCorreo" id="txtCorreo" class="form-control" required>
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtTelefono">Telefono: *</label>
+            <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" required>
+        </div>
+        <div class="col-12 col-sm-6">
             <label for="txtPeso">Peso (kg): *</label>
             <input type="text" name="txtPeso" id="txtPeso" class="form-control" required>
         </div>
