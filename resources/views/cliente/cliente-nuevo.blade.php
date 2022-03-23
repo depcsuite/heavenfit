@@ -52,7 +52,7 @@ if (isset($msg)) {
 
         <div class="col-12 col-sm-6">
             <label for="txtNombre">Nombre: *</label>
-            <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
+            <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Nombre y Apellido" required>
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtEdad">Edad: *</label>
@@ -67,44 +67,45 @@ if (isset($msg)) {
             <input type="text" name="txtAltura" id="txtAltura" class="form-control" required>
         </div>
         <div class="col-12 col-sm-6">
-            <label for="txtDeportes">Deportes: </label>
+            <label for="txtDeportes">Deportes: *</label>
             <input type="text" name="txtDeportes" id="txtDeportes" class="form-control" >
         </div>
         <div class="col-12 col-sm-6">
-            <label for="txtLesiones">Lesiones: </label>
-            <input type="text" name="txtLesiones" id="txtLesiones" class="form-control" >
+            <label for="txtLesiones">Lesiones: *</label>
+            <input type="text" name="txtLesiones" id="txtLesiones" class="form-control" required>
         </div>
         <div class="col-12 col-sm-6">
-            <label for="txtEnfermedades">Enfermedades: </label>
-            <input type="text" name="txtEnfermedades" id="txtEnfermedades" class="form-control" >
+            <label for="txtEnfermedades">Enfermedades: *</label>
+            <input type="text" name="txtEnfermedades" id="txtEnfermedades" class="form-control" required>
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtMedicamento">Medicamento: </label>
             <input type="text" name="txtMedicamento" id="txtMedicamento" class="form-control" >
         </div>
         <div class="col-12 col-sm-6">
-            <label for="txtMateriales">Materiales: </label>
-            <input type="text" name="txtMateriales" id="txtMateriales" class="form-control" >
+            <label for="txtMateriales">Materiales: *</label>
+            <input type="text" name="txtMateriales" id="txtMateriales" class="form-control" required>
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtObjetivo">Objetivo: </label>
             <input type="text" name="txtObjetivo" id="txtObjetivo" class="form-control" >
         </div>
         <div class="col-12 col-sm-6">
-            <label for="txtFecha_nac">Fecha nacimiento: *</label>
-            <input type="date" name="txtFecha_nac" id="txtFecha_nac" class="form-control" required>
+            <label for="txtFechaNac">Fecha nacimiento: *</label>
+            <input type="date" name="txtFechaNac" id="txtFechaNac" class="form-control" required>
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtNutricion">Nutrición: </label>
             <input type="text" name="txtNutricion" id="txtNutricion" class="form-control" >
         </div>
         <div class="col-12 col-sm-6">
-            <label for="txtFoto">Foto: *</label>
-            <input type="file" name="txtFoto" id="txtFoto" class="form-control" required>
+            <label for="txtFoto">Foto: </label>
+            <input type="file" name="txtFoto" id="txtFoto" class="form-control" >
         </div>
         <div class="col-12 col-sm-6">
             <label for="lstNacionalidad">Nacionalidad: </label>
             <select name="lstNacionalidad" id="lstNacionalidad" class="form-control">Nacionalidad
+            <option selected value=""></option>
                 @for ($i = 0; $i < count($array_nacionalidad); $i++)
                     @if (isset($cliente) and $array_nacionalidad[$i]->idpais == $cliente->fk_idpais)
                         <option selected value="{{ $array_nacionalidad[$i]->idpais }}">{{ $array_nacionalidad[$i]->nombre }}</option>
@@ -114,6 +115,10 @@ if (isset($msg)) {
                 @endfor
             </select>
             
+        </div>
+        <div class="col-12 col-sm-6">
+            <label for="txtClave">Clave: *</label>
+            <input type="password" name="txtClave" id="txtClave" class="form-control" required>
         </div>
         </div>
         

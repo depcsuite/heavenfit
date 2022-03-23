@@ -112,6 +112,27 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     /* CONTROLADOR DISCIPLINAS                          */
     /* ------------------------------------------------ */
     Route::get('/admin/disciplina/nuevo', 'ControladorDisciplina@nuevo');
+    Route::post('/admin/disciplina/nuevo', 'ControladorDisciplina@guardar');
+
+
+    /* ----------------------------------------- */
+    /* CONTROLADOR PLANES                        */
+    /* ----------------------------------------- */
+    Route::get('/admin/planes/nuevo', 'ControladorPlan@nuevo');
+    Route::post('/admin/planes/nuevo', 'ControladorPlan@guardar');
+
+
+    /* ----------------------------------------- */
+    /* CONTROLADOR CLASES                        */
+    /* ----------------------------------------- */
+    Route::get('/admin/clases/nuevo', 'ControladorClase@nuevo');
+    Route::post('/admin/clases/nuevo', 'ControladorClase@guardar');
+    
+    /* ----------------------------------------- */
+    /* CONTROLADOR RESERVA                        */
+    /* ----------------------------------------- */
+    Route::get('/admin/reserva/nuevo', 'ControladorReserva@nuevo');
+    Route::post('/admin/reserva/nuevo', 'ControladorReserva@guardar');
     
     
 });

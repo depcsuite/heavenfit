@@ -2,14 +2,14 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-      globalId = '<?php echo isset($menu->iddisciplina) && $menu->iddisciplina > 0 ? $menu->iddisciplina : 0; ?>';
-      <?php $globalId = isset($menu->iddisciplina) ? $menu->iddisciplina : "0"; ?>
+      globalId = '<?php echo isset($menu->idreserva) && $menu->idreserva > 0 ? $menu->idreserva : 0; ?>';
+      <?php $globalId = isset($menu->idreserva) ? $menu->idreserva : "0"; ?>
 </script>
 @endsection
 @section('breadcrumb')
 <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/admin/home">Inicio</a></li>
-      <li class="breadcrumb-item"><a href="/admin/disciplinas">disciplinas</a></li>
+      <li class="breadcrumb-item"><a href="/admin/reservas">reservas</a></li>
       @if($globalId > 0)
       <li class="breadcrumb-item active">Modificar</li>
       @else
@@ -17,7 +17,7 @@
       @endif
 </ol>
 <ol class="toolbar">
-      <li class="btn-item"><a title="Nuevo" href="/admin/disciplina/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
+      <li class="btn-item"><a title="Nuevo" href="/admin/reserva/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
       <li class="btn-item"><a title="Guardar" href="#" class="fa fa-floppy-o" aria-hidden="true" onclick="javascript: $('#modalGuardar').modal('toggle');"><span>Guardar</span></a>
       </li>
       @if($globalId > 0)
@@ -27,7 +27,7 @@
 </ol>
 <script>
       function fsalir() {
-            location.href = "/admin/disciplinas";
+            location.href = "/admin/reservas";
       }
 </script>
 @endsection
@@ -53,19 +53,31 @@ if (isset($msg)) {
                   <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
 
                   <div class="col-12 col-sm-6">
-                        <label for="txtNombre">Nombre: *</label>
-                        <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
-                  </div>
-                  
-                  <div class="col-12 col-sm-6">
-                        <label for="txtFoto">foto: *</label>
-                        <input type="file" name="txtFoto" id="txtFoto" class="form-control" required>
+                        <label for="lstCliente">Cliente: </label>
+                        <select name="lstCliente" id="lstCliente" class="form-control">Cliente
+                              <option selected value=""></option>
+                              @for ($i = 0; $i < count($array_cliente); $i++) @if (isset($reserva) and $array_cliente[$i]->idcliente == $reserva->fk_idcliente)
+                                    <option selected value="{{ $array_cliente[$i]->idcliente }}">{{ $array_cliente[$i]->nombre }}</option>
+                                    @else
+                                    <option value="{{ $array_cliente[$i]->idcliente }}">{{ $array_cliente[$i]->nombre }}</option>
+                                    @endif
+                              @endfor
+                        </select>
                   </div>
 
                   <div class="col-12 col-sm-6">
-                        <label for="txtDescripcion">Descrición: *</label>
-                        <textarea name="txtDescripcion" id="txtDescripcion"  class="form-control" ></textarea>
+                        <label for="lstClase">Clase: </label>
+                        <select name="lstClase" id="lstClase" class="form-control">Clase
+                              <option selected value=""></option>
+                              @for ($i = 0; $i < count($array_clase); $i++) @if (isset($reserva) and $array_clase[$i]->idclase == $reserva->fk_idclase)
+                                    <option selected value="{{ $array_clase[$i]->idclase }}">{{ $array_clase[$i]->nombre }}</option>
+                                    @else
+                                    <option value="{{ $array_clase[$i]->idclase }}">{{ $array_clase[$i]->nombre }}</option>
+                                    @endif
+                              @endfor
+                        </select>
                   </div>
+
 
 
             </div>
