@@ -85,7 +85,7 @@ if (isset($msg)) {
             </div>
             <div class="col-12 col-sm-6">
                   <label for="txtDescripcion">Descripcion: </label>
-                  <input type="number" name="txtDescripcion" id="txtDescripcion" class="form-control">
+                  <input type="text" name="txtDescripcion" id="txtDescripcion" class="form-control">
             </div>
             <div class="col-12 col-sm-6">
                   <label for="txtFoto">Foto: </label>
