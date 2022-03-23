@@ -13,13 +13,29 @@ require app_path() . '/start/constants.php';
 
 class ControladorProfesor extends Controller
 {
+    public function index(){
+        $titulo = "Listado de Profesores";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
+                $codigo = "MENUCONSULTA";
+                $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                return view('profesor.profesor-listar', compact('titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
+
       public function nuevo(){
             $pais = new Pais();
             $array_nacionalidad = $pais->obtenerTodos();
+            $profesor = new Profesor;
             $titulo = "Nuevo profesor";
             $modalidad = new Modalidad();
             $array_modalidad = $modalidad->obtenerTodos();
-            return view("profesor.profesor-nuevo", compact('titulo', 'array_nacionalidad','array_modalidad'));
+            return view("profesor.profesor-nuevo", compact('titulo', 'profesor', 'array_nacionalidad','array_modalidad'));
         }
 
       public function guardar(Request $request) {
@@ -82,10 +98,10 @@ class ControladorProfesor extends Controller
 
         for ($i = $inicio; $i < count($aProfesores) && $cont < $registros_por_pagina; $i++) {
             $row = array();
-            $row[] = '<a class="btn btn-secondary" href="/admin/profesor/'.$aProfesores[$i]->idProfesor .'"><i class="fa-solid fa-pencil"></i></a>';
+            $row[] = '<a class="btn btn-secondary" href="/admin/profesor/'.$aProfesores[$i]->idprofesor .'"><i class="fa-solid fa-pencil"></i></a>';
             $row[] = $aProfesores[$i]->nombre;
-            $row[] = $aProfesores[$i]->telefono;
             $row[] = $aProfesores[$i]->correo;
+            $row[] = $aProfesores[$i]->telefono;
             $cont++;
             $data[] = $row;
         }
@@ -99,5 +115,30 @@ class ControladorProfesor extends Controller
         return json_encode($json_data);
     }
 
+
+    public function editar($id)
+    {
+        $titulo = "Modificar profesor";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
+                $codigo = "MENUMODIFICACION";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $profesor = new Profesor();
+                $profesor->obtenerPorId($id);
+
+                $pais = new Pais();
+                $array_nacionalidad = $pais->obtenerTodos();
+
+                $modalidad = new Modalidad();
+                $array_modalidad = $modalidad->obtenerTodos();
+
+                return view('profesor.profesor-nuevo', compact('profesor', 'titulo' ,'array_nacionalidad', 'array_modalidad'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
 
 }
