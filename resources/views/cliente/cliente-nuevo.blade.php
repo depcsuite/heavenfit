@@ -68,27 +68,27 @@ if (isset($msg)) {
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtDeportes">Deportes: *</label>
-            <input type="text" name="txtDeportes" id="txtDeportes" class="form-control" >
+            <input type="text" name="txtDeportes" id="txtDeportes" class="form-control" placeholder="Indicar deportes que haya realizado">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtLesiones">Lesiones: *</label>
-            <input type="text" name="txtLesiones" id="txtLesiones" class="form-control" required>
+            <input type="text" name="txtLesiones" id="txtLesiones" class="form-control" placeholder="Indicar lesiones que haya tenido" required>
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtEnfermedades">Enfermedades: *</label>
-            <input type="text" name="txtEnfermedades" id="txtEnfermedades" class="form-control" required>
+            <input type="text" name="txtEnfermedades" id="txtEnfermedades" class="form-control" placeholder="Indicar enfermedades que le puedan dificultar el entrenamiento" required>
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtMedicamento">Medicamento: </label>
-            <input type="text" name="txtMedicamento" id="txtMedicamento" class="form-control" >
+            <input type="text" name="txtMedicamento" id="txtMedicamento" class="form-control" placeholder="indicar medicamentos que este tomando" >
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtMateriales">Materiales: *</label>
-            <input type="text" name="txtMateriales" id="txtMateriales" class="form-control" required>
+            <input type="text" name="txtMateriales" id="txtMateriales" class="form-control" placeholder="Mancuernas, cuerda, colchoneta. etc" required>
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtObjetivo">Objetivo: </label>
-            <input type="text" name="txtObjetivo" id="txtObjetivo" class="form-control" >
+            <input type="text" name="txtObjetivo" id="txtObjetivo" class="form-control"  >
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtFechaNac">Fecha nacimiento: *</label>
@@ -96,7 +96,7 @@ if (isset($msg)) {
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtNutricion">Nutrición: </label>
-            <input type="text" name="txtNutricion" id="txtNutricion" class="form-control" >
+            <input type="text" name="txtNutricion" id="txtNutricion" class="form-control" placeholder="tiene un plan nutricional? le interesa tener uno?" >
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtFoto">Foto: </label>

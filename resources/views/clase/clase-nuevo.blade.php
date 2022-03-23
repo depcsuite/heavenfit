@@ -107,8 +107,8 @@ if (isset($msg)) {
                   </div>
 
                   <div class="col-12 col-sm-6">
-                        <label for="txtDescripcion">Fecha desde: *</label>
-                        <textarea name="txtDescripcion" id="txtDescripcion" class="form-control"> </textarea>
+                        <label for="txtDescripcion">Descripción *</label>
+                        <textarea name="txtDescripcion" id="txtDescripcion" class="form-control txtarea"> </textarea>
                   </div>
 
             </div>
