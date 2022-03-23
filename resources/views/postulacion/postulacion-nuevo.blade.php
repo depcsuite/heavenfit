@@ -2,14 +2,14 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-    globalId = '<?php echo isset($menu->idprofesor) && $menu->idprofesor > 0 ? $menu->idprofesor : 0; ?>';
-    <?php $globalId = isset($menu->idprofesor) ? $menu->idprofesor : "0";?>
+    globalId = '<?php echo isset($menu->idpostulacion) && $menu->idpostulacion > 0 ? $menu->idpostulacion : 0; ?>';
+    <?php $globalId = isset($menu->idpostulacion) ? $menu->idpostulacion : "0";?>
 </script>
 @endsection
 @section('breadcrumb')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/admin/home">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="/admin/profesores">Profesores</a></li>
+    <li class="breadcrumb-item"><a href="/admin/postulaciones">Postulaciones</a></li>
     @if($globalId > 0)
         <li class="breadcrumb-item active">Modificar</li>
       @else
@@ -17,7 +17,7 @@
     @endif
 </ol>
 <ol class="toolbar">
-    <li class="btn-item"><a title="Nuevo" href="/admin/profesor/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
+    <li class="btn-item"><a title="Nuevo" href="/admin/postulacion/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
     <li class="btn-item"><a title="Guardar" href="#" class="fa fa-floppy-o" aria-hidden="true" onclick="javascript: $('#modalGuardar').modal('toggle');"><span>Guardar</span></a>
     </li>
     @if($globalId > 0)
@@ -27,7 +27,7 @@
 </ol>
 <script>
 function fsalir(){
-    location.href ="/admin/profesores";
+    location.href ="/admin/postulaciones";
 }
 </script>
 @endsection
@@ -55,54 +55,28 @@ if (isset($msg)) {
                   <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
             </div>
             <div class="col-12 col-sm-6">
-                  <label for="">Nacionalidad: *</label>
-                  <select name="lstNacionalidad" id="lstNacionalidad" class="form-control"> 
-                  <option selected value=""></option>
-                        @for ($i = 0; $i < count($array_nacionalidad); $i++)
-                            @if (isset($profesor) and $array_nacionalidad[$i]->idpais == $profesor->fk_idpais)
-                                <option selected value="{{ $array_nacionalidad[$i]->idpais }}">{{ $array_nacionalidad[$i]->nombre }}</option>
-                            @else
-                                <option value="{{ $array_nacionalidad[$i]->idpais }}">{{ $array_nacionalidad[$i]->nombre }}</option>
-                            @endif
-                        @endfor
-                  </select>
-            </div>
-            <div class="col-12 col-sm-6">
-                  <label for="txtIdioma">Idioma: *</label>
-                  <input type="text" name="txtIdioma" id="txtIdioma" class="form-control" required>
-            </div>
-            <div class="col-12 col-sm-6">
-                  <label for="txtTelefono">Telefono: *</label>
-                  <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" required>
-            </div>
-            <div class="col-12 col-sm-6">
-                  <label for="txtDni">DNI: *</label>
-                  <input type="text" name="txtDni" id="txtDni" class="form-control" required>
-            </div>
-            <div class="col-12 col-sm-6">
                   <label for="txtEdad">Edad: *</label>
                   <input type="number" name="txtEdad" id="txtEdad" class="form-control" required>
             </div>
             <div class="col-12 col-sm-6">
-                  <label for="txtDescripcion">Descripcion: </label>
-                  <input type="text" name="txtDescripcion" id="txtDescripcion" class="form-control">
+                  <label for="lstSexo">Sexo: </label>
+                  <select name="lstSexo" id="lstSexo" class="form-control">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="Hombre">Hombre</option>
+                        <option  value="Mujer">Mujer</option>
+                  </select>
             </div>
             <div class="col-12 col-sm-6">
-                        <label for="lstModalidad">Modalidad: </label>
-                        <select name="lstModalidad" id="lstModalidad" class="form-control">Modalidad
-                              <option selected value=""></option>
-                              @for ($i = 0; $i < count($array_modalidad); $i++)
-                                    @if (isset($profesor) and $array_modalidad[$i]->idmodalidad == $profesor->fk_idmodalidad)
-                                    <option selected value="{{ $array_modalidad[$i]->idmodalidad }}">{{ $array_modalidad[$i]->nombre }}</option>
-                                    @else
-                                    <option value="{{ $array_modalidad[$i]->idmodalidad }}">{{ $array_modalidad[$i]->nombre }}</option>
-                                    @endif
-                              @endfor
-                        </select>
-                  </div>
+                  <label for="lstSexo">Disponibilidad: </label>
+                  <select name="lstDisponibilidad" id="lstDisponibilidad" class="form-control">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="Mañana">Mañana</option>
+                        <option  value="Tarde">Tarde</option>
+                  </select>
+            </div>
             <div class="col-12 col-sm-6">
-                  <label for="txtFoto">Foto: </label>
-                  <input type="file" name="txtFoto" id="txtFoto" class="form-control">
+                  <label for="txtFoto">CV: </label>
+                  <input type="file" name="txtCv" id="txtCv" class="form-control">
             </div>
         </div>
     </form>

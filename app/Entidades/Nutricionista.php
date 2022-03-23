@@ -15,7 +15,7 @@ class Nutricionista extends Model
             'nombre',
             'dni',
             'edad',
-            'nacionalidad',
+            'fk_idpais',
             'telefono',
             'idioma',
             'foto'
@@ -29,7 +29,7 @@ class Nutricionista extends Model
             $this->nombre = $request->input('txtNombre');
             $this->dni = $request->input('txtDni');
             $this->edad = $request->input('txtEdad');
-            $this->nacionalidad = $request->input('txtNacionalidad');
+            $this->fk_idpais = $request->input('lstPais');
             $this->telefono = $request->input('txtTelefono');
             $this->idioma = $request->input('txtIdioma');
             $this->foto = $request->input('txtFoto');
@@ -42,7 +42,7 @@ class Nutricionista extends Model
                   nombre,
                   dni,
                   edad,
-                  nacionalidad,
+                  fk_idpais,
                   telefono,
                   idioma,
                   foto                
@@ -58,7 +58,7 @@ class Nutricionista extends Model
                   nombre,
                   dni,
                   edad,
-                  nacionalidad,
+                  fk_idpais,
                   telefono,
                   idioma,
                   foto
@@ -70,7 +70,7 @@ class Nutricionista extends Model
                   $this->nombre = $lstRetorno[0]->nombre;
                   $this->dni = $lstRetorno[0]->dni;
                   $this->edad = $lstRetorno[0]->edad;
-                  $this->nacionalidad = $lstRetorno[0]->nacionalidad;
+                  $this->fk_idpais = $lstRetorno[0]->fk_idpais;
                   $this->telefono = $lstRetorno[0]->telefono;
                   $this->idioma = $lstRetorno[0]->idioma;
                   $this->foto = $lstRetorno[0]->foto;
@@ -85,7 +85,7 @@ class Nutricionista extends Model
             nombre=?,
             dni=?,
             edad=?,
-            nacionalidad=?,
+            fk_idpais=?,
             telefono=?,
             idioma=?,
             foto=?
@@ -94,7 +94,7 @@ class Nutricionista extends Model
                   $this->nombre,
                   $this->dni,
                   $this->edad,
-                  $this->nacionalidad,
+                  $this->fk_idpais,
                   $this->telefono,
                   $this->idioma,
                   $this->foto,
@@ -114,7 +114,7 @@ class Nutricionista extends Model
                   nombre,
                   dni,
                   edad,
-                  nacionalidad,
+                  fk_idpais,
                   telefono,
                   idioma,
                   foto
@@ -123,7 +123,7 @@ class Nutricionista extends Model
                   $this->nombre,
                   $this->dni,
                   $this->edad,
-                  $this->nacionalidad,
+                  $this->fk_idpais,
                   $this->telefono,
                   $this->idioma,
                   $this->foto

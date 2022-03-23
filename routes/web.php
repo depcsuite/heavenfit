@@ -133,7 +133,24 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     /* ----------------------------------------- */
     Route::get('/admin/reserva/nuevo', 'ControladorReserva@nuevo');
     Route::post('/admin/reserva/nuevo', 'ControladorReserva@guardar');
+
+    /* ----------------------------------------- */
+    /* CONTROLADOR VENTA                        */
+    /* ----------------------------------------- */
+    Route::get('/admin/venta/nuevo', 'ControladorVenta@nuevo');
+    Route::post('/admin/venta/nuevo', 'ControladorVenta@guardar');
+
+    /* ----------------------------------------- */
+    /* CONTROLADOR POSTULACIONES                        */
+    /* ----------------------------------------- */
+    Route::get('/admin/postulacion/nuevo', 'ControladorPostulacion@nuevo');
+    Route::post('/admin/postulacion/nuevo', 'ControladorPostulacion@guardar');
     
+    /* ----------------------------------------- */
+    /* CONTROLADOR NUTRICIONISTA                        */
+    /* ----------------------------------------- */
+    Route::get('/admin/nutricionista/nuevo', 'ControladorNutricionista@nuevo');
+    Route::post('/admin/nutricionista/nuevo', 'ControladorNutricionista@guardar');
     
 });
 
