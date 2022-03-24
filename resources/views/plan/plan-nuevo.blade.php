@@ -2,8 +2,8 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-      globalId = '<?php echo isset($menu->idplan) && $menu->idplan > 0 ? $menu->idplan : 0; ?>';
-      <?php $globalId = isset($menu->idplan) ? $menu->idplan : "0"; ?>
+      globalId = '<?php echo isset($plan->idplan) && $plan->idplan > 0 ? $plan->idplan : 0; ?>';
+      <?php $globalId = isset($plan->idplan) ? $plan->idplan : "0"; ?>
 </script>
 @endsection
 @section('breadcrumb')
@@ -17,7 +17,7 @@
       @endif
 </ol>
 <ol class="toolbar">
-      <li class="btn-item"><a title="Nuevo" href="/admin/plan/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
+      <li class="btn-item"><a title="Nuevo" href="/admin/planes/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
       <li class="btn-item"><a title="Guardar" href="#" class="fa fa-floppy-o" aria-hidden="true" onclick="javascript: $('#modalGuardar').modal('toggle');"><span>Guardar</span></a>
       </li>
       @if($globalId > 0)
@@ -27,7 +27,7 @@
 </ol>
 <script>
       function fsalir() {
-            location.href = "/admin/plans";
+            location.href = "/admin/planes";
       }
 </script>
 @endsection
@@ -54,17 +54,17 @@ if (isset($msg)) {
 
                   <div class="col-12 col-sm-6">
                         <label for="txtNombre">Nombre: *</label>
-                        <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
+                        <input type="text" name="txtNombre" id="txtNombre" class="form-control" value="{{$plan->nombre}}" required>
                   </div>
 
                   <div class="col-12 col-sm-6">
                         <label for="txtDescripcion">Descripción: *</label>
-                        <input type="txt" name="txtDescripcion" id="txtDescripcion" class="form-control" required>
+                        <input type="txt" name="txtDescripcion" id="txtDescripcion" class="form-control" value="{{$plan->descripcion}}" required>
                   </div>
 
                   <div class="col-12 col-sm-6">
                         <label for="txtPrecio">Precio: *</label>
-                        <input type="text" name="txtPrecio" id="txtPrecio" class="form-control">
+                        <input type="text" name="txtPrecio" id="txtPrecio" value="{{$plan->precio}}" class="form-control ">
                   </div>
 
 
@@ -106,7 +106,7 @@ if (isset($msg)) {
             function eliminar() {
                   $.ajax({
                         type: "GET",
-                        url: "{{ asset('admin/sistema/menu/eliminar') }}",
+                        url: "{{ asset('admin/planes/eliminar') }}",
                         data: {
                               id: globalId
                         },

@@ -135,7 +135,7 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/admin/planes', 'ControladorPlan@index');
     Route::get('/admin/planes/nuevo', 'ControladorPlan@nuevo');
     Route::post('/admin/planes/nuevo', 'ControladorPlan@guardar');
-    Route::get('/admin/planes/cargarGrilla', 'ControladorPlan@cargarGrilla')->name('plan.cargarGrilla');
+    Route::get('/admin/planes/cargarGrilla', 'ControladorPlan@cargarGrilla')->name('planes.cargarGrilla');
     Route::get('/admin/planes/eliminar', 'ControladorPlan@eliminar');
     Route::get('/admin/planes/{id}' , 'ControladorPlan@editar');
     Route::post('/admin/planes/{id}' , 'ControladorPlan@guardar');
