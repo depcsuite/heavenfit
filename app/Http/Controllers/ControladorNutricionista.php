@@ -13,6 +13,20 @@ require app_path() . '/start/constants.php';
 
 class ControladorNutricionista extends Controller
 {
+    public function index(){
+        $titulo = "Listado de nutricionistas";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
+                $codigo = "MENUCONSULTA";
+                $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                return view('nutricionista.nutricionista-listar', compact('titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
       public function nuevo(){
             $titulo = "Nuevo nutricionista";
             $pais = new Pais();
@@ -60,6 +74,38 @@ class ControladorNutricionista extends Controller
         $array_nacionalidad = $pais->obtenerTodos();    
 
         return view('nutricionista.nutricionista-nuevo', compact('msg', 'nutricionista', 'titulo', 'array_nacionalidad')) . '?id=' . $nutricionista->idnutricionista;
+    }
+
+    public function cargarGrilla()
+    {
+        $request = $_REQUEST;
+
+        $entidad = new Nutricionista();
+        $aNutricionista = $entidad->obtenerFiltrado();
+
+        $data = array();
+        $cont = 0;
+
+        $inicio = $request['start'];
+        $registros_por_pagina = $request['length'];
+
+
+        for ($i = $inicio; $i < count($aNutricionista) && $cont < $registros_por_pagina; $i++) {
+            $row = array();
+            $row[] = '<a class="btn btn-secondary" href="/admin/cliente/'.$aNutricionista[$i]->idnutricionista .'"><i class="fa-solid fa-pencil"></i></a>';
+            $row[] = $aNutricionista[$i]->nombre;
+            $row[] = $aNutricionista[$i]->telefono;
+            $cont++;
+            $data[] = $row;
+        }
+
+        $json_data = array(
+            "draw" => intval($request['draw']),
+            "recordsTotal" => count($aNutricionista), //cantidad total de registros sin paginar
+            "recordsFiltered" => count($aNutricionista), //cantidad total de registros en la paginacion
+            "data" => $data,
+        );
+        return json_encode($json_data);
     }
 
 }

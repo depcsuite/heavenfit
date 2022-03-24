@@ -2,14 +2,14 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-      globalId = '<?php echo isset($menu->iddisciplina) && $menu->iddisciplina > 0 ? $menu->iddisciplina : 0; ?>';
-      <?php $globalId = isset($menu->iddisciplina) ? $menu->iddisciplina : "0"; ?>
+      globalId = '<?php echo isset($disciplina->iddisciplina) && $disciplina->iddisciplina > 0 ? $disciplina->iddisciplina : 0; ?>';
+      <?php $globalId = isset($disciplina->iddisciplina) ? $disciplina->iddisciplina : "0"; ?>
 </script>
 @endsection
 @section('breadcrumb')
 <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/admin/home">Inicio</a></li>
-      <li class="breadcrumb-item"><a href="/admin/disciplinas">disciplinas</a></li>
+      <li class="breadcrumb-item"><a href="/admin/disciplina">disciplinas</a></li>
       @if($globalId > 0)
       <li class="breadcrumb-item active">Modificar</li>
       @else
@@ -45,6 +45,7 @@ if (isset($msg)) {
       if (isset($msg)) {
             echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
       }
+     
       ?>
 
       <form id="form1" method="POST">
@@ -54,17 +55,17 @@ if (isset($msg)) {
 
                   <div class="col-12 col-sm-6">
                         <label for="txtNombre">Nombre: *</label>
-                        <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
+                        <input type="text" name="txtNombre" id="txtNombre" class="form-control" value="{{ $disciplina->nombre }}" required>
                   </div>
                   
                   <div class="col-12 col-sm-6">
                         <label for="txtFoto">foto: *</label>
-                        <input type="file" name="txtFoto" id="txtFoto" class="form-control" required>
+                        <input type="file" name="txtFoto" id="txtFoto" class="form-control" value="{{ $disciplina->foto }}" required>
                   </div>
 
                   <div class="col-12 col-sm-6">
                         <label for="txtDescripcion">Descrición: *</label>
-                        <textarea name="txtDescripcion" id="txtDescripcion"  class="form-control txtarea" ></textarea>
+                        <textarea name="txtDescripcion" id="txtDescripcion"  class="form-control txtarea" >{{ $disciplina->descripcion }}</textarea>
                   </div>
 
 
@@ -106,7 +107,7 @@ if (isset($msg)) {
             function eliminar() {
                   $.ajax({
                         type: "GET",
-                        url: "{{ asset('admin/sistema/menu/eliminar') }}",
+                        url: "{{ asset('admin/disciplina/eliminar') }}",
                         data: {
                               id: globalId
                         },

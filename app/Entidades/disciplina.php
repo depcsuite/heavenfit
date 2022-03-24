@@ -91,6 +91,34 @@ Class Disciplina extends Model{
             ]);
             return $this->iddisciplina = DB::getPdo()->lastInsertId();
       }
+
+      public function obtenerFiltrado()
+      {
+          $request = $_REQUEST;
+          $columns = array(
+              0 => 'A.iddisciplina',
+              1 => 'A.nombre',
+              2 => 'A.descripcion',
+          );
+          $sql = "SELECT DISTINCT
+                      A.iddisciplina,
+                      A.nombre,
+                      A.descripcion
+                      FROM disciplinas A
+                  WHERE 1=1
+                  ";
+  
+          //Realiza el filtrado
+          if (!empty($request['search']['value'])) {
+              $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' )";
+          }
+          $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
+  
+          $lstRetorno = DB::select($sql);
+  
+          return $lstRetorno;
+      }
+
 }
 
 
