@@ -130,4 +130,32 @@ class Nutricionista extends Model
             ]);
             return $this->idnutricionista = DB::getPdo()->lastInsertId();
       }
+
+      public function obtenerFiltrado()
+    {
+        $request = $_REQUEST;
+        $columns = array(
+            0 => 'A.idnutricionista',
+            1 => 'A.nombre',
+            3 => 'A.telefono',
+        );
+        $sql = "SELECT DISTINCT
+                    A.idnutricionista,
+                    A.nombre,
+                    A.telefono
+                    FROM nutricionistas A
+                WHERE 1=1
+                ";
+
+        //Realiza el filtrado
+        if (!empty($request['search']['value'])) {
+            $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
+            $sql .= " OR A.telefono LIKE '%" . $request['search']['value'] . "%' )";
+        }
+        $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
+
+        $lstRetorno = DB::select($sql);
+
+        return $lstRetorno;
+    }
 }

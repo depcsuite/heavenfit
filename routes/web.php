@@ -155,10 +155,10 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     /* ----------------------------------------- */
     /* CONTROLADOR RESERVA                        */
     /* ----------------------------------------- */
-    Route::get('/admin/reserva', 'ControladorReserva@index');
+    Route::get('/admin/reservas', 'ControladorReserva@index');
     Route::get('/admin/reserva/nuevo', 'ControladorReserva@nuevo');
     Route::post('/admin/reserva/nuevo', 'ControladorReserva@guardar');
-    Route::get('/admin/reserva/cargarGrilla', 'ControladorReserva@cargarGrilla')->name('reserva.cargarGrilla');
+    Route::get('/admin/reservas/cargarGrilla', 'ControladorReserva@cargarGrilla')->name('reserva.cargarGrilla');
     Route::get('/admin/reserva/eliminar', 'ControladorReserva@eliminar');
     Route::get('/admin/reserva/{id}', 'ControladorReserva@editar');
     Route::post('/admin/reserva/{id}', 'ControladorReserva@guardar');
@@ -166,10 +166,10 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     /* ----------------------------------------- */
     /* CONTROLADOR VENTA                        */
     /* ----------------------------------------- */
-    Route::get('/admin/venta', 'ControladorVenta@index');
+    Route::get('/admin/ventas', 'ControladorVenta@index');
     Route::get('/admin/venta/nuevo', 'ControladorVenta@nuevo');
     Route::post('/admin/venta/nuevo', 'ControladorVenta@guardar');
-    Route::get('/admin/venta/cargarGrilla', 'ControladorVenta@cargarGrilla')->name('venta.cargarGrilla');
+    Route::get('/admin/ventas/cargarGrilla', 'ControladorVenta@cargarGrilla')->name('venta.cargarGrilla');
     Route::get('/admin/venta/eliminar', 'ControladorVenta@eliminar');
     Route::get('/admin/venta/{id}', 'ControladorVenta@editar');
     Route::post('/admin/venta/{id}', 'ControladorVenta@guardar');
@@ -177,10 +177,10 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     /* ----------------------------------------- */
     /* CONTROLADOR POSTULACIONES                 */
     /* ----------------------------------------- */
-    Route::get('/admin/postulacion', 'ControladorPostulacion@index');
+    Route::get('/admin/postulaciones', 'ControladorPostulacion@index');
     Route::get('/admin/postulacion/nuevo', 'ControladorPostulacion@nuevo');
     Route::post('/admin/postulacion/nuevo', 'ControladorPostulacion@guardar');
-    Route::get('/admin/postulacion/cargarGrilla', 'ControladorPostulacion@cargarGrilla')->name('postulacion.cargarGrilla');
+    Route::get('/admin/postulaciones/cargarGrilla', 'ControladorPostulacion@cargarGrilla')->name('postulacion.cargarGrilla');
     Route::get('/admin/postulacion/eliminar', 'ControladorPostulacion@eliminar');
     Route::get('/admin/postulacion/{id}', 'ControladorPostulacion@editar');
     Route::post('/admin/postulacion/{id}', 'ControladorPostulacion@guardar');
@@ -189,10 +189,10 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     /* ----------------------------------------- */
     /* CONTROLADOR NUTRICIONISTA                 */
     /* ----------------------------------------- */
-    Route::get('/admin/nutricionista', 'ControladorNutricionista@index');
+    Route::get('/admin/nutricionistas', 'ControladorNutricionista@index');
     Route::get('/admin/nutricionista/nuevo', 'ControladorNutricionista@nuevo');
     Route::post('/admin/nutricionista/nuevo', 'ControladorNutricionista@guardar');
-    Route::get('/admin/nutricionista/cargarGrilla', 'ControladorNutricionista@cargarGrilla')->name('nutricionista.cargarGrilla');
+    Route::get('/admin/nutricionistas/cargarGrilla', 'ControladorNutricionista@cargarGrilla')->name('nutricionista.cargarGrilla');
     Route::get('/admin/nutricionista/eliminar', 'ControladorNutricionista@eliminar');
     Route::get('/admin/nutricionista/{id}', 'ControladorNutricionista@editar');
     Route::post('/admin/nutricionista/{id}', 'ControladorNutricionista@guardar');

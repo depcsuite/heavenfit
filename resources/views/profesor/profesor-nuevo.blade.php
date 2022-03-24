@@ -2,8 +2,8 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-    globalId = '<?php echo isset($menu->idprofesor) && $menu->idprofesor > 0 ? $menu->idprofesor : 0; ?>';
-    <?php $globalId = isset($menu->idprofesor) ? $menu->idprofesor : "0";?>
+    globalId = '<?php echo isset($profesor->idprofesor) && $profesor->idprofesor > 0 ? $profesor->idprofesor : 0; ?>';
+    <?php $globalId = isset($profesor->idprofesor) ? $profesor->idprofesor : "0";?>
 </script>
 @endsection
 @section('breadcrumb')
@@ -141,7 +141,7 @@ if (isset($msg)) {
     function eliminar() {
         $.ajax({
             type: "GET",
-            url: "{{ asset('admin/sistema/menu/eliminar') }}",
+            url: "{{ asset('admin/profesor/eliminar') }}",
             data: { id:globalId },
             async: true,
             dataType: "json",

@@ -29,9 +29,10 @@ class ControladorNutricionista extends Controller
     }
       public function nuevo(){
             $titulo = "Nuevo nutricionista";
+            $nutricionista = new Nutricionista();
             $pais = new Pais();
             $array_nacionalidad = $pais->obtenerTodos();
-            return view("nutricionista.nutricionista-nuevo", compact('titulo', 'array_nacionalidad'));
+            return view("nutricionista.nutricionista-nuevo", compact('titulo', 'nutricionista' , 'array_nacionalidad'));
       }
 
        public function guardar(Request $request) {
@@ -92,7 +93,7 @@ class ControladorNutricionista extends Controller
 
         for ($i = $inicio; $i < count($aNutricionista) && $cont < $registros_por_pagina; $i++) {
             $row = array();
-            $row[] = '<a class="btn btn-secondary" href="/admin/cliente/'.$aNutricionista[$i]->idnutricionista .'"><i class="fa-solid fa-pencil"></i></a>';
+            $row[] = '<a class="btn btn-secondary" href="/admin/nutricionista/'.$aNutricionista[$i]->idnutricionista .'"><i class="fa-solid fa-pencil"></i></a>';
             $row[] = $aNutricionista[$i]->nombre;
             $row[] = $aNutricionista[$i]->telefono;
             $cont++;
@@ -106,6 +107,51 @@ class ControladorNutricionista extends Controller
             "data" => $data,
         );
         return json_encode($json_data);
+    }
+
+    public function editar($id)
+    {
+        $titulo = "Modificar nutricionista";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
+                $codigo = "MENUMODIFICACION";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $nutricionista = new Nutricionista();
+                $nutricionista->obtenerPorId($id);
+
+                $pais = new Pais();
+                $array_nacionalidad = $pais->obtenerTodos();
+
+                return view('nutricionista.nutricionista-nuevo', compact('nutricionista', 'titulo' ,'array_nacionalidad'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
+
+    public function eliminar(Request $request)
+    {
+        $id = $request->input('id');
+
+        if (Usuario::autenticado() == true) {
+            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+
+    
+                $entidad = new Nutricionista();
+                $entidad->cargarDesdeRequest($request);
+                $entidad->eliminar();
+
+                $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
+            } else {
+                $codigo = "ELIMINARPROFESIONAL";
+                $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
+            }
+            echo json_encode($aResultado);
+        } else {
+            return redirect('admin/login');
+        }
     }
 
 }
