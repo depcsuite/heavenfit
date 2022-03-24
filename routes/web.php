@@ -109,8 +109,12 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     /* --------------------------------------------- */
     /* CONTROLADOR PROFESOR                          */
     /* --------------------------------------------- */
+    Route::get('/admin/profesores', 'ControladorProfesor@index');
     Route::get('/admin/profesor/nuevo', 'ControladorProfesor@nuevo');
     Route::post('/admin/profesor/nuevo', 'ControladorProfesor@guardar');
+    Route::get('/admin/profesores/cargarGrilla', 'ControladorProfesor@cargarGrilla')->name('profesor.cargarGrilla');
+    Route::get('/admin/profesor/{id}', 'ControladorProfesor@editar');
+    Route::post('/admin/profesor/{id}', 'ControladorProfesor@guardar');
 
 
     /* ------------------------------------------------ */
