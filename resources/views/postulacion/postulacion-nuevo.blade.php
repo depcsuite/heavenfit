@@ -61,11 +61,11 @@ if (isset($msg)) {
             </div>
             <div class="col-12 col-sm-6">
                   <label for="txtCorreo">Correo: *</label>
-                  <input type="number" name="txtCorreo" id="txtCorreo" class="form-control" value="{{$postulacion->correo}}" required>
+                  <input type="text" name="txtCorreo" id="txtCorreo" class="form-control" value="{{$postulacion->correo}}" required>
             </div>
             <div class="col-12 col-sm-6">
                   <label for="txtTelefono">Telefono: *</label>
-                  <input type="number" name="txtTelefono" id="txtTelefono" class="form-control" value="{{$postulacion->telefono}}" required>
+                  <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" value="{{$postulacion->telefono}}" required>
             </div>
             <div class="col-12 col-sm-6">
                   <label for="lstSexo">Sexo: </label>

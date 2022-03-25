@@ -60,7 +60,7 @@ class ControladorPostulacion extends Controller
                     }
                     
                     $_POST["id"] = $entidad->idpostulacion;
-                    return view('profesor.profesor-listar', compact('titulo', 'msg'));
+                    return view('postulaciones.postulaciones-listar', compact('titulo', 'msg'));
                 }
             } catch (Exception $e) {
                 $msg["ESTADO"] = MSG_ERROR;

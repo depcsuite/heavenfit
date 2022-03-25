@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Entidades\Cliente; //include_once "app/Entidades/Sistema/Menu.php";
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
+use App\Entidades\Venta;
+use App\Entidades\Reserva;
 use App\Entidades\Pais;
 use Illuminate\Http\Request;
 
@@ -132,7 +134,7 @@ class ControladorCliente extends Controller
             return redirect('admin/login');
         }
     }
-    
+
   public function eliminar(Request $request)
     {
         $id = $request->input('id');
@@ -143,9 +145,23 @@ class ControladorCliente extends Controller
     
                 $entidad = new Cliente();
                 $entidad->cargarDesdeRequest($request);
-                $entidad->eliminar();
+                
 
+                $venta = new Venta();
+                $array_ventas = $venta->obtenerPorIdCliente($entidad->idcliente);
+
+                $reserva = new Reserva();
+                $array_reservas = $reserva->obtenerPorIdCliente($entidad->idcliente);
+                if(count($array_ventas) == 0 && count($array_reservas) == 0 ){
+                $entidad->eliminar();
                 $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
+                }
+                else {
+                    $codigo = MSG_ERROR;
+                    $aResultado["err"] = "No se puede eliminar un cliente con ventas o reservas previas";
+                }
+
+                
             } else {
                 $codigo = "ELIMINARPROFESIONAL";
                 $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";

@@ -54,8 +54,8 @@ Class Reserva extends Model{
                         fk_idcliente,
                         fk_idprofesor,
                         fk_idmodalidad,
-                        fk_iddisciplina
-                        fecha_desde
+                        fk_iddisciplina,
+                        fecha_desde,
                         fecha_hasta
                         FROM reservas
                         WHERE idreserva=$idrserva";
@@ -118,6 +118,22 @@ Class Reserva extends Model{
 
             ]);
             return $this->idreserva = DB::getPdo()->lastInsertId();
+      }
+
+      public function obtenerPorIdCliente($idcliente) {
+            $sql = "SELECT 
+                        idreserva,
+                        fk_idcliente,
+                        fk_idprofesor,
+                        fk_idmodalidad,
+                        fk_iddisciplina,
+                        fecha_desde,
+                        fecha_hasta
+                        FROM reservas
+                        WHERE fk_idcliente = $idcliente";
+            $lstRetorno = DB::select($sql);     
+          
+            return $lstRetorno;
       }
 }
 

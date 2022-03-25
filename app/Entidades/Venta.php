@@ -121,4 +121,21 @@ class Venta extends Model
             ]);
             return $this->idventa = DB::getPdo()->lastInsertId();
       }
+
+      public function obtenerPorIdCliente($idcliente)
+      {
+            $sql = "SELECT
+                  idventa,
+                  fecha,
+                  fk_idcliente,
+                  fk_idplan,
+                  precio,
+                  fk_idmedio,
+                  fk_idestados_pagos
+                FROM ventas WHERE fk_idcliente = $idcliente";
+            $lstRetorno = DB::select($sql);
+
+            
+            return $lstRetorno;
+      }
 }

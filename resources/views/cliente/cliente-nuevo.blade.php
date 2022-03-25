@@ -44,6 +44,8 @@ if (isset($msg)) {
 if (isset($msg)) {
     echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
 }
+
+
 ?>
     <form id="form1" method="POST">
         <div class="row">
