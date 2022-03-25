@@ -154,17 +154,19 @@ class ControladorCliente extends Controller
                 $array_reservas = $reserva->obtenerPorIdCliente($entidad->idcliente);
                 if(count($array_ventas) == 0 && count($array_reservas) == 0 ){
                 $entidad->eliminar();
-                $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
+                $aResultado["codigo"] = EXIT_SUCCESS;
+                $aResultado["texto"] = "Eliminado correctamente";
+
                 }
                 else {
-                    $codigo = MSG_ERROR;
-                    $aResultado["err"] = "No se puede eliminar un cliente con ventas o reservas previas";
+                    $aResultado["codigo"] = MSG_ERROR;
+                    $aResultado["texto"] = "No se puede eliminar un cliente con ventas o reservas previas";
                 }
 
                 
             } else {
-                $codigo = "ELIMINARPROFESIONAL";
-                $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
+                $aResultado["codigo"] = MSG_ERROR;
+                $aResultado["texto"] = "No tiene pemisos para la operaci&oacute;n.";
             }
             echo json_encode($aResultado);
         } else {

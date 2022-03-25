@@ -172,15 +172,16 @@ if (isset($msg)) {
             data: { id:globalId },
             async: true,
             dataType: "json",
-            success: function (data) {
-                if (data.err = "0") {
-                    msgShow("Registro eliminado exitosamente.", "success");
-                    $("#btnEnviar").hide();
+            success: function (respuesta) {
+                if (respuesta.codigo == "0") {
+                    msgShow(respuesta.texto, "success");
                     $("#btnEliminar").hide();
-                    $('#mdlEliminar').modal('toggle');
+                $('#mdlEliminar').modal('toggle');
                 } else {
-                    msgShow("Error al eliminar", "success");
+                    msgShow(respuesta.texto, "danger");
+                    $('#mdlEliminar').modal('toggle');
                 }
+            
             }
         });
     }
