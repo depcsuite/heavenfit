@@ -132,6 +132,7 @@ class ControladorCliente extends Controller
             return redirect('admin/login');
         }
     }
+    
   public function eliminar(Request $request)
     {
         $id = $request->input('id');
