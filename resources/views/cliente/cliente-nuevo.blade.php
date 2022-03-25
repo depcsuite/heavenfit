@@ -176,7 +176,7 @@ if (isset($msg)) {
                 if (respuesta.codigo == "0") {
                     msgShow(respuesta.texto, "success");
                     $("#btnEliminar").hide();
-                $('#mdlEliminar').modal('toggle');
+                    $('#mdlEliminar').modal('toggle');
                 } else {
                     msgShow(respuesta.texto, "danger");
                     $('#mdlEliminar').modal('toggle');
