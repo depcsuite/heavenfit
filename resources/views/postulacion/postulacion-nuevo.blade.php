@@ -2,8 +2,8 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-    globalId = '<?php echo isset($menu->idpostulacion) && $menu->idpostulacion > 0 ? $menu->idpostulacion : 0; ?>';
-    <?php $globalId = isset($menu->idpostulacion) ? $menu->idpostulacion : "0";?>
+    globalId = '<?php echo isset($postulacion->idpostulacion) && $postulacion->idpostulacion > 0 ? $postulacion->idpostulacion : 0; ?>';
+    <?php $globalId = isset($postulacion->idpostulacion) ? $postulacion->idpostulacion : "0";?>
 </script>
 @endsection
 @section('breadcrumb')
@@ -52,31 +52,40 @@ if (isset($msg)) {
 
             <div class="col-12 col-sm-6">
                   <label for="txtNombre">Nombre: *</label>
-                  <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
+                  <input type="text" name="txtNombre" id="txtNombre" class="form-control" value="{{$postulacion->nombre}}" required>
             </div>
             <div class="col-12 col-sm-6">
                   <label for="txtEdad">Edad: *</label>
-                  <input type="number" name="txtEdad" id="txtEdad" class="form-control" required>
+                  <input type="number" name="txtEdad" id="txtEdad" class="form-control" value="{{$postulacion->edad}}" required>
             </div>
             <div class="col-12 col-sm-6">
                   <label for="lstSexo">Sexo: </label>
                   <select name="lstSexo" id="lstSexo" class="form-control">
+                        @if(isset($postulacion) and $postulacion->sexo =! "")
+                        <option selected value="{{$postulacion->sexo}}">{{$postulacion->sexo}}</option>
+                        @else
                         <option selected value="">Seleccionar</option>
                         <option  value="Hombre">Hombre</option>
                         <option  value="Mujer">Mujer</option>
+                        @endif
                   </select>
             </div>
             <div class="col-12 col-sm-6">
                   <label for="lstSexo">Disponibilidad: </label>
                   <select name="lstDisponibilidad" id="lstDisponibilidad" class="form-control">
+                        @if(isset($postulacion) and $postulacion->disponibilidad =! "")
+                        <option selected value="{{$postulacion->disponibilidad}}">{{$postulacion->disponibilidad}}</option>
+                        @else
                         <option selected value="">Seleccionar</option>
                         <option  value="Mañana">Mañana</option>
                         <option  value="Tarde">Tarde</option>
+                        <option  value="Mañana y Tarde">Mañana y Tarde</option>
+                        @endif
                   </select>
             </div>
             <div class="col-12 col-sm-6">
                   <label for="txtFoto">CV: </label>
-                  <input type="file" name="txtCv" id="txtCv" class="form-control">
+                  <input type="file" name="txtCv" id="txtCv" value="{{$postulacion->cv}}" class="form-control">
             </div>
         </div>
     </form>
@@ -115,7 +124,7 @@ if (isset($msg)) {
     function eliminar() {
         $.ajax({
             type: "GET",
-            url: "{{ asset('admin/sistema/menu/eliminar') }}",
+            url: "{{ asset('admin/postulacion/eliminar') }}",
             data: { id:globalId },
             async: true,
             dataType: "json",

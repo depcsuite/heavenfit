@@ -113,4 +113,35 @@ class Postulacion extends Model
             ]);
             return $this->idpostulacion = DB::getPdo()->lastInsertId();
       }
+
+      public function obtenerFiltrado()
+    {
+        $request = $_REQUEST;
+        $columns = array(
+            0 => 'A.idpostulacion',
+            1 => 'A.nombre',
+            2 => 'A.correo',
+            3 => 'A.telefono',
+        );
+        $sql = "SELECT DISTINCT
+                    A.idpostulacion,
+                    A.nombre,
+                    A.correo,
+                    A.telefono
+                    FROM postulaciones A
+                WHERE 1=1
+                ";
+
+        //Realiza el filtrado
+        if (!empty($request['search']['value'])) {
+            $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
+            $sql .= " OR A.correo LIKE '%" . $request['search']['value'] . "%' ";
+            $sql .= " OR A.telefono LIKE '%" . $request['search']['value'] . "%' )";
+        }
+        $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
+
+        $lstRetorno = DB::select($sql);
+
+        return $lstRetorno;
+    }
 }
