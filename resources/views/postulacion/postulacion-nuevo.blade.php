@@ -44,6 +44,7 @@ if (isset($msg)) {
 if (isset($msg)) {
     echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
 }
+
 ?>
     <form id="form1" method="POST">
         <div class="row">
@@ -59,10 +60,19 @@ if (isset($msg)) {
                   <input type="number" name="txtEdad" id="txtEdad" class="form-control" value="{{$postulacion->edad}}" required>
             </div>
             <div class="col-12 col-sm-6">
+                  <label for="txtCorreo">Correo: *</label>
+                  <input type="number" name="txtCorreo" id="txtCorreo" class="form-control" value="{{$postulacion->correo}}" required>
+            </div>
+            <div class="col-12 col-sm-6">
+                  <label for="txtTelefono">Telefono: *</label>
+                  <input type="number" name="txtTelefono" id="txtTelefono" class="form-control" value="{{$postulacion->telefono}}" required>
+            </div>
+            <div class="col-12 col-sm-6">
                   <label for="lstSexo">Sexo: </label>
                   <select name="lstSexo" id="lstSexo" class="form-control">
-                        @if(isset($postulacion) and $postulacion->sexo =! "")
-                        <option selected value="{{$postulacion->sexo}}">{{$postulacion->sexo}}</option>
+                        @if(isset($postulacion) and $postulacion->sexo =! "" and $postulacion->sexo =! 1)              
+                        <option <?php echo $postulacion->sexo == "Hombre" ? "selected" : "" ; ?> value="Hombre">Hombre</option>
+                        <option <?php echo $postulacion->sexo == "Mujer" ? "selected" : "" ; ?> value="Mujer">Mujer</option>
                         @else
                         <option selected value="">Seleccionar</option>
                         <option  value="Hombre">Hombre</option>
@@ -73,8 +83,10 @@ if (isset($msg)) {
             <div class="col-12 col-sm-6">
                   <label for="lstSexo">Disponibilidad: </label>
                   <select name="lstDisponibilidad" id="lstDisponibilidad" class="form-control">
-                        @if(isset($postulacion) and $postulacion->disponibilidad =! "")
-                        <option selected value="{{$postulacion->disponibilidad}}">{{$postulacion->disponibilidad}}</option>
+                        @if(isset($postulacion) and $postulacion->disponibilidad =! "" and $postulacion->disponibilidad =! 1)
+                        <option <?php echo $postulacion->disponibilidad == "Mañana" ? "selected" : "" ?> value="Mañana">Mañana</option>
+                        <option <?php echo $postulacion->disponibilidad == "Tarde" ? "selected" : "" ?> value="Tarde">Tarde</option>
+                        <option <?php echo $postulacion->disponibilidad == "Mañana y Tarde" ? "selected" : "" ?> value="Mañana y Tarde">Mañana y Tarde</option>
                         @else
                         <option selected value="">Seleccionar</option>
                         <option  value="Mañana">Mañana</option>

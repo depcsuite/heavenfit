@@ -14,6 +14,8 @@ class Postulacion extends Model
             'idpostulacion',
             'nombre',
             'edad',
+            'correo',
+            'telefono',
             'sexo',
             'disponibilidad',
             'cv'
@@ -26,6 +28,8 @@ class Postulacion extends Model
             $this->idpostulacion = $request->input('id') != "0" ? $request->input('id') : $this->idpostulacion;
             $this->nombre = $request->input('txtNombre');
             $this->edad = $request->input('txtEdad');
+            $this->correo = $request->input('txtCorreo');
+            $this->telefono = $request->input('txtTelefono');
             $this->sexo = $request->input('lstSexo');
             $this->disponibilidad = $request->input('lstDisponibilidad');
             $this->cv = $request->input('txtCv');
@@ -37,6 +41,8 @@ class Postulacion extends Model
                   idpostulacion,
                   nombre,
                   edad,
+                  correo,
+                  telefono,
                   sexo,
                   disponibilidad,
                   cv                                
@@ -51,6 +57,8 @@ class Postulacion extends Model
                   idpostulacion,
                   nombre,
                   edad,
+                  correo,
+                  telefono,
                   sexo,
                   disponibilidad,
                   cv
@@ -62,6 +70,8 @@ class Postulacion extends Model
                   $this->idpostulacion = $lstRetorno[0]->idpostulacion;
                   $this->nombre = $lstRetorno[0]->nombre;
                   $this->edad = $lstRetorno[0]->edad;
+                  $this->correo = $lstRetorno[0]->edad;
+                  $this->telefono = $lstRetorno[0]->edad;
                   $this->sexo = $lstRetorno[0]->sexo;
                   $this->disponibilidad = $lstRetorno[0]->disponibilidad;
                   $this->cv = $lstRetorno[0]->cv;                  
@@ -75,6 +85,8 @@ class Postulacion extends Model
             $sql = "UPDATE postulaciones SET
             nombre=?,
             edad=?,
+            correo=?,
+            telefono=?,
             sexo=?,
             disponibilidad=?,
             cv=?            
@@ -82,6 +94,8 @@ class Postulacion extends Model
             $affected = DB::update($sql, [
                   $this->nombre,
                   $this->edad,
+                  $this->correo,
+                  $this->telefono,
                   $this->sexo,
                   $this->disponibilidad,
                   $this->cv,
@@ -100,13 +114,17 @@ class Postulacion extends Model
             $sql = "INSERT INTO postulaciones (
                   nombre,
                   edad,
+                  correo,
+                  telefono,
                   sexo,
                   disponibilidad,
                   cv
-              ) VALUES (?, ?, ?, ?, ?);";
+              ) VALUES (?, ?, ?, ?, ?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->nombre,
                   $this->edad,
+                  $this->correo,
+                  $this->telefono,
                   $this->sexo,
                   $this->disponibilidad,
                   $this->cv                  
