@@ -15,6 +15,22 @@ require app_path() . '/start/constants.php';
 
 class ControladorClase extends Controller
 {
+
+    public function index(){
+        $titulo = "Listado de clases";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
+                $codigo = "MENUCONSULTA";
+                $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                return view('clase.clase-listar', compact('titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
+
       public function nuevo(){
             $titulo = "Nueva Clase";
             $disciplina = new Disciplina();
@@ -67,4 +83,83 @@ class ControladorClase extends Controller
     
             return view('Clase.Clase-nuevo', compact('msg', 'clase', 'titulo', 'array_disciplina', 'array_profesor', 'array_modalidad')) . '?id=' . $Clase->idclase;
         }
+
+
+        public function cargarGrilla()
+    {
+        $request = $_REQUEST;
+
+        $entidad = new Clase();
+        $aClases = $entidad->obtenerFiltrado();
+
+        $data = array();
+        $cont = 0;
+
+        $inicio = $request['start'];
+        $registros_por_pagina = $request['length'];
+
+
+        for ($i = $inicio; $i < count($aClases) && $cont < $registros_por_pagina; $i++) {
+            $row = array();
+            $row[] = '<a class="btn btn-secondary" href="/admin/clase/'.$aClases[$i]->idclase .'"><i class="fa-solid fa-pencil"></i></a>';
+            $row[] = $aClases[$i]->profesor;
+            $row[] = $aClases[$i]->disciplina;
+            $row[] = $aClases[$i]->modalidad;
+            $row[] = date_format(date_create($aClases[$i]->fecha_desde), "d/m/Y h:i");
+            $cont++;
+            $data[] = $row;
+        }
+
+        $json_data = array(
+            "draw" => intval($request['draw']),
+            "recordsTotal" => count($aClases), //cantidad total de registros sin paginar
+            "recordsFiltered" => count($aClases), //cantidad total de registros en la paginacion
+            "data" => $data,
+        );
+        return json_encode($json_data);
+    }
+
+    public function editar($id)
+    {
+        $titulo = "Modificar clase";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
+                $codigo = "MENUMODIFICACION";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $clase = new Clase();
+                $clase->obtenerPorId($id);
+
+                
+
+                return view('clase.clase-nuevo', compact('clase', 'titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
+
+    public function eliminar(Request $request)
+    {
+        $id = $request->input('id');
+
+        if (Usuario::autenticado() == true) {
+            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+
+    
+                $entidad = new Clase();
+                $entidad->cargarDesdeRequest($request);
+                $entidad->eliminar();
+
+                $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
+            } else {
+                $codigo = "ELIMINARPROFESIONAL";
+                $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
+            }
+            echo json_encode($aResultado);
+        } else {
+            return redirect('admin/login');
+        }
+    }
 }

@@ -2,8 +2,8 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-      globalId = '<?php echo isset($menu->idclase) && $menu->idclase > 0 ? $menu->idclase : 0; ?>';
-      <?php $globalId = isset($menu->idclase) ? $menu->idclase : "0"; ?>
+      globalId = '<?php echo isset($clase->idclase) && $clase->idclase > 0 ? $clase->idclase : 0; ?>';
+      <?php $globalId = isset($clase->idclase) ? $clase->idclase : "0"; ?>
 </script>
 @endsection
 @section('breadcrumb')
@@ -80,12 +80,12 @@ if (isset($msg)) {
 
                   <div class="col-12 col-sm-6">
                         <label for="txtFecha_desde">Fecha desde: *</label>
-                        <input type="datetime-local" name="txtFecha_desde" id="txtFecha_desde" class="form-control">
+                        <input type="datetime-local" name="txtFecha_desde" id="txtFecha_desde" class="form-control" value="{{$clase->fecha_desde}}">
                   </div>
                   
                   <div class="col-12 col-sm-6">
                         <label for="txtFecha_hasta">Fecha hasta: *</label>
-                        <input type="datetime-local" name="txtFecha_hasta" id="txtFecha_hasta" class="form-control">
+                        <input type="datetime-local" name="txtFecha_hasta" id="txtFecha_hasta" class="form-control" value="{{$clase->fecha_hasta}}>
                   </div>
 
                   <div class="col-12 col-sm-6">
@@ -103,12 +103,12 @@ if (isset($msg)) {
 
                   <div class="col-12 col-sm-6">
                         <label for="txtDuracion">Duracion: *</label>
-                        <input type="text" name="txtduracion" id="txtduracion" class="form-control">
+                        <input type="text" name="txtduracion" id="txtduracion" class="form-control" value="{{$clase->duracion}}>
                   </div>
 
                   <div class="col-12 col-sm-6">
                         <label for="txtDescripcion">Descripción *</label>
-                        <textarea name="txtDescripcion" id="txtDescripcion" class="form-control txtarea"> </textarea>
+                        <textarea name="txtDescripcion" id="txtDescripcion" class="form-control txtarea"> {{$clase->descripcion}} </textarea>
                   </div>
 
             </div>
@@ -149,22 +149,21 @@ if (isset($msg)) {
             function eliminar() {
                   $.ajax({
                         type: "GET",
-                        url: "{{ asset('admin/sistema/menu/eliminar') }}",
+                        url: "{{ asset('admin/clase/eliminar') }}",
                         data: {
                               id: globalId
                         },
                         async: true,
                         dataType: "json",
-                        success: function(data) {
-                              if (data.err = "0") {
-                                    msgShow("Registro eliminado exitosamente.", "success");
-                                    $("#btnEnviar").hide();
-                                    $("#btnEliminar").hide();
-                                    $('#mdlEliminar').modal('toggle');
-                              } else {
-                                    msgShow("Error al eliminar", "success");
-                              }
-                        }
+                        success: function (respuesta) {
+                if (respuesta.codigo == "0") {
+                    msgShow(respuesta.texto, "success");
+                    $("#btnEliminar").hide();
+                    $('#mdlEliminar').modal('toggle');
+                } else {
+                    msgShow(respuesta.texto, "danger");
+                    $('#mdlEliminar').modal('toggle');
+                }
                   });
             }
       </script>

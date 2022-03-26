@@ -130,4 +130,62 @@ class Clase extends Model
             ]);
             return $this->idclase = DB::getPdo()->lastInsertId();
       }
+
+      public function obtenerFiltrado()
+      {
+            $request = $_REQUEST;
+            $columns = array(
+                  0 => 'A.idclase',
+                  1 => 'B.nombre',
+                  2 => 'C.nombre',
+                  3 => 'D.nombre',
+                  4 => 'A.fecha_desde',
+            );
+            $sql = "SELECT DISTINCT
+                  
+                  A.idclase,
+                  A.fk_idprofesor,
+                  B.nombre AS profesor,
+                  A.fk_iddisciplina,
+                  C.nombre AS disciplina,
+                  A.fk_idmodalidad,
+                  D.nombre AS modalidad,
+                  A.fecha_desde
+                  FROM clases A 
+                  INNER JOIN profesores B  ON A.fk_idprofesor = B.idprofesor
+                  LEFT JOIN disciplinas C  ON A.fk_iddisciplina = C.iddisciplina
+                  INNER JOIN modalidades D ON A.fk_idmodalidad = D.idmodalidad
+   
+                WHERE 1=1
+                ";
+
+            //Realiza el filtrado
+            if (!empty($request['search']['value'])) {
+                  $sql .= " AND ( B.nombre LIKE '%" . $request['search']['value'] . "%' ";
+                  $sql .= " OR C.nombre LIKE '%" . $request['search']['value'] . "%' ";
+                  $sql .= " OR D.nombre LIKE '%" . $request['search']['value'] . "%' ";
+                  $sql .= " OR A.fecha_desde LIKE '%" . $request['search']['value'] . "%' )";
+            }
+            $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
+
+            $lstRetorno = DB::select($sql);
+
+            return $lstRetorno;
+      }
+
+      public function obtenerPorIddisciplina($iddisciplina)
+      {
+            $sql = "SELECT
+                  idclase,
+                  fk_iddisciplina,
+                  fk_idprofesor,
+                  fecha_desde,
+                  fecha_hasta,
+                  fk_idmodalidad,
+                  duracion,
+                  descripcion
+                FROM clases WHERE fk_iddisciplina = $iddisciplina";
+            $lstRetorno = DB::select($sql);
+            return $lstRetorno;
+      }
 }

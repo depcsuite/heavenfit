@@ -145,12 +145,12 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     /* CONTROLADOR CLASES                        */
     /* ----------------------------------------- */
     Route::get('/admin/clases', 'ControladorClase@index');
-    Route::get('/admin/clases/nuevo', 'ControladorClase@nuevo');
-    Route::post('/admin/clases/nuevo', 'ControladorClase@guardar');
-    Route::get('/admin/clases/cargarGrilla', 'ControladorClase@cargarGrilla')->name('clase.cargarGrilla');
-    Route::get('/admin/clases/eliminar', 'ControladorClase@eliminar');
-    Route::get('/admin/clases/{id}', 'ControladorClase@editar');
-    Route::post('/admin/clases/{id}', 'ControladorClase@guardar');
+    Route::get('/admin/clase/nuevo', 'ControladorClase@nuevo');
+    Route::post('/admin/clase/nuevo', 'ControladorClase@guardar');
+    Route::get('/admin/clases/cargarGrilla', 'ControladorClase@cargarGrilla')->name('clases.cargarGrilla');
+    Route::get('/admin/clase/eliminar', 'ControladorClase@eliminar');
+    Route::get('/admin/clase/{id}', 'ControladorClase@editar');
+    Route::post('/admin/clase/{id}', 'ControladorClase@guardar');
 
     /* ----------------------------------------- */
     /* CONTROLADOR RESERVA                        */

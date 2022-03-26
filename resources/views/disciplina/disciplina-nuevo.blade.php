@@ -113,15 +113,16 @@ if (isset($msg)) {
                         },
                         async: true,
                         dataType: "json",
-                        success: function(data) {
-                              if (data.err = "0") {
-                                    msgShow("Registro eliminado exitosamente.", "success");
-                                    $("#btnEnviar").hide();
-                                    $("#btnEliminar").hide();
-                                    $('#mdlEliminar').modal('toggle');
-                              } else {
-                                    msgShow("Error al eliminar", "success");
-                              }
+                        success: function (respuesta) {
+                        if (respuesta.codigo == "0") {
+                              msgShow(respuesta.texto, "success");
+                              $("#btnEliminar").hide();
+                              $('#mdlEliminar').modal('toggle');
+                        } else {
+                              msgShow(respuesta.texto, "danger");
+                              $('#mdlEliminar').modal('toggle');
+                        }
+                        
                         }
                   });
             }
