@@ -27,7 +27,7 @@
 </ol>
 <script>
 function fsalir(){
-    location.href ="/admin/nutricionista";
+    location.href ="/admin/nutricionistas";
 }
 </script>
 @endsection

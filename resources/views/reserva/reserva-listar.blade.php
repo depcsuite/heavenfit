@@ -13,7 +13,7 @@
 </ol>
 <ol class="toolbar">
     <li class="btn-item"><a title="Nuevo" href="/admin/reserva/nuevo" class="fa fa-plus-circle" aria-hidden="true"><span>Nuevo</span></a></li>
-    <li class="btn-item"><a title="Recargar" href="#" class="fa fa-refresh" aria-hidden="true" onclick='window.location.replace("/admin/reserva");'><span>Recargar</span></a></li>
+    <li class="btn-item"><a title="Recargar" href="#" class="fa fa-refresh" aria-hidden="true" onclick='window.location.replace("/admin/reservas");'><span>Recargar</span></a></li>
 </ol>
 @endsection
 @section('contenido')

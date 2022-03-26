@@ -27,7 +27,7 @@
 </ol>
 <script>
       function fsalir() {
-            location.href = "/admin/disciplinas";
+            location.href = "/admin/disciplina";
       }
 </script>
 @endsection
