@@ -16,6 +16,8 @@ class Venta extends Model
             'fk_idcliente',
             'fk_idplan',
             'precio',
+            'cantidad',
+            'fecha_vencimiento',
             'fk_idmedio',
             'fk_idestados_pagos'
       ];
@@ -29,6 +31,8 @@ class Venta extends Model
             $this->fk_idcliente = $request->input('lstCliente');
             $this->fk_idplan = $request->input('lstPlan');
             $this->precio = $request->input('txtPrecio');
+            $this->cantidad = $request->input('txtCantidad');
+            $this->fecha_vencimiento = $request->input('txtfecha_vencimiento');
             $this->fk_idmedio = $request->input('lstMedio');
             $this->fk_idestados_pagos = $request->input('lstEstado_pago');
       }
@@ -41,6 +45,8 @@ class Venta extends Model
                   fk_idcliente,
                   fk_idplan,
                   precio,
+                  cantidad,
+                  fecha_vencimiento,
                   fk_idmedio,
                   fk_idestados_pagos                
                 FROM ventas  ORDER BY fecha";
@@ -56,6 +62,8 @@ class Venta extends Model
                   fk_idcliente,
                   fk_idplan,
                   precio,
+                  cantidad,
+                  fecha_vencimiento,
                   fk_idmedio,
                   fk_idestados_pagos
                 FROM ventas WHERE idventa = $idventa";
@@ -67,8 +75,10 @@ class Venta extends Model
                   $this->fk_idcliente = $lstRetorno[0]->fk_idcliente;
                   $this->fk_idplan = $lstRetorno[0]->fk_idplan;
                   $this->precio = $lstRetorno[0]->precio;
+                  $this->cantidad = $lstRetorno[0]->cantidad;
+                  $this->fecha_vencimiento = $lstRetorno[0]->fecha_vencimiento;
                   $this->fk_idmedio = $lstRetorno[0]->fk_idmedio;
-                  $this->fk_idestados_pagos = $lstRetorno[0]->fk_idestado_pago;
+                  $this->fk_idestados_pagos = $lstRetorno[0]->fk_idestados_pagos;
                   return $this;
             }
             return null;
@@ -81,6 +91,8 @@ class Venta extends Model
             fk_idcliente=?,
             fk_idplan=?,
             precio=?,
+            cantidad=?,
+            fecha_vencimiento=?,
             fk_idmedio=?,
             fk_idestados_pagos=?
             WHERE idventa=?";
@@ -89,6 +101,8 @@ class Venta extends Model
                   $this->fk_idcliente,
                   $this->fk_idplan,
                   $this->precio,
+                  $this->cantidad,
+                  $this->fecha_vencimiento,
                   $this->fk_idmedio,
                   $this->fk_idestados_pagos,
                   $this->idventa
@@ -108,14 +122,18 @@ class Venta extends Model
                   fk_idcliente,
                   fk_idplan,
                   precio,
+                  cantidad,
+                  fecha_vencimiento,
                   fk_idmedio,
                   fk_idestados_pagos
-              ) VALUES (?, ?, ?, ?, ?, ?);";
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->fecha,
                   $this->fk_idcliente,
                   $this->fk_idplan,
                   $this->precio,
+                  $this->cantidad,
+                  $this->fecha_vencimiento,
                   $this->fk_idmedio,
                   $this->fk_idestados_pagos,
             ]);
@@ -130,6 +148,8 @@ class Venta extends Model
                   fk_idcliente,
                   fk_idplan,
                   precio,
+                  cantidad,
+                  fecha_vencimiento,
                   fk_idmedio,
                   fk_idestados_pagos
                 FROM ventas WHERE fk_idcliente = $idcliente";
@@ -138,4 +158,46 @@ class Venta extends Model
             
             return $lstRetorno;
       }
+
+      public function obtenerFiltrado()
+    {
+        $request = $_REQUEST;
+        $columns = array(
+            0 => 'A.idventa',
+            1 => 'A.fecha',
+            2 => 'B.nombre',
+            3 => 'A.precio',
+            4 => 'C.nombre',
+            5 => 'A.fecha_vencimiento',
+        );
+        $sql = "SELECT DISTINCT
+                A.idventa,
+                A.fecha,
+                A.fk_idcliente,
+                B.nombre AS cliente,
+                A.precio,
+                A.fk_idmedio,
+                C.nombre AS medio_pago,
+                A.fecha_vencimiento
+                FROM ventas A
+                LEFT JOIN clientes B ON A.fk_idcliente = B.idcliente
+                LEFT JOIN medios_de_pagos C ON A.fk_idmedio = C.idmedio
+   
+                WHERE 1=1
+                ";
+
+            //Realiza el filtrado
+            if (!empty($request['search']['value'])) {
+                  $sql .= " AND ( A.fecha LIKE '%" . $request['search']['value'] . "%' ";
+                  $sql .= " OR B.nombre LIKE '%" . $request['search']['value'] . "%' ";
+                  $sql .= " OR A.precio LIKE '%" . $request['search']['value'] . "%' ";
+                  $sql .= " OR C.nombre LIKE '%" . $request['search']['value'] . "%' ";
+                  $sql .= " OR A.fecha_vencimiento LIKE '%" . $request['search']['value'] . "%' )";
+            }
+        $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
+
+        $lstRetorno = DB::select($sql);
+
+        return $lstRetorno;
+    }
 }

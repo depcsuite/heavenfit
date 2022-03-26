@@ -169,7 +169,7 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/admin/ventas', 'ControladorVenta@index');
     Route::get('/admin/venta/nuevo', 'ControladorVenta@nuevo');
     Route::post('/admin/venta/nuevo', 'ControladorVenta@guardar');
-    Route::get('/admin/ventas/cargarGrilla', 'ControladorVenta@cargarGrilla')->name('venta.cargarGrilla');
+    Route::get('/admin/ventas/cargarGrilla', 'ControladorVenta@cargarGrilla')->name('ventas.cargarGrilla');
     Route::get('/admin/venta/eliminar', 'ControladorVenta@eliminar');
     Route::get('/admin/venta/{id}', 'ControladorVenta@editar');
     Route::post('/admin/venta/{id}', 'ControladorVenta@guardar');

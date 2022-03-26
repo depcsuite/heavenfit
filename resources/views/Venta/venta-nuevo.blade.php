@@ -2,8 +2,8 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-    globalId = '<?php echo isset($menu->idventa) && $menu->idventa > 0 ? $menu->idventa : 0; ?>';
-    <?php $globalId = isset($menu->idventa) ? $menu->idventa : "0";?>
+    globalId = '<?php echo isset($venta->idventa) && $venta->idventa > 0 ? $venta->idventa : 0; ?>';
+    <?php $globalId = isset($venta->idventa) ? $venta->idventa : "0";?>
 </script>
 @endsection
 @section('breadcrumb')
@@ -65,12 +65,21 @@ if (isset($msg)) {
             </div>
             <div class="col-12 col-sm-6">
                   <label for="txtFecha">Fecha: *</label>
-                  <input type="datetime-local" name="txtFecha" id="txtFecha" class="form-control">
+                  <input type="datetime-local" name="txtFecha" id="txtFecha" class="form-control" value="{{$venta->fecha}}">
             </div>
             <div class="col-12 col-sm-6">
                   <label for="txtPrecio">Precio: *</label>
-                  <input type="number" name="txtPrecio" id="txtPrecio" class="form-control">
+                  <input type="number" name="txtPrecio" id="txtPrecio" class="form-control" value="{{$venta->precio}}">
             </div>
+            <div class="col-12 col-sm-6">
+                  <label for="txtCantidad">Cantidad: *</label>
+                  <input type="text" name="txtCantidad" id="txtCantidad" class="form-control" value="{{$venta->cantidad}}">
+            </div>
+            <div class="col-12 col-sm-6">
+                  <label for="txtFecha_vencimiento">Fecha de vencimeinto: *</label>
+                  <input type="datetime-local" name="txtFecha_vencimiento" id="txtFecha_vencimiento" class="form-control" value="{{$venta->fecha_vencimiento}}">
+            </div>
+
             <div class="col-12 col-sm-6">
                   <label for="">Plan: *</label>
                   <select name="lstPlan" id="lstPlan" class="form-control"> 
@@ -88,12 +97,26 @@ if (isset($msg)) {
                   <label for="">Medio de Pago: *</label>
                   <select name="lstMedio" id="lstMedio" class="form-control"> 
                         <option selected value=""></option>
+                        @for ($i = 0; $i < count($array_medio_pago); $i++)
+                            @if (isset($venta) and $array_medio_pago[$i]->idmedio == $venta->fk_idmedio)
+                                <option selected value="{{ $array_medio_pago[$i]->idmedio }}">{{ $array_medio_pago[$i]->nombre }}</option>
+                            @else
+                                <option value="{{ $array_medio_pago[$i]->idmedio }}">{{ $array_medio_pago[$i]->nombre }}</option>
+                            @endif
+                        @endfor
                   </select>
             </div>
             <div class="col-12 col-sm-6">
                   <label for="">Estado de Pago: *</label>
                   <select name="lstEstado_pago" id="lstEstado_pago" class="form-control"> 
                         <option selected value=""></option>
+                        @for ($i = 0; $i < count($array_estado_pago); $i++)
+                            @if (isset($venta) and $array_estado_pago[$i]->idestado == $venta->fk_idestado)
+                                <option selected value="{{ $array_estado_pago[$i]->idestado }}">{{ $array_estado_pago[$i]->nombre }}</option>
+                            @else
+                                <option value="{{ $array_estado_pago[$i]->idestado }}">{{ $array_estado_pago[$i]->nombre }}</option>
+                            @endif
+                        @endfor
                   </select>
             </div>
       </div>
@@ -134,7 +157,7 @@ if (isset($msg)) {
     function eliminar() {
         $.ajax({
             type: "GET",
-            url: "{{ asset('admin/sistema/menu/eliminar') }}",
+            url: "{{ asset('admin/venta/eliminar') }}",
             data: { id:globalId },
             async: true,
             dataType: "json",
