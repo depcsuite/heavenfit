@@ -104,12 +104,12 @@ if (isset($msg)) {
 
                   <div class="col-12 col-sm-6">
                         <label for="txtFecha_desde">Fecha desde: *</label>
-                        <input type="datetime-local" name="txtFecha_desde" id="txtFecha_desde" class="form-control">
+                        <input type="datetime-local" name="txtFecha_desde" id="txtFecha_desde" class="form-control" value="{{$reserva->fecha_desde}}">
                   </div>
                   
                   <div class="col-12 col-sm-6">
                         <label for="txtFecha_hasta">Fecha hasta: *</label>
-                        <input type="datetime-local" name="txtFecha_hasta" id="txtFecha_hasta" class="form-control">
+                        <input type="datetime-local" name="txtFecha_hasta" id="txtFecha_hasta" class="form-control" value="{{$reserva->fecha_hasta}}">
                   </div>
 
 
