@@ -74,6 +74,22 @@ Class Reserva extends Model{
             return null;
       }
 
+      public function obtenerPorIdCliente($idcliente) {
+            $sql = "SELECT 
+                        idreserva,
+                        fk_idcliente,
+                        fk_idprofesor,
+                        fk_idmodalidad,
+                        fk_iddisciplina,
+                        fecha_desde,
+                        fecha_hasta
+                        FROM reservas
+                        WHERE fk_idcliente = $idcliente";
+            $lstRetorno = DB::select($sql);     
+          
+            return $lstRetorno;
+      }
+
       public function guardar() {
             $sql = "UPDATE reservas SET
                         fk_idcliente=?,
@@ -120,19 +136,42 @@ Class Reserva extends Model{
             return $this->idreserva = DB::getPdo()->lastInsertId();
       }
 
-      public function obtenerPorIdCliente($idcliente) {
-            $sql = "SELECT 
-                        idreserva,
-                        fk_idcliente,
-                        fk_idprofesor,
-                        fk_idmodalidad,
-                        fk_iddisciplina,
-                        fecha_desde,
-                        fecha_hasta
-                        FROM reservas
-                        WHERE fk_idcliente = $idcliente";
-            $lstRetorno = DB::select($sql);     
-          
+      
+
+      public function obtenerFiltrado()
+      {
+            $request = $_REQUEST;
+            $columns = array(
+                  0 => 'A.idreserva',
+                  1 => 'C.nombre',
+                  2 => 'B.nombre',
+                  3 => 'A.fecha_desde',
+            );
+            $sql = "SELECT DISTINCT
+                  
+                  A.idreserva,
+                  A.fk_idcliente,
+                  C.nombre AS cliente,
+                  A.fk_idprofesor,
+                  B.nombre AS profesor,
+                  A.fecha_desde
+                  FROM reservas A 
+                  INNER JOIN profesores B  ON A.fk_idprofesor = B.idprofesor
+                  LEFT JOIN clientes C  ON A.fk_idcliente = C.idcliente
+   
+                WHERE 1=1
+                ";
+
+            //Realiza el filtrado
+            if (!empty($request['search']['value'])) {
+                  $sql .= " AND ( C.nombre LIKE '%" . $request['search']['value'] . "%' ";
+                  $sql .= " OR B.nombre LIKE '%" . $request['search']['value'] . "%' ";
+                  $sql .= " OR A.fecha_desde LIKE '%" . $request['search']['value'] . "%' )";
+            }
+            $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
+
+            $lstRetorno = DB::select($sql);
+
             return $lstRetorno;
       }
 }

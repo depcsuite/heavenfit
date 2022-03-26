@@ -158,7 +158,7 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/admin/reservas', 'ControladorReserva@index');
     Route::get('/admin/reserva/nuevo', 'ControladorReserva@nuevo');
     Route::post('/admin/reserva/nuevo', 'ControladorReserva@guardar');
-    Route::get('/admin/reservas/cargarGrilla', 'ControladorReserva@cargarGrilla')->name('reserva.cargarGrilla');
+    Route::get('/admin/reservas/cargarGrilla', 'ControladorReserva@cargarGrilla')->name('reservas.cargarGrilla');
     Route::get('/admin/reserva/eliminar', 'ControladorReserva@eliminar');
     Route::get('/admin/reserva/{id}', 'ControladorReserva@editar');
     Route::post('/admin/reserva/{id}', 'ControladorReserva@guardar');

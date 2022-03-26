@@ -31,7 +31,7 @@ class ControladorClase extends Controller
         }
     }
 
-      public function nuevo(){
+    public function nuevo(){
             $titulo = "Nueva Clase";
             $disciplina = new Disciplina();
             $array_disciplina = $disciplina->obtenerTodos();
@@ -42,50 +42,50 @@ class ControladorClase extends Controller
 
             
             return view("Clase.Clase-nuevo", compact('titulo', 'array_disciplina', 'array_profesor', 'array_modalidad'));
-      }
+    }
 
-      public function guardar(Request $request) {
-            try {
-                //Define la entidad servicio
-                $titulo = "Modificar Clase";
-                $entidad = new Clase();
-                $entidad->cargarDesdeRequest($request);
-    
-                //validaciones
-                if ($entidad->fk_iddisciplina == "" || $entidad->fk_idprofesor == "" || $entidad->fk_idmodalidad == "") {
-                    $msg["ESTADO"] = MSG_ERROR;
-                    $msg["MSG"] = "Complete todos los datos";
-                } else {
-                    if ($_POST["id"] > 0) {
-                        //Es actualizacion
-                        $entidad->guardar();
-    
-                        $msg["ESTADO"] = MSG_SUCCESS;
-                        $msg["MSG"] = OKINSERT;
-                    } else {
-                        //Es nuevo
-                        $entidad->insertar();
-    
-                        $msg["ESTADO"] = MSG_SUCCESS;
-                        $msg["MSG"] = OKINSERT;
-                    }
-                    $_POST["id"] = $entidad->idclase;
-                    return view('Clase.Clase-listar', compact('titulo', 'msg'));
-                }
-            } catch (Exception $e) {
+    public function guardar(Request $request) {
+        try {
+            //Define la entidad servicio
+            $titulo = "Modificar Clase";
+            $entidad = new Clase();
+            $entidad->cargarDesdeRequest($request);
+
+            //validaciones
+            if ($entidad->fk_iddisciplina == "" || $entidad->fk_idprofesor == "" || $entidad->fk_idmodalidad == "") {
                 $msg["ESTADO"] = MSG_ERROR;
-                $msg["MSG"] = ERRORINSERT;
+                $msg["MSG"] = "Complete todos los datos";
+            } else {
+                if ($_POST["id"] > 0) {
+                    //Es actualizacion
+                    $entidad->guardar();
+
+                    $msg["ESTADO"] = MSG_SUCCESS;
+                    $msg["MSG"] = OKINSERT;
+                } else {
+                    //Es nuevo
+                    $entidad->insertar();
+
+                    $msg["ESTADO"] = MSG_SUCCESS;
+                    $msg["MSG"] = OKINSERT;
+                }
+                $_POST["id"] = $entidad->idclase;
+                return view('Clase.Clase-listar', compact('titulo', 'msg'));
             }
-    
-            $id = $entidad->idclase;
-            $clase = new Clase();
-            $clase->obtenerPorId($id);    
-    
-            return view('Clase.Clase-nuevo', compact('msg', 'clase', 'titulo', 'array_disciplina', 'array_profesor', 'array_modalidad')) . '?id=' . $Clase->idclase;
+        } catch (Exception $e) {
+            $msg["ESTADO"] = MSG_ERROR;
+            $msg["MSG"] = ERRORINSERT;
         }
 
+        $id = $entidad->idclase;
+        $clase = new Clase();
+        $clase->obtenerPorId($id);    
 
-        public function cargarGrilla()
+        return view('Clase.Clase-nuevo', compact('msg', 'clase', 'titulo', 'array_disciplina', 'array_profesor', 'array_modalidad')) . '?id=' . $Clase->idclase;
+    }
+
+
+    public function cargarGrilla()
     {
         $request = $_REQUEST;
 
