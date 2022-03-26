@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Entidades\Profesor; //include_once "app/Entidades/Sistema/Menu.php";
 use App\Entidades\Pais;
 use App\Entidades\Modalidad;
+use App\Entidades\Clase;
+use App\Entidades\Reserva;
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Http\Request;
 
 require app_path() . '/start/constants.php';
@@ -151,11 +154,26 @@ class ControladorProfesor extends Controller
     
                 $entidad = new Profesor();
                 $entidad->cargarDesdeRequest($request);
-                $entidad->eliminar();
 
-                $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
+                $reserva = new Reserva();
+                $array_reserva = $reserva->obtenerPorIdProfesor($entidad->idprofesor);
+
+                $clase = new Clase();
+                $array_clases = $clase->obtenerPorIdProfesor($entidad->idprofesor);
+
+                if(count($array_clases) == 0 && count($array_reserva) == 0){
+                
+                $entidad->eliminar();
+                $aResultado["codigo"] = EXIT_SUCCESS;
+                $aResultado["texto"] = "Eliminado correctamente";
+                }
+                else {
+                    $aResultado["codigo"] = MSG_ERROR;
+                    $aResultado["texto"] = "No se puede eliminar un profesor con clases o reservas previas";
+                }
+                
             } else {
-                $codigo = "ELIMINARPROFESIONAL";
+                $aResultado["codigo"] = MSG_ERROR;
                 $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
             }
             echo json_encode($aResultado);

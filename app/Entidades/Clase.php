@@ -79,6 +79,55 @@ class Clase extends Model
             return null;
       }
 
+      public function obtenerPorIdProfesor($idprofesor) {
+            $sql = "SELECT 
+                        idclase,
+                        fk_iddisciplina,
+                        fk_idprofesor,
+                        fecha_desde,
+                        fecha_hasta,
+                        fk_idmodalidad,
+                        duracion,
+                        descripcion
+                        FROM clases
+                        WHERE fk_idprofesor = $idprofesor";
+            $lstRetorno = DB::select($sql);     
+          
+            return $lstRetorno;
+      }
+      public function obtenerPorIdModalidad($idmodalidad) {
+            $sql = "SELECT 
+                        idclase,
+                        fk_iddisciplina,
+                        fk_idprofesor,
+                        fecha_desde,
+                        fecha_hasta,
+                        fk_idmodalidad,
+                        duracion,
+                        descripcion
+                        FROM clases
+                        WHERE fk_idmodalidad = $idmodalidad";
+            $lstRetorno = DB::select($sql);     
+          
+            return $lstRetorno;
+      }
+      public function obtenerPorIdDisciplina($iddisciplina) {
+            $sql = "SELECT 
+                        idclase,
+                        fk_iddisciplina,
+                        fk_idprofesor,
+                        fecha_desde,
+                        fecha_hasta,
+                        fk_idmodalidad,
+                        duracion,
+                        descripcion
+                        FROM clases
+                        WHERE fk_iddisciplina = $iddisciplina";
+            $lstRetorno = DB::select($sql);     
+          
+            return $lstRetorno;
+      }
+
       public function guardar()
       {
             $sql = "UPDATE clases SET
@@ -173,19 +222,5 @@ class Clase extends Model
             return $lstRetorno;
       }
 
-      public function obtenerPorIddisciplina($iddisciplina)
-      {
-            $sql = "SELECT
-                  idclase,
-                  fk_iddisciplina,
-                  fk_idprofesor,
-                  fecha_desde,
-                  fecha_hasta,
-                  fk_idmodalidad,
-                  duracion,
-                  descripcion
-                FROM clases WHERE fk_iddisciplina = $iddisciplina";
-            $lstRetorno = DB::select($sql);
-            return $lstRetorno;
-      }
+      
 }

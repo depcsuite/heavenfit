@@ -33,8 +33,9 @@ class ControladorDisciplina extends Controller
     public function nuevo()
     {
         $titulo = "Nueva disciplina";
+        $disciplina = new Disciplina(); 
 
-        return view("disciplina.disciplina-nuevo", compact('titulo'));
+        return view("disciplina.disciplina-nuevo", compact('titulo' , 'disciplina'));
     }
 
     public function guardar(Request $request)

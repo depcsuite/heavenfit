@@ -28,8 +28,8 @@ if (isset($msg)) {
         <tr>
             <th></th>
             <th>Nombre</th>
-            <th>Correo</th>
             <th>Teléfono</th>
+            <th>Correo</th>
         </tr>
     </thead>
 </table> 

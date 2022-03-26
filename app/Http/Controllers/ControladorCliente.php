@@ -152,6 +152,7 @@ class ControladorCliente extends Controller
 
                 $reserva = new Reserva();
                 $array_reservas = $reserva->obtenerPorIdCliente($entidad->idcliente);
+                
                 if(count($array_ventas) == 0 && count($array_reservas) == 0 ){
                 $entidad->eliminar();
                 $aResultado["codigo"] = EXIT_SUCCESS;

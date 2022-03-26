@@ -70,7 +70,7 @@ if (isset($msg)) {
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtPeso">Peso (kg): *</label>
-            <input type="text" name="txtPeso" id="txtPeso" class="form-control" required value="{{ $cliente->peso }}">
+            <input type="text" name="txtPeso" id="txtPeso" class="form-control" placeholder="Ej.: 56.5" required value="{{ $cliente->peso }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtAltura">Altura(cm): *</label>
@@ -172,13 +172,13 @@ if (isset($msg)) {
             data: { id:globalId },
             async: true,
             dataType: "json",
-            success: function (respuesta) {
-                if (respuesta.codigo == "0") {
-                    msgShow(respuesta.texto, "success");
+            success: function (data) {
+                if (data.codigo == "0") {
+                    msgShow(data.texto, "success");
                     $("#btnEliminar").hide();
                     $('#mdlEliminar').modal('toggle');
                 } else {
-                    msgShow(respuesta.texto, "danger");
+                    msgShow(data.texto, "danger");
                     $('#mdlEliminar').modal('toggle');
                 }
             

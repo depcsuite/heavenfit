@@ -84,6 +84,80 @@ class Venta extends Model
             return null;
       }
 
+      public function obtenerPorIdCliente($idcliente)
+      {
+            $sql = "SELECT
+                  idventa,
+                  fecha,
+                  fk_idcliente,
+                  fk_idplan,
+                  precio,
+                  cantidad,
+                  fecha_vencimiento,
+                  fk_idmedio,
+                  fk_idestados_pagos
+                FROM ventas WHERE fk_idcliente = $idcliente";
+            $lstRetorno = DB::select($sql);
+
+            
+            return $lstRetorno;
+      }
+      public function obtenerPorIdPlan($idplan)
+      {
+            $sql = "SELECT
+                  idventa,
+                  fecha,
+                  fk_idcliente,
+                  fk_idplan,
+                  precio,
+                  cantidad,
+                  fecha_vencimiento,
+                  fk_idmedio,
+                  fk_idestados_pagos
+                FROM ventas WHERE fk_idplan = $idplan";
+            $lstRetorno = DB::select($sql);
+
+            
+            return $lstRetorno;
+      }
+      public function obtenerPorIdMedio($idmedio)
+      {
+            $sql = "SELECT
+                  idventa,
+                  fecha,
+                  fk_idcliente,
+                  fk_idplan,
+                  precio,
+                  cantidad,
+                  fecha_vencimiento,
+                  fk_idmedio,
+                  fk_idestados_pagos
+                FROM ventas WHERE fk_idmedio = $idmedio";
+            $lstRetorno = DB::select($sql);
+
+            
+            return $lstRetorno;
+      }
+      public function obtenerPorIdEstadoPago($idestados_pagos)
+      {
+            $sql = "SELECT
+                  idventa,
+                  fecha,
+                  fk_idcliente,
+                  fk_idplan,
+                  precio,
+                  cantidad,
+                  fecha_vencimiento,
+                  fk_idmedio,
+                  fk_idestados_pagos
+                FROM ventas WHERE fk_idestados_pagos = $idestados_pagos";
+            $lstRetorno = DB::select($sql);
+
+            
+            return $lstRetorno;
+      }
+
+
       public function guardar()
       {
             $sql = "UPDATE ventas SET
@@ -140,24 +214,7 @@ class Venta extends Model
             return $this->idventa = DB::getPdo()->lastInsertId();
       }
 
-      public function obtenerPorIdCliente($idcliente)
-      {
-            $sql = "SELECT
-                  idventa,
-                  fecha,
-                  fk_idcliente,
-                  fk_idplan,
-                  precio,
-                  cantidad,
-                  fecha_vencimiento,
-                  fk_idmedio,
-                  fk_idestados_pagos
-                FROM ventas WHERE fk_idcliente = $idcliente";
-            $lstRetorno = DB::select($sql);
-
-            
-            return $lstRetorno;
-      }
+      
 
       public function obtenerFiltrado()
     {

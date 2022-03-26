@@ -89,6 +89,51 @@ Class Reserva extends Model{
           
             return $lstRetorno;
       }
+      public function obtenerPorIdProfesor($idprofesor) {
+            $sql = "SELECT 
+                        idreserva,
+                        fk_idcliente,
+                        fk_idprofesor,
+                        fk_idmodalidad,
+                        fk_iddisciplina,
+                        fecha_desde,
+                        fecha_hasta
+                        FROM reservas
+                        WHERE fk_idprofesor = $idprofesor";
+            $lstRetorno = DB::select($sql);     
+          
+            return $lstRetorno;
+      }
+      public function obtenerPorIdModalidad($idmodalidad) {
+            $sql = "SELECT 
+                        idreserva,
+                        fk_idcliente,
+                        fk_idprofesor,
+                        fk_idmodalidad,
+                        fk_iddisciplina,
+                        fecha_desde,
+                        fecha_hasta
+                        FROM reservas
+                        WHERE fk_idmodalidad = $idmodalidad";
+            $lstRetorno = DB::select($sql);     
+          
+            return $lstRetorno;
+      }
+      public function obtenerPorIdDisciplina($iddisciplina) {
+            $sql = "SELECT 
+                        idreserva,
+                        fk_idcliente,
+                        fk_idprofesor,
+                        fk_idmodalidad,
+                        fk_iddisciplina,
+                        fecha_desde,
+                        fecha_hasta
+                        FROM reservas
+                        WHERE fk_iddisciplina = $iddisciplina";
+            $lstRetorno = DB::select($sql);     
+          
+            return $lstRetorno;
+      }
 
       public function guardar() {
             $sql = "UPDATE reservas SET

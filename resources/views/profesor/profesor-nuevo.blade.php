@@ -146,14 +146,15 @@ if (isset($msg)) {
             async: true,
             dataType: "json",
             success: function (data) {
-                if (data.err = "0") {
-                    msgShow("Registro eliminado exitosamente.", "success");
-                    $("#btnEnviar").hide();
+                if (data.codigo == "0") {
+                    msgShow(data.texto, "success");
                     $("#btnEliminar").hide();
                     $('#mdlEliminar').modal('toggle');
                 } else {
-                    msgShow("Error al eliminar", "success");
+                    msgShow(data.texto, "danger");
+                    $('#mdlEliminar').modal('toggle');
                 }
+            
             }
         });
     }

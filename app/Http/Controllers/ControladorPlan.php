@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entidades\Plan;
+use App\Entidades\Venta;
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
 use Illuminate\Http\Request;
@@ -139,12 +140,25 @@ class ControladorPlan extends Controller
     
                 $entidad = new Plan();
                 $entidad->cargarDesdeRequest($request);
-                $entidad->eliminar();
 
-                $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
+                $venta = new Venta();
+                $array_venta = $venta->obtenerPorIdPlan($entidad->idplan);
+
+                if(count($array_venta) == 0){
+                    $entidad->eliminar();    
+                    $aResultado["codigo"] = EXIT_SUCCESS;
+                    $aResultado["texto"] = "Eliminado correctamente";
+                } else{
+                    $aResultado["codigo"] = MSG_ERROR;
+                    $aResultado["texto"] = "No se puede eliminar un plan con ventas previas";
+                }
+
+                
+
+                
             } else {
-                $codigo = "ELIMINARPROFESIONAL";
-                $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
+                $aResultado["codigo"] = MSG_ERROR;
+                $aResultado["texto"] = "No tiene pemisos para la operaci&oacute;n.";
             }
             echo json_encode($aResultado);
         } else {
