@@ -85,7 +85,7 @@ if (isset($msg)) {
                   
                   <div class="col-12 col-sm-6">
                         <label for="txtFecha_hasta">Fecha hasta: *</label>
-                        <input type="datetime-local" name="txtFecha_hasta" id="txtFecha_hasta" class="form-control" value="{{$clase->fecha_hasta}}>
+                        <input type="datetime-local" name="txtFecha_hasta" id="txtFecha_hasta" class="form-control" value="{{$clase->fecha_hasta}}">
                   </div>
 
                   <div class="col-12 col-sm-6">
@@ -103,7 +103,7 @@ if (isset($msg)) {
 
                   <div class="col-12 col-sm-6">
                         <label for="txtDuracion">Duracion: *</label>
-                        <input type="text" name="txtduracion" id="txtduracion" class="form-control" value="{{$clase->duracion}}>
+                        <input type="text" name="txtduracion" id="txtduracion" class="form-control" value="{{$clase->duracion}}">
                   </div>
 
                   <div class="col-12 col-sm-6">
