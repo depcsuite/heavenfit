@@ -18,8 +18,8 @@ class ControladorVenta extends Controller{
     public function index(){
         $titulo = "Listado de ventas";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("VENTACONSULTA")) {
+                $codigo = "VENTACONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -30,19 +30,29 @@ class ControladorVenta extends Controller{
         }
     }
     
-      public function nuevo(){
-            $titulo = "Nueva Venta";
-            $venta = new Venta();
-            $cliente = new Cliente();
-            $array_clientes = $cliente->obtenerTodos();
-            $plan = new Plan();
-            $array_planes = $plan->obtenerTodos();
-            $estado_pago = new Estado_pago();
-            $array_estado_pago = $estado_pago->obtenerTodos();
-            $medio_pago = new Medio_pago();
-            $array_medio_pago = $medio_pago->obtenerTodos();
-            return view("venta.venta-nuevo", compact('titulo', 'venta', 'array_clientes', 'array_planes', 'array_estado_pago' , 'array_medio_pago'));
-      }
+    public function nuevo(){
+        $titulo = "Nueva Venta";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("VENTAALTA")) {
+                $codigo = "VENTAALTA";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $venta = new Venta();
+                $cliente = new Cliente();
+                $array_clientes = $cliente->obtenerTodos();
+                $plan = new Plan();
+                $array_planes = $plan->obtenerTodos();
+                $estado_pago = new Estado_pago();
+                $array_estado_pago = $estado_pago->obtenerTodos();
+                $medio_pago = new Medio_pago();
+                $array_medio_pago = $medio_pago->obtenerTodos();
+                return view("venta.venta-nuevo", compact('titulo', 'venta', 'array_clientes', 'array_planes', 'array_estado_pago' , 'array_medio_pago'));
+            }
+        } else {
+            return redirect('admin/login');
+        }       
+    }
 
       public function guardar(Request $request) {
             try {
@@ -127,18 +137,17 @@ class ControladorVenta extends Controller{
           return json_encode($json_data);
       }
 
-      public function editar($id)
+    public function editar($id)
     {
         $titulo = "Modificar venta";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
-                $codigo = "MENUMODIFICACION";
+            if (!Patente::autorizarOperacion("VENTAEDITAR")) {
+                $codigo = "VENTAEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
                 $venta = new Venta();
                 $venta->obtenerPorId($id);
-
                 $cliente = new Cliente();
                 $array_clientes = $cliente->obtenerTodos();
                 $plan = new Plan();
@@ -147,8 +156,6 @@ class ControladorVenta extends Controller{
                 $array_estado_pago = $estado_pago->obtenerTodos();
                 $medio_pago = new Medio_pago();
                 $array_medio_pago = $medio_pago->obtenerTodos();
-                
-
                 return view('venta.venta-nuevo', compact('venta', 'titulo', 'array_clientes', 'array_planes', 'array_estado_pago' , 'array_medio_pago'));
             }
         } else {
@@ -161,16 +168,13 @@ class ControladorVenta extends Controller{
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("MENUELIMINAR")) {
-
-    
+            if (Patente::autorizarOperacion("VENTAELIMINAR")) {
                 $entidad = new Venta();
                 $entidad->cargarDesdeRequest($request);
                 $entidad->eliminar();
-
                 $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
             } else {
-                $codigo = "ELIMINARPROFESIONAL";
+                $codigo = "VENTAELIMINAR";
                 $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
             }
             echo json_encode($aResultado);
