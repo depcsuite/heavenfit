@@ -16,11 +16,12 @@ require app_path() . '/start/constants.php';
 class ControladorClase extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         $titulo = "Listado de clases";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("CLASESCONSULTA")) {
+                $codigo = "CLASESCONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -31,21 +32,34 @@ class ControladorClase extends Controller
         }
     }
 
-    public function nuevo(){
-            $titulo = "Nueva clase";
-            $clase = new Clase();
-            $disciplina = new Disciplina();
-            $array_disciplina = $disciplina->obtenerTodos();
-            $profesor = new Profesor();
-            $array_profesor = $profesor->obtenerTodos();
-            $modalidad = new Modalidad();
-            $array_modalidad = $modalidad->obtenerTodos();
+    public function nuevo()
+    {
 
-            
-            return view("clase.clase-nuevo", compact('titulo', 'clase' , 'array_disciplina', 'array_profesor', 'array_modalidad'));
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("CLASESALTA")) {
+                $codigo = "CLASESALTA";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $titulo = "Nueva clase";
+                $clase = new Clase();
+                $disciplina = new Disciplina();
+                $array_disciplina = $disciplina->obtenerTodos();
+                $profesor = new Profesor();
+                $array_profesor = $profesor->obtenerTodos();
+                $modalidad = new Modalidad();
+                $array_modalidad = $modalidad->obtenerTodos();
+
+
+                return view("clase.clase-nuevo", compact('titulo', 'clase', 'array_disciplina', 'array_profesor', 'array_modalidad'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
     }
 
-    public function guardar(Request $request) {
+    public function guardar(Request $request)
+    {
         try {
             //Define la entidad servicio
             $titulo = "Modificar Clase";
@@ -80,7 +94,7 @@ class ControladorClase extends Controller
 
         $id = $entidad->idclase;
         $clase = new Clase();
-        $clase->obtenerPorId($id); 
+        $clase->obtenerPorId($id);
 
         $disciplina = new Disciplina();
         $array_disciplina = $disciplina->obtenerTodos();
@@ -109,7 +123,7 @@ class ControladorClase extends Controller
 
         for ($i = $inicio; $i < count($aClases) && $cont < $registros_por_pagina; $i++) {
             $row = array();
-            $row[] = '<a class="btn btn-secondary" href="/admin/clase/'.$aClases[$i]->idclase .'"><i class="fa-solid fa-pencil"></i></a>';
+            $row[] = '<a class="btn btn-secondary" href="/admin/clase/' . $aClases[$i]->idclase . '"><i class="fa-solid fa-pencil"></i></a>';
             $row[] = $aClases[$i]->profesor;
             $row[] = $aClases[$i]->disciplina;
             $row[] = $aClases[$i]->modalidad;
@@ -131,8 +145,8 @@ class ControladorClase extends Controller
     {
         $titulo = "Modificar clase";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
-                $codigo = "MENUMODIFICACION";
+            if (!Patente::autorizarOperacion("CLASESEDITAR")) {
+                $codigo = "CLASESEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -146,7 +160,7 @@ class ControladorClase extends Controller
                 $modalidad = new Modalidad();
                 $array_modalidad = $modalidad->obtenerTodos();
 
-                return view('clase.clase-nuevo', compact('clase', 'titulo' , 'array_disciplina', 'array_profesor', 'array_modalidad'));
+                return view('clase.clase-nuevo', compact('clase', 'titulo', 'array_disciplina', 'array_profesor', 'array_modalidad'));
             }
         } else {
             return redirect('admin/login');
@@ -158,9 +172,9 @@ class ControladorClase extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+            if (Patente::autorizarOperacion("CLASESBAJA")) {
 
-    
+
                 $entidad = new Clase();
                 $entidad->cargarDesdeRequest($request);
                 $entidad->eliminar();

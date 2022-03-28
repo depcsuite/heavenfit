@@ -18,11 +18,12 @@ require app_path() . '/start/constants.php';
 class ControladorReserva extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         $titulo = "Listado de reservas";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("RESERVASCONSULTA")) {
+                $codigo = "RESERVASCONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -33,21 +34,44 @@ class ControladorReserva extends Controller
         }
     }
 
-    public function nuevo(){
-            $titulo = "Nueva Reserva";
-            $reserva = new Reserva();
-            $cliente = new Cliente();
-            $array_cliente = $cliente->obtenerTodos();
-            $modalidad = new Modalidad();
-            $array_modalidad = $modalidad->obtenerTodos();
-            $profesor = new Profesor();
-            $array_profesor = $profesor->obtenerTodos();
-            $disciplina = new Disciplina();
-            $array_disciplina = $disciplina->obtenerTodos();
-            return view("reserva.reserva-nuevo", compact('titulo', 'reserva', 'array_cliente', 'array_modalidad', 'array_profesor', 'array_disciplina'));
+    public function nuevo()
+    {
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("RESERVASALTA")) {
+                $codigo = "RESERVASALTA";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $titulo = "Nueva Reserva";
+                $reserva = new Reserva();
+                $cliente = new Cliente();
+                $array_cliente = $cliente->obtenerTodos();
+                $modalidad = new Modalidad();
+                $array_modalidad = $modalidad->obtenerTodos();
+                $profesor = new Profesor();
+                $array_profesor = $profesor->obtenerTodos();
+                $disciplina = new Disciplina();
+                $array_disciplina = $disciplina->obtenerTodos();
+                return view("reserva.reserva-nuevo", compact('titulo', 'reserva', 'array_cliente', 'array_modalidad', 'array_profesor', 'array_disciplina'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+        $titulo = "Nueva Reserva";
+        $reserva = new Reserva();
+        $cliente = new Cliente();
+        $array_cliente = $cliente->obtenerTodos();
+        $modalidad = new Modalidad();
+        $array_modalidad = $modalidad->obtenerTodos();
+        $profesor = new Profesor();
+        $array_profesor = $profesor->obtenerTodos();
+        $disciplina = new Disciplina();
+        $array_disciplina = $disciplina->obtenerTodos();
+        return view("reserva.reserva-nuevo", compact('titulo', 'reserva', 'array_cliente', 'array_modalidad', 'array_profesor', 'array_disciplina'));
     }
 
-    public function guardar(Request $request) {
+    public function guardar(Request $request)
+    {
         try {
             //Define la entidad servicio
             $titulo = "Modificar Reserva";
@@ -93,7 +117,7 @@ class ControladorReserva extends Controller
         $disciplina = new Disciplina();
         $array_disciplina = $disciplina->obtenerTodos();
 
-        return view('reserva.reserva-nuevo', compact('msg', 'reserva', 'titulo', 'array_cliente' , 'array_modalidad', 'array_profesor', 'array_disciplina')) . '?id=' . $reserva->idcliente;
+        return view('reserva.reserva-nuevo', compact('msg', 'reserva', 'titulo', 'array_cliente', 'array_modalidad', 'array_profesor', 'array_disciplina')) . '?id=' . $reserva->idcliente;
     }
 
     public function cargarGrilla()
@@ -112,7 +136,7 @@ class ControladorReserva extends Controller
 
         for ($i = $inicio; $i < count($aReservas) && $cont < $registros_por_pagina; $i++) {
             $row = array();
-            $row[] = '<a class="btn btn-secondary" href="/admin/reserva/'.$aReservas[$i]->idreserva .'"><i class="fa-solid fa-pencil"></i></a>';
+            $row[] = '<a class="btn btn-secondary" href="/admin/reserva/' . $aReservas[$i]->idreserva . '"><i class="fa-solid fa-pencil"></i></a>';
             $row[] = $aReservas[$i]->cliente;
             $row[] = $aReservas[$i]->profesor;
             $row[] = date_format(date_create($aReservas[$i]->fecha_desde), "d/m/Y h:i");
@@ -120,7 +144,7 @@ class ControladorReserva extends Controller
             $data[] = $row;
         }
 
-        
+
         $json_data = array(
             "draw" => intval($request['draw']),
             "recordsTotal" => count($aReservas), //cantidad total de registros sin paginar
@@ -133,8 +157,8 @@ class ControladorReserva extends Controller
     {
         $titulo = "Modificar reserva";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
-                $codigo = "MENUMODIFICACION";
+            if (!Patente::autorizarOperacion("RESERVASEDITAR")) {
+                $codigo = "RESERVASEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -150,7 +174,7 @@ class ControladorReserva extends Controller
                 $disciplina = new Disciplina();
                 $array_disciplina = $disciplina->obtenerTodos();
 
-                return view('reserva.reserva-nuevo', compact('reserva', 'titulo' ,'array_cliente' , 'array_modalidad', 'array_profesor', 'array_disciplina'));
+                return view('reserva.reserva-nuevo', compact('reserva', 'titulo', 'array_cliente', 'array_modalidad', 'array_profesor', 'array_disciplina'));
             }
         } else {
             return redirect('admin/login');
@@ -162,9 +186,9 @@ class ControladorReserva extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+            if (Patente::autorizarOperacion("RESERVASBAJA")) {
 
-    
+
                 $entidad = new Reserva();
                 $entidad->cargarDesdeRequest($request);
                 $entidad->eliminar();
@@ -179,5 +203,4 @@ class ControladorReserva extends Controller
             return redirect('admin/login');
         }
     }
-
 }

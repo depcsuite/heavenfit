@@ -19,8 +19,8 @@ class ControladorProfesor extends Controller
     public function index(){
         $titulo = "Listado de Profesores";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("PROFESORESCONSULTA")) {
+                $codigo = "PROFESORESCONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -31,15 +31,26 @@ class ControladorProfesor extends Controller
         }
     }
 
-      public function nuevo(){
-            $pais = new Pais();
-            $array_nacionalidad = $pais->obtenerTodos();
-            $profesor = new Profesor;
-            $titulo = "Nuevo profesor";
-            $modalidad = new Modalidad();
-            $array_modalidad = $modalidad->obtenerTodos();
-            return view("profesor.profesor-nuevo", compact('titulo', 'profesor', 'array_nacionalidad','array_modalidad'));
+    public function nuevo(){
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("PROFESORESALTA")) {
+                $codigo = "PROFESORESALTA";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $pais = new Pais();
+                $array_nacionalidad = $pais->obtenerTodos();
+                $profesor = new Profesor;
+                $titulo = "Nuevo profesor";
+                $modalidad = new Modalidad();
+                $array_modalidad = $modalidad->obtenerTodos();
+                return view("profesor.profesor-nuevo", compact('titulo', 'profesor', 'array_nacionalidad','array_modalidad'));
+            }
+        } else {
+            return redirect('admin/login');
         }
+            
+    }
 
       public function guardar(Request $request) {
             try {
@@ -125,8 +136,8 @@ class ControladorProfesor extends Controller
     {
         $titulo = "Modificar profesor";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
-                $codigo = "MENUMODIFICACION";
+            if (!Patente::autorizarOperacion("PROFESORESEDITAR")) {
+                $codigo = "PROFESORESEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -151,7 +162,7 @@ class ControladorProfesor extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+            if (Patente::autorizarOperacion("PROFESORESEBAJA")) {
 
     
                 $entidad = new Profesor();

@@ -18,8 +18,8 @@ class ControladorDisciplina extends Controller
     {
         $titulo = "Listado de Disicplinas";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("DISCIPLINASCONSULTA")) {
+                $codigo = "DISCIPLINASCONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -32,10 +32,21 @@ class ControladorDisciplina extends Controller
 
     public function nuevo()
     {
-        $titulo = "Nueva disciplina";
-        $disciplina = new Disciplina(); 
-
-        return view("disciplina.disciplina-nuevo", compact('titulo' , 'disciplina'));
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("DISCIPLINASALTA")) {
+                $codigo = "DISCIPLINASALTA";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $titulo = "Nueva disciplina";
+                $disciplina = new Disciplina(); 
+        
+                return view("disciplina.disciplina-nuevo", compact('titulo' , 'disciplina'));
+        
+            }
+        } else {
+            return redirect('admin/login');
+        }
     }
 
     public function guardar(Request $request)
@@ -115,8 +126,8 @@ class ControladorDisciplina extends Controller
     {
         $titulo = "Modificar disciplina";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
-                $codigo = "MENUMODIFICACION";
+            if (!Patente::autorizarOperacion("DISCIPLINASEDITAR")) {
+                $codigo = "DISCIPLINASEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -136,7 +147,7 @@ class ControladorDisciplina extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+            if (Patente::autorizarOperacion("DISCIPLINASBAJA")) {
 
     
                 $entidad = new Disciplina();
