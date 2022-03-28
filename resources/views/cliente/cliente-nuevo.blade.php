@@ -98,7 +98,7 @@ if (isset($msg)) {
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtObjetivo">Objetivo: </label>
-            <input type="text" name="txtObjetivo" id="txtObjetivo" class="form-control" value="{{ $cliente->objetivos }}" >
+            <input type="text" name="txtObjetivo" id="txtObjetivo" class="form-control" value="{{ $cliente->objetivo }}" >
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtFechaNac">Fecha nacimiento: *</label>
