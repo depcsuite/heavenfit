@@ -50,10 +50,10 @@ if (isset($msg)) {
                 <label>Tipo: *</label>
                <select  id="txtTipo" name="txtTipo" class="form-control" required>
                     <option disabled selected>Seleccionar</option>
-                    <option value="CONSULTA">CONSULTA</option>
-                    <option value="ALTA">ALTA</option>
-                    <option value="EDITAR">EDITAR</option>
-                    <option value="BAJA">BAJA</option>
+                    <option value="CONSULTA" <?php echo $patente->tipo == "CONSULTA"? "selected":""; ?>>CONSULTA</option>
+                    <option value="ALTA" <?php echo $patente->tipo == "ALTA" ? "selected" : ""; ?>>ALTA</option>
+                    <option value="EDITAR" <?php echo $patente->tipo == "EDITAR" ? "selected" : ""; ?>>EDITAR</option>
+                    <option value="BAJA" <?php echo $patente->tipo == "BAJA" ? "selected" : ""; ?>>BAJA</option>
                 </select>
             </div>
             <div class="form-group col-lg-6">
@@ -65,14 +65,10 @@ if (isset($msg)) {
                 <input type="text" maxlength="50" id="txtSubmodulo" name="txtSubmodulo" class="form-control" value="{{ $patente->submodulo }}" required>
             </div>
             <div class="form-group col-lg-6">
-                <label>Nombre: *</label>
-                <input type="text" maxlength="50" id="txtNombre" name="txtNombre" class="form-control" value="{{ $patente->nombre }}" required>
-            </div>
-            <div class="form-group col-lg-6">
                 <label>Log Operación: *</label>
                 <select id="txtOperacion" name="txtOperacion" class="form-control">
                     <option value="1" selected>Sí</option>
-                    <option value="0" selected>No</option>
+                    <option value="0">No</option>
                 </select>
             </div>
             <div class="form-group col-lg-6">

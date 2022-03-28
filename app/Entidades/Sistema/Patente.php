@@ -26,7 +26,7 @@ class Patente extends Model
     function cargarDesdeRequest($request)
     {
         $this->idpatente = $request->input('id') != "0" ? $request->input('id') : $this->idpatente;
-        $this->nombre = strtoupper($request->input('txtNombre'));
+        $this->nombre = strtoupper( $request->input('txtModulo') . $request->input('txtTipo'));
         $this->descripcion = $request->input('txtDescripcion');
         $this->modulo = $request->input('txtModulo');
         $this->submodulo = $request->input('txtSubmodulo');
