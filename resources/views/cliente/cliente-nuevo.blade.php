@@ -90,7 +90,7 @@ if (isset($msg)) {
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtMedicamento">Medicamento: </label>
-            <input type="text" name="txtMedicamento" id="txtMedicamento" class="form-control" placeholder="indicar medicamentos que este tomando" value="{{ $cliente->medicamentos }}">
+            <input type="text" name="txtMedicamento" id="txtMedicamento" class="form-control" placeholder="indicar medicamentos que este tomando" value="{{ $cliente->medicamento }}">
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtMateriales">Materiales: *</label>
