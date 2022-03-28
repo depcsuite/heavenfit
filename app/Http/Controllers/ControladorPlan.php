@@ -14,11 +14,12 @@ require app_path() . '/start/constants.php';
 class ControladorPlan extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         $titulo = "Listado de planes";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("PLANESCONSULTA")) {
+                $codigo = "PLANESCONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -30,54 +31,66 @@ class ControladorPlan extends Controller
     }
 
 
-      public function nuevo(){
-            $titulo = "Nueva Plan";
-            $plan = new Plan();
-            
-            return view("Plan.Plan-nuevo", compact('titulo', 'plan'));
-      }
+    public function nuevo()
+    {
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("PLANESALTA")) {
+                $codigo = "PLANESALTA";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $titulo = "Nueva Plan";
+                $plan = new Plan();
 
-      public function guardar(Request $request) {
-            try {
-                //Define la entidad servicio
-                $titulo = "Modificar Plan";
-                $entidad = new Plan();
-                $entidad->cargarDesdeRequest($request);
-    
-                //validaciones
-                if ($entidad->nombre == "") {
-                    $msg["ESTADO"] = MSG_ERROR;
-                    $msg["MSG"] = "Complete todos los datos";
-                } else {
-                    if ($_POST["id"] > 0) {
-                        //Es actualizacion
-                        $entidad->guardar();
-    
-                        $msg["ESTADO"] = MSG_SUCCESS;
-                        $msg["MSG"] = OKINSERT;
-                    } else {
-                        //Es nuevo
-                        $entidad->insertar();
-    
-                        $msg["ESTADO"] = MSG_SUCCESS;
-                        $msg["MSG"] = OKINSERT;
-                    }
-                    $_POST["id"] = $entidad->idPlan;
-                    return view('Plan.Plan-listar', compact('titulo', 'msg'));
-                }
-            } catch (Exception $e) {
-                $msg["ESTADO"] = MSG_ERROR;
-                $msg["MSG"] = ERRORINSERT;
+                return view("Plan.Plan-nuevo", compact('titulo', 'plan'));
             }
-    
-            $id = $entidad->idPlan;
-            $Plan = new Plan();
-            $Plan->obtenerPorId($id);    
-    
-            return view('Plan.Plan-nuevo', compact('msg', 'Plan', 'titulo')) . '?id=' . $Plan->idPlan;
+        } else {
+            return redirect('admin/login');
+        }
+    }
+
+    public function guardar(Request $request)
+    {
+        try {
+            //Define la entidad servicio
+            $titulo = "Modificar Plan";
+            $entidad = new Plan();
+            $entidad->cargarDesdeRequest($request);
+
+            //validaciones
+            if ($entidad->nombre == "") {
+                $msg["ESTADO"] = MSG_ERROR;
+                $msg["MSG"] = "Complete todos los datos";
+            } else {
+                if ($_POST["id"] > 0) {
+                    //Es actualizacion
+                    $entidad->guardar();
+
+                    $msg["ESTADO"] = MSG_SUCCESS;
+                    $msg["MSG"] = OKINSERT;
+                } else {
+                    //Es nuevo
+                    $entidad->insertar();
+
+                    $msg["ESTADO"] = MSG_SUCCESS;
+                    $msg["MSG"] = OKINSERT;
+                }
+                $_POST["id"] = $entidad->idPlan;
+                return view('Plan.Plan-listar', compact('titulo', 'msg'));
+            }
+        } catch (Exception $e) {
+            $msg["ESTADO"] = MSG_ERROR;
+            $msg["MSG"] = ERRORINSERT;
         }
 
-        public function cargarGrilla()
+        $id = $entidad->idPlan;
+        $Plan = new Plan();
+        $Plan->obtenerPorId($id);
+
+        return view('Plan.Plan-nuevo', compact('msg', 'Plan', 'titulo')) . '?id=' . $Plan->idPlan;
+    }
+
+    public function cargarGrilla()
     {
         $request = $_REQUEST;
 
@@ -93,7 +106,7 @@ class ControladorPlan extends Controller
 
         for ($i = $inicio; $i < count($aPlanes) && $cont < $registros_por_pagina; $i++) {
             $row = array();
-            $row[] = '<a class="btn btn-secondary" href="/admin/planes/'.$aPlanes[$i]->idplan .'"><i class="fa-solid fa-pencil"></i></a>';
+            $row[] = '<a class="btn btn-secondary" href="/admin/planes/' . $aPlanes[$i]->idplan . '"><i class="fa-solid fa-pencil"></i></a>';
             $row[] = $aPlanes[$i]->nombre;
             $row[] = $aPlanes[$i]->precio;
             $cont++;
@@ -113,15 +126,15 @@ class ControladorPlan extends Controller
     {
         $titulo = "Modificar plan";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
-                $codigo = "MENUMODIFICACION";
+            if (!Patente::autorizarOperacion("PLANESEDITAR")) {
+                $codigo = "PLANESEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
                 $plan = new Plan();
                 $plan->obtenerPorId($id);
 
-                
+
 
                 return view('plan.plan-nuevo', compact('plan', 'titulo'));
             }
@@ -135,27 +148,23 @@ class ControladorPlan extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+            if (Patente::autorizarOperacion("PLANESBAJA")) {
 
-    
+
                 $entidad = new Plan();
                 $entidad->cargarDesdeRequest($request);
 
                 $venta = new Venta();
                 $array_venta = $venta->obtenerPorIdPlan($entidad->idplan);
 
-                if(count($array_venta) == 0){
-                    $entidad->eliminar();    
+                if (count($array_venta) == 0) {
+                    $entidad->eliminar();
                     $aResultado["codigo"] = EXIT_SUCCESS;
                     $aResultado["texto"] = "Eliminado correctamente";
-                } else{
+                } else {
                     $aResultado["codigo"] = MSG_ERROR;
                     $aResultado["texto"] = "No se puede eliminar un plan con ventas previas";
                 }
-
-                
-
-                
             } else {
                 $aResultado["codigo"] = MSG_ERROR;
                 $aResultado["texto"] = "No tiene pemisos para la operaci&oacute;n.";
@@ -166,4 +175,3 @@ class ControladorPlan extends Controller
         }
     }
 }
-

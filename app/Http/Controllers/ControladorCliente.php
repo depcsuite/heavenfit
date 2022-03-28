@@ -31,11 +31,23 @@ class ControladorCliente extends Controller
     }
     
     public function nuevo(){
-        $titulo = "Nuevo cliente";
-        $cliente = new Cliente();
-        $pais = new Pais();
-        $array_nacionalidad = $pais->obtenerTodos();
-        return view("cliente.cliente-nuevo", compact('titulo', 'cliente', 'array_nacionalidad'));
+
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("CLIENTESALTA")) {
+                $codigo = "CLIENTESALTA";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $titulo = "Nuevo cliente";
+                $cliente = new Cliente();
+                $pais = new Pais();
+                $array_nacionalidad = $pais->obtenerTodos();
+                return view("cliente.cliente-nuevo", compact('titulo', 'cliente', 'array_nacionalidad'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+        
     }
 
     public function guardar(Request $request) {
@@ -118,8 +130,8 @@ class ControladorCliente extends Controller
     {
         $titulo = "Modificar cliente";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
-                $codigo = "MENUMODIFICACION";
+            if (!Patente::autorizarOperacion("CLIENTESEDITAR")) {
+                $codigo = "CLIENTESEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -141,7 +153,7 @@ class ControladorCliente extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+            if (Patente::autorizarOperacion("CLIENTESBAJA")) {
 
     
                 $entidad = new Cliente();
