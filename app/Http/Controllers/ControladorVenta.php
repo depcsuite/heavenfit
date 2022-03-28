@@ -112,7 +112,7 @@ class ControladorVenta extends Controller{
               $row[] = date_format(date_create($aVentas[$i]->fecha), "d/m/Y h:i" ) ;
               $row[] = $aVentas[$i]->cliente;
               $row[] = $aVentas[$i]->precio;
-              $row[] = $aVentas[$i]->medio_pago;
+              $row[] = $aVentas[$i]->estado_pago;
               $row[] = date_format(date_create($aVentas[$i]->fecha_vencimiento),"d/m/Y h:i"  );
               $cont++;
               $data[] = $row;

@@ -80,6 +80,8 @@ class ControladorProfesor extends Controller
             $profesor->obtenerPorId($id);
             $pais = new Pais();
             $array_nacionalidad = $pais->obtenerTodos();
+            $modalidad = new Modalidad();
+            $array_modalidad = $modalidad->obtenerTodos();
             return view('profesor.profesor-listar', compact('titulo', 'msg', 'profesor', 'array_nacionalidad','array_modalidad')). '?id=' . $profesor->idprofesor;
       }
 

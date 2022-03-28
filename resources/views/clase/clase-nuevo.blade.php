@@ -45,6 +45,8 @@ if (isset($msg)) {
       if (isset($msg)) {
             echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
       }
+      print_r($cliente);
+      exit;
       ?>
 
       <form id="form1" method="POST">
@@ -56,7 +58,8 @@ if (isset($msg)) {
                         <label for="lstDisciplina">Disciplina: </label>
                         <select name="lstDisciplina" id="lstDisciplina" class="form-control">Disciplina
                               <option selected value=""></option>
-                              @for ($i = 0; $i < count($array_disciplina); $i++) @if (isset($clase) and $array_disciplina[$i]->iddisciplina == $clase->fk_iddisciplina)
+                              @for ($i = 0; $i < count($array_disciplina); $i++) 
+                              @if (isset($clase) and $array_disciplina[$i]->iddisciplina == $clase->fk_iddisciplina)
                                     <option selected value="{{ $array_disciplina[$i]->iddisciplina }}">{{ $array_disciplina[$i]->nombre }}</option>
                                     @else
                                     <option value="{{ $array_disciplina[$i]->iddisciplina }}">{{ $array_disciplina[$i]->nombre }}</option>
@@ -69,7 +72,8 @@ if (isset($msg)) {
                         <label for="lstProfesor">Profesor: </label>
                         <select name="lstProfesor" id="lstProfesor" class="form-control">Profesor
                               <option selected value=""></option>
-                              @for ($i = 0; $i < count($array_profesor); $i++) @if (isset($clase) and $array_profesor[$i]->idprofesor == $clase->fk_idprofesor)
+                              @for ($i = 0; $i < count($array_profesor); $i++) 
+                              @if (isset($clase) and $array_profesor[$i]->idprofesor == $clase->fk_idprofesor)
                                     <option selected value="{{ $array_profesor[$i]->idprofesor }}">{{ $array_profesor[$i]->nombre }}</option>
                                     @else
                                     <option value="{{ $array_profesor[$i]->idprofesor }}">{{ $array_profesor[$i]->nombre }}</option>
@@ -80,7 +84,7 @@ if (isset($msg)) {
 
                   <div class="col-12 col-sm-6">
                         <label for="txtFecha_desde">Fecha desde: *</label>
-                        <input type="datetime-local" name="txtFecha_desde" id="txtFecha_desde" class="form-control" value="{{$clase->fecha_desde}}">
+                        <input type="datetime-local" name="txtFecha_desde" id="txtFecha_desde" class="form-control" value='{{$clase->fecha_desde}}'>
                   </div>
                   
                   <div class="col-12 col-sm-6">
@@ -92,7 +96,8 @@ if (isset($msg)) {
                         <label for="lstModalidad">Modalidad: </label>
                         <select name="lstModalidad" id="lstModalidad" class="form-control">Modalidad
                               <option selected value=""></option>
-                              @for ($i = 0; $i < count($array_modalidad); $i++) @if (isset($clase) and $array_modalidad[$i]->idmodalidad == $clase->fk_idmodalidad)
+                              @for ($i = 0; $i < count($array_modalidad); $i++) 
+                              @if (isset($clase) and $array_modalidad[$i]->idmodalidad == $clase->fk_idmodalidad)
                                     <option selected value="{{ $array_modalidad[$i]->idmodalidad }}">{{ $array_modalidad[$i]->nombre }}</option>
                                     @else
                                     <option value="{{ $array_modalidad[$i]->idmodalidad }}">{{ $array_modalidad[$i]->nombre }}</option>

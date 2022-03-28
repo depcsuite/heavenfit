@@ -32,9 +32,10 @@ class ControladorCliente extends Controller
     
     public function nuevo(){
         $titulo = "Nuevo cliente";
+        $cliente = new Cliente();
         $pais = new Pais();
         $array_nacionalidad = $pais->obtenerTodos();
-        return view("cliente.cliente-nuevo", compact('titulo', 'array_nacionalidad'));
+        return view("cliente.cliente-nuevo", compact('titulo', 'cliente', 'array_nacionalidad'));
     }
 
     public function guardar(Request $request) {

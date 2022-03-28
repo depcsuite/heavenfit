@@ -32,7 +32,8 @@ class ControladorClase extends Controller
     }
 
     public function nuevo(){
-            $titulo = "Nueva Clase";
+            $titulo = "Nueva clase";
+            $clase = new Clase();
             $disciplina = new Disciplina();
             $array_disciplina = $disciplina->obtenerTodos();
             $profesor = new Profesor();
@@ -41,7 +42,7 @@ class ControladorClase extends Controller
             $array_modalidad = $modalidad->obtenerTodos();
 
             
-            return view("Clase.Clase-nuevo", compact('titulo', 'array_disciplina', 'array_profesor', 'array_modalidad'));
+            return view("clase.clase-nuevo", compact('titulo', 'clase' , 'array_disciplina', 'array_profesor', 'array_modalidad'));
     }
 
     public function guardar(Request $request) {
@@ -70,7 +71,7 @@ class ControladorClase extends Controller
                     $msg["MSG"] = OKINSERT;
                 }
                 $_POST["id"] = $entidad->idclase;
-                return view('Clase.Clase-listar', compact('titulo', 'msg'));
+                return view('clase.clase-listar', compact('titulo', 'msg'));
             }
         } catch (Exception $e) {
             $msg["ESTADO"] = MSG_ERROR;
@@ -79,9 +80,16 @@ class ControladorClase extends Controller
 
         $id = $entidad->idclase;
         $clase = new Clase();
-        $clase->obtenerPorId($id);    
+        $clase->obtenerPorId($id); 
 
-        return view('Clase.Clase-nuevo', compact('msg', 'clase', 'titulo', 'array_disciplina', 'array_profesor', 'array_modalidad')) . '?id=' . $Clase->idclase;
+        $disciplina = new Disciplina();
+        $array_disciplina = $disciplina->obtenerTodos();
+        $profesor = new Profesor();
+        $array_profesor = $profesor->obtenerTodos();
+        $modalidad = new Modalidad();
+        $array_modalidad = $modalidad->obtenerTodos();
+
+        return view('clase.clase-nuevo', compact('msg', 'clase', 'titulo', 'array_disciplina', 'array_profesor', 'array_modalidad')) . '?id=' . $clase->idclase;
     }
 
 
@@ -131,9 +139,14 @@ class ControladorClase extends Controller
                 $clase = new Clase();
                 $clase->obtenerPorId($id);
 
-                
+                $disciplina = new Disciplina();
+                $array_disciplina = $disciplina->obtenerTodos();
+                $profesor = new Profesor();
+                $array_profesor = $profesor->obtenerTodos();
+                $modalidad = new Modalidad();
+                $array_modalidad = $modalidad->obtenerTodos();
 
-                return view('clase.clase-nuevo', compact('clase', 'titulo'));
+                return view('clase.clase-nuevo', compact('clase', 'titulo' , 'array_disciplina', 'array_profesor', 'array_modalidad'));
             }
         } else {
             return redirect('admin/login');

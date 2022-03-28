@@ -30,7 +30,7 @@ if (isset($msg)) {
             <th>fecha</th>
             <th>cliente</th>
             <th>precio</th>
-            <th>medio de pago</th>
+            <th>estado de pago</th>
             <th>vencimiento</th>
         </tr>
     </thead>
