@@ -16,8 +16,8 @@ class ControladorPostulacion extends Controller
     {
         $titulo = "Listado de postulacion";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("POSTULACIONESCONSULTA")) {
-                $codigo = "POSTULACIONESCONSULTA";
+            if (!Patente::autorizarOperacion("POSTULANTECONSULTA")) {
+                $codigo = "POSTULANTECONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -31,8 +31,8 @@ class ControladorPostulacion extends Controller
     public function nuevo()
     {
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("POSTULACIONESALTA")) {
-                $codigo = "POSTULACIONESALTA";
+            if (!Patente::autorizarOperacion("POSTULANTEALTA")) {
+                $codigo = "POSTULANTEALTA";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -107,8 +107,8 @@ class ControladorPostulacion extends Controller
             $row = array();
             $row[] = '<a class="btn btn-secondary" href="/admin/postulacion/' . $aPostulacion[$i]->idpostulacion . '"><i class="fa-solid fa-pencil"></i></a>';
             $row[] = $aPostulacion[$i]->nombre;
-            $row[] = $aPostulacion[$i]->telefono;
             $row[] = $aPostulacion[$i]->correo;
+            $row[] = $aPostulacion[$i]->telefono;
             $cont++;
             $data[] = $row;
         }
@@ -126,8 +126,8 @@ class ControladorPostulacion extends Controller
     {
         $titulo = "Modificar postulacion";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("POSTULACIONESEDITAR")) {
-                $codigo = "POSTULACIONESEDITAR";
+            if (!Patente::autorizarOperacion("POSTULANTEEDITAR")) {
+                $codigo = "POSTULANTEEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -147,7 +147,7 @@ class ControladorPostulacion extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("POSTULACIONESBAJA")) {
+            if (Patente::autorizarOperacion("POSTULANTEBAJA")) {
 
 
                 $entidad = new Postulacion();
@@ -156,7 +156,7 @@ class ControladorPostulacion extends Controller
 
                 $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
             } else {
-                $codigo = "ELIMINARPROFESIONAL";
+                $codigo = "POSTULANTEBAJA";
                 $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
             }
             echo json_encode($aResultado);

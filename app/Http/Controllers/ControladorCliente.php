@@ -33,8 +33,8 @@ class ControladorCliente extends Controller
     public function nuevo(){
 
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("CLIENTESALTA")) {
-                $codigo = "CLIENTESALTA";
+            if (!Patente::autorizarOperacion("CLIENTEALTA")) {
+                $codigo = "CLIENTEALTA";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -130,8 +130,8 @@ class ControladorCliente extends Controller
     {
         $titulo = "Modificar cliente";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("CLIENTESEDITAR")) {
-                $codigo = "CLIENTESEDITAR";
+            if (!Patente::autorizarOperacion("CLIENTEEDITAR")) {
+                $codigo = "CLIENTEEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -153,7 +153,7 @@ class ControladorCliente extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("CLIENTESBAJA")) {
+            if (Patente::autorizarOperacion("CLIENTEBAJA")) {
 
     
                 $entidad = new Cliente();

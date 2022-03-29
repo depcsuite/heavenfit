@@ -119,11 +119,11 @@ class ControladorVenta extends Controller{
           for ($i = $inicio; $i < count($aVentas) && $cont < $registros_por_pagina; $i++) {
               $row = array();
               $row[] = '<a class="btn btn-secondary" href="/admin/venta/'.$aVentas[$i]->idventa .'"><i class="fa-solid fa-pencil"></i></a>';
-              $row[] = date_format(date_create($aVentas[$i]->fecha), "d/m/Y h:i" ) ;
-              $row[] = $aVentas[$i]->cliente;
-              $row[] = $aVentas[$i]->precio;
+              $row[] = date_format(date_create($aVentas[$i]->fecha), "d/m/Y" ) ;
+              $row[] =  '<a href="/admin/cliente/'.$aVentas[$i]->fk_idcliente.'">'.$aVentas[$i]->cliente.'</a>';
+              $row[] = '$' . $aVentas[$i]->precio;
               $row[] = $aVentas[$i]->estado_pago;
-              $row[] = date_format(date_create($aVentas[$i]->fecha_vencimiento),"d/m/Y h:i"  );
+              $row[] = date_format(date_create($aVentas[$i]->fecha_vencimiento),"d/m/Y"  );
               $cont++;
               $data[] = $row;
           }

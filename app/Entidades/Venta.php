@@ -32,7 +32,7 @@ class Venta extends Model
             $this->fk_idplan = $request->input('lstPlan');
             $this->precio = $request->input('txtPrecio');
             $this->cantidad = $request->input('txtCantidad');
-            $this->fecha_vencimiento = $request->input('txtfecha_vencimiento');
+            $this->fecha_vencimiento = $request->input('txtFechaVencimiento');
             $this->fk_idmedio = $request->input('lstMedio');
             $this->fk_idestado_pago = $request->input('lstEstado_pago');
       }

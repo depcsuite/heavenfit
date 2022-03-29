@@ -65,7 +65,7 @@ if (isset($msg)) {
             </div>
             <div class="col-12 col-sm-6">
                   <label for="txtFecha">Fecha: *</label>
-                  <input type="datetime-local" name="txtFecha" id="txtFecha" class="form-control" value="{{$venta->fecha}}">
+                  <input type="date" name="txtFecha" id="txtFecha" class="form-control" value="{{$venta->fecha}}">
             </div>
             <div class="col-12 col-sm-6">
                   <label for="txtPrecio">Precio: *</label>
@@ -76,8 +76,8 @@ if (isset($msg)) {
                   <input type="text" name="txtCantidad" id="txtCantidad" class="form-control" value="{{$venta->cantidad}}">
             </div>
             <div class="col-12 col-sm-6">
-                  <label for="txtFecha_vencimiento">Fecha de vencimeinto: *</label>
-                  <input type="datetime-local" name="txtFecha_vencimiento" id="txtFecha_vencimiento" class="form-control" value="{{$venta->fecha_vencimiento}}">
+                  <label for="txtFechaVencimiento">Fecha de vencimeinto: *</label>
+                  <input type="date" name="txtFechaVencimiento" id="txtFechaVencimiento" class="form-control" value="{{$venta->fecha_vencimiento}}">
             </div>
 
             <div class="col-12 col-sm-6">
