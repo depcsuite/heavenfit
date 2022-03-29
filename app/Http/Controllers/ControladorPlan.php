@@ -108,7 +108,7 @@ class ControladorPlan extends Controller
             $row = array();
             $row[] = '<a class="btn btn-secondary" href="/admin/planes/' . $aPlanes[$i]->idplan . '"><i class="fa-solid fa-pencil"></i></a>';
             $row[] = $aPlanes[$i]->nombre;
-            $row[] = $aPlanes[$i]->precio;
+            $row[] = number_format($aPlanes[$i]->precio, 2, "." , ",") ;
             $cont++;
             $data[] = $row;
         }
