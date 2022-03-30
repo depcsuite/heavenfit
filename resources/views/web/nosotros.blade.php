@@ -1,7 +1,7 @@
 @extends('web.plantilla')
 @section('contenido')
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb-bg.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('web/img/breadcrumb-bg.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -72,7 +72,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 p-0">
-                    <div class="about-video set-bg" data-setbg="img/about-us.jpg">
+                    <div class="about-video set-bg" data-setbg="{{ asset('web/img/about-us.jpg') }}">
                         <a href="https://www.youtube.com/watch?v=EzKkl64rRbM" class="play-btn video-popup"><i
                                 class="fa fa-caret-right"></i></a>
                     </div>
@@ -125,78 +125,8 @@
     </section>
     <!-- About US Section End -->
 
-    <!-- Team Section Begin -->
-    <section class="team-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="team-title">
-                        <div class="section-title">
-                            <span>Our Team</span>
-                            <h2>TRAIN WITH EXPERTS</h2>
-                        </div>
-                        <a href="#" class="primary-btn btn-normal appoinment-btn">appointment</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="ts-slider owl-carousel">
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-1.jpg">
-                            <div class="ts_text">
-                                <h4>Athart Rachel</h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-2.jpg">
-                            <div class="ts_text">
-                                <h4>Athart Rachel</h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-3.jpg">
-                            <div class="ts_text">
-                                <h4>Athart Rachel</h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-4.jpg">
-                            <div class="ts_text">
-                                <h4>Athart Rachel</h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-5.jpg">
-                            <div class="ts_text">
-                                <h4>Athart Rachel</h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-6.jpg">
-                            <div class="ts_text">
-                                <h4>Athart Rachel</h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Team Section End -->
-
     <!-- Banner Section Begin -->
-    <section class="banner-section set-bg" data-setbg="img/banner-bg.jpg">
+    <section class="banner-section set-bg" data-setbg="{{ asset('web/img/banner-bg.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -227,7 +157,7 @@
                     <div class="row">
                         <div class="col-lg-12 text-center">
                             <div class="ti_pic">
-                                <img src="img/testimonial/testimonial-1.jpg" alt="">
+                                <img src="{{ asset('web/img/testimonial/testimonial-1.jpg') }}" alt="">
                             </div>
                             <div class="ti_text">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -249,7 +179,7 @@
                     <div class="row">
                         <div class="col-lg-12 text-center">
                             <div class="ti_pic">
-                                <img src="img/testimonial/testimonial-2.jpg" alt="">
+                                <img src="{{ asset('web/img/testimonial/testimonial-2.jpg') }}" alt="">
                             </div>
                             <div class="ti_text">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
