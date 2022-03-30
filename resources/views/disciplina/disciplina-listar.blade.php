@@ -41,7 +41,7 @@ if (isset($msg)) {
             "bSearchable": true,
             "pageLength": 25,
             "order": [[ 1, "asc" ]],
-            "ajax": "{{ route('disciplina.cargarGrilla') }}"
+            "ajax": "{{ route('disciplinas.cargarGrilla') }}"
 	});
 </script>
 @endsection

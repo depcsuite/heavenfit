@@ -121,10 +121,10 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     /* ------------------------------------------------ */
     /* CONTROLADOR DISCIPLINAS                          */
     /* ------------------------------------------------ */
-    Route::get('/admin/disciplina', 'ControladorDisciplina@index');
+    Route::get('/admin/disciplinas', 'ControladorDisciplina@index');
     Route::get('/admin/disciplina/nuevo', 'ControladorDisciplina@nuevo');
     Route::post('/admin/disciplina/nuevo', 'ControladorDisciplina@guardar');
-    Route::get('/admin/disciplina/cargarGrilla', 'ControladorDisciplina@cargarGrilla')->name('disciplina.cargarGrilla');
+    Route::get('/admin/disciplinas/cargarGrilla', 'ControladorDisciplina@cargarGrilla')->name('disciplinas.cargarGrilla');
     Route::get('/admin/disciplina/eliminar', 'ControladorDisciplina@eliminar');
     Route::get('/admin/disciplina/{id}', 'ControladorDisciplina@editar');
     Route::post('/admin/disciplina/{id}', 'ControladorDisciplina@guardar');

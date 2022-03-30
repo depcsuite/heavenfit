@@ -16,8 +16,8 @@ class ControladorNutricionista extends Controller
     public function index(){
         $titulo = "Listado de nutricionistas";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("NUTRICIONISTASCONSULTA")) {
-                $codigo = "NUTRICIONISTASCONSULTA";
+            if (!Patente::autorizarOperacion("NUTRICIONISTACONSULTA")) {
+                $codigo = "NUTRICIONISTACONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -29,8 +29,8 @@ class ControladorNutricionista extends Controller
     }
       public function nuevo(){
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("NUTRICIONISTASALTA")) {
-                $codigo = "NUTRICIONISTASALTA";
+            if (!Patente::autorizarOperacion("NUTRICIONISTAALTA")) {
+                $codigo = "NUTRICIONISTAALTA";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -129,8 +129,8 @@ class ControladorNutricionista extends Controller
     {
         $titulo = "Modificar nutricionista";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("NUTRICIONISTASEDITAR")) {
-                $codigo = "NUTRICIONISTASEDITAR";
+            if (!Patente::autorizarOperacion("NUTRICIONISTAEDITAR")) {
+                $codigo = "NUTRICIONISTAEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -152,7 +152,7 @@ class ControladorNutricionista extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("NUTRICIONISTASBAJA")) {
+            if (Patente::autorizarOperacion("NUTRICIONISTABAJA")) {
 
     
                 $entidad = new Nutricionista();

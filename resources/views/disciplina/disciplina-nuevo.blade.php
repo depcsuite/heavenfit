@@ -9,7 +9,7 @@
 @section('breadcrumb')
 <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/admin/home">Inicio</a></li>
-      <li class="breadcrumb-item"><a href="/admin/disciplina">disciplinas</a></li>
+      <li class="breadcrumb-item"><a href="/admin/disciplinas">disciplinas</a></li>
       @if($globalId > 0)
       <li class="breadcrumb-item active">Modificar</li>
       @else

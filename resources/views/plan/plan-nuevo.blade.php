@@ -67,6 +67,11 @@ if (isset($msg)) {
                         <input type="text" name="txtPrecio" id="txtPrecio" value="{{$plan->precio}}" class="form-control ">
                   </div>
 
+                  <div class="col-12 col-sm-6">
+                        <label for="txtPrecioDolar">Precio Dolar: *</label>
+                        <input type="text" name="txtPrecioDolar" id="txtPrecioDolar" value="{{$plan->precioDolar}}" class="form-control ">
+                  </div>
+
 
             </div>
       </form>

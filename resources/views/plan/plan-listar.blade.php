@@ -29,6 +29,7 @@ if (isset($msg)) {
             <th></th>
             <th>Nombre</th>
             <th>precio</th>
+            <th>precio Dolar</th>
         </tr>
     </thead>
 </table> 

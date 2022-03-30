@@ -13,7 +13,8 @@ Class Plan extends Model{
             'idplan',
             'nombre',
             'descripcion',
-            'precio'
+            'precio',
+            'precioDolar'
       ];
   
       protected $hidden = [
@@ -25,6 +26,7 @@ Class Plan extends Model{
             $this->nombre = $request->input('txtNombre');
             $this->descripcion = $request->input('txtDescripcion');
             $this->precio = $request->input('txtPrecio');
+            $this->precioDolar = $request->input('txtPrecioDolar');
           }
 
       public function obtenerTodos() {
@@ -32,7 +34,8 @@ Class Plan extends Model{
                   A.idplan,
                   A.nombre,
                   A.descripcion,
-                  A.precio
+                  A.precio,
+                  A.precioDolar
                   FROM planes A
                   ORDER BY A.precio";
             $lstRetorno = DB::select($sql);
@@ -44,7 +47,8 @@ Class Plan extends Model{
                         idplan,
                         nombre,
                         descripcion,
-                        precio
+                        precio,
+                        precioDolar
                         FROM planes 
                         WHERE idplan=$idplan";
             $lstRetorno = DB::select($sql);
@@ -54,6 +58,7 @@ Class Plan extends Model{
                   $this->nombre = $lstRetorno[0]->nombre;
                   $this->descripcion = $lstRetorno[0]->descripcion;
                   $this->precio = $lstRetorno[0]->precio;
+                  $this->precioDolar = $lstRetorno[0]->precioDolar;
                   return $this;
             }
             return null;
@@ -63,12 +68,14 @@ Class Plan extends Model{
             $sql = "UPDATE planes SET
                         nombre=?,
                         descripcion=?,
-                        precio=?
+                        precio=?,
+                        precioDolar=?
                   WHERE idplan=?";
               $affected = DB::update($sql, [
                 $this->nombre,
                 $this->descripcion,
                 $this->precio,
+                $this->precioDolar,
                 $this->idplan
               ]);
       }
@@ -82,12 +89,14 @@ Class Plan extends Model{
             $sql = "INSERT INTO planes (
                         nombre,
                         descripcion,
-                        precio
-                        ) VALUES (?, ?, ?);";
+                        precio,
+                        precioDolar
+                        ) VALUES (?, ?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->nombre,
                   $this->descripcion,
-                  $this->precio
+                  $this->precio,
+                  $this->precioDolar
             ]);
             return $this->idplan = DB::getPdo()->lastInsertId();
       }
@@ -99,11 +108,13 @@ Class Plan extends Model{
               0 => 'A.idplan',
               1 => 'A.nombre',
               2 => 'A.precio',
+              2 => 'A.precioDolar',
           );
           $sql = "SELECT DISTINCT
                       A.idplan,
                       A.nombre,
-                      A.precio
+                      A.precio,
+                      A.precioDolar
                       FROM planes A
                   WHERE 1=1
                   ";
@@ -111,7 +122,8 @@ Class Plan extends Model{
           //Realiza el filtrado
           if (!empty($request['search']['value'])) {
               $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
-              $sql .= " OR A.precio LIKE '%" . $request['search']['value'] . "%' )";
+              $sql .= " OR A.precio LIKE '%" . $request['search']['value'] . "%' ";
+              $sql .= " OR A.precioDolar LIKE '%" . $request['search']['value'] . "%' )";
           }
           $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
   
