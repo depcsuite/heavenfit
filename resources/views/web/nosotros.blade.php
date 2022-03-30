@@ -6,10 +6,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb-text">
-                        <h2>About us</h2>
+                        <h2>Sobre Nosotros</h2>
                         <div class="bt-option">
                             <a href="./index.html">Home</a>
-                            <span>About</span>
+                            <span>Nosotros</span>
                         </div>
                     </div>
                 </div>

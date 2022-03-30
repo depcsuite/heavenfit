@@ -6,11 +6,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb-text">
-                        <h2>Contact Us</h2>
+                        <h2>Contacto</h2>
                         <div class="bt-option">
-                            <a href="./index.html">Home</a>
-                            <a href="#">Pages</a>
-                            <span>Contact us</span>
+                            <a href="index.php">Home</a>
+                            <span>Contacto</span>
                         </div>
                     </div>
                 </div>
@@ -25,8 +24,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="section-title contact-title">
-                        <span>Contact Us</span>
-                        <h2>GET IN TOUCH</h2>
+                        <h2>Contactos:</h2>
                     </div>
                     <div class="contact-widget">
                         <div class="cw-text">
@@ -49,11 +47,11 @@
                 <div class="col-lg-6">
                     <div class="leave-comment">
                         <form action="#">
-                            <input type="text" placeholder="Name">
+                            <input type="text" placeholder="Nombre">
                             <input type="text" placeholder="Email">
-                            <input type="text" placeholder="Website">
-                            <textarea placeholder="Comment"></textarea>
-                            <button type="submit">Submit</button>
+                            <input type="text" placeholder="Asunto">
+                            <textarea placeholder="Mensaje"></textarea>
+                            <button type="submit">Enviar</button>
                         </form>
                     </div>
                 </div>
