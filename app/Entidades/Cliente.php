@@ -26,7 +26,7 @@ class Cliente extends Model
       'objetivo',
       'fecha_nac',
       'nutricion',
-      'fk_idnacionalidad',
+      'fk_idpais',
       'foto',
       'clave'
     ];
@@ -51,7 +51,7 @@ class Cliente extends Model
       $this->objetivo = $request->input('txtObjetivo');
       $this->fecha_nac = $request->input('txtFechaNac');
       $this->nutricion = $request->input('txtNutricion');
-      $this->fk_idnacionalidad = $request->input('lstNacionalidad');
+      $this->fk_idpais = $request->input('lstNacionalidad');
       $this->foto = $request->input('txtFoto');
       $this->clave = $request->input('txtClave');
     }
@@ -73,7 +73,7 @@ class Cliente extends Model
                   A.objetivo,
                   A.fecha_nac,
                   A.nutricion,
-                  A.fk_idnacionalidad,
+                  A.fk_idpais,
                   A.foto,
                   A.clave
                 FROM clientes A
@@ -99,7 +99,7 @@ class Cliente extends Model
                 objetivo,
                 fecha_nac,
                 nutricion,
-                fk_idnacionalidad,
+                fk_idpais,
                 foto,
                 clave
               FROM clientes 
@@ -122,7 +122,7 @@ class Cliente extends Model
         $this->objetivo = $lstRetorno[0]->objetivo;
         $this->fecha_nac = $lstRetorno[0]->fecha_nac;
         $this->nutricion = $lstRetorno[0]->nutricion;
-        $this->fk_idnacionalidad = $lstRetorno[0]->fk_idnacionalidad;
+        $this->fk_idpais = $lstRetorno[0]->fk_idpais;
         $this->foto = $lstRetorno[0]->foto;
         $this->clave = $lstRetorno[0]->clave;
         return $this;
@@ -146,7 +146,7 @@ class Cliente extends Model
             objetivo=?,
             fecha_nac=?,
             nutricion=?,
-            fk_idnacionalidad=?,
+            fk_idpais=?,
             foto=?,
             clave=?
             WHERE idcliente=?";
@@ -165,7 +165,7 @@ class Cliente extends Model
           $this->objetivo,
           $this->fecha_nac,
           $this->nutricion,
-          $this->fk_idnacionalidad,
+          $this->fk_idpais,
           $this->foto,
           password_hash($this->clave, PASSWORD_DEFAULT),
           $this->idcliente
@@ -193,7 +193,7 @@ class Cliente extends Model
               objetivo,
               fecha_nac,
               nutricion,
-              fk_idnacionalidad,
+              fk_idpais,
               foto,
               clave
               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -212,7 +212,7 @@ class Cliente extends Model
         $this->objetivo,
         $this->fecha_nac,
         $this->nutricion,
-        $this->fk_idnacionalidad,
+        $this->fk_idpais,
         $this->foto,
         password_hash($this->clave, PASSWORD_DEFAULT)
       ]);

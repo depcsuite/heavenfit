@@ -70,7 +70,7 @@ if (isset($msg)) {
             <div class="col-12 col-sm-6">
                   <label for="lstSexo">Sexo: </label>
                   <select name="lstSexo" id="lstSexo" class="form-control">
-                        @if(isset($postulacion) and $postulacion->sexo =! "" and $postulacion->sexo =! 1)              
+                        @if(isset($postulacion) and $postulacion->sexo != "" and $postulacion->sexo != 1)              
                         <option <?php echo $postulacion->sexo == "Hombre" ? "selected" : "" ; ?> value="Hombre">Hombre</option>
                         <option <?php echo $postulacion->sexo == "Mujer" ? "selected" : "" ; ?> value="Mujer">Mujer</option>
                         @else
@@ -83,7 +83,7 @@ if (isset($msg)) {
             <div class="col-12 col-sm-6">
                   <label for="lstSexo">Disponibilidad: </label>
                   <select name="lstDisponibilidad" id="lstDisponibilidad" class="form-control">
-                        @if(isset($postulacion) and $postulacion->disponibilidad =! "" and $postulacion->disponibilidad =! 1)
+                        @if(isset($postulacion) and $postulacion->disponibilidad != "" and $postulacion->disponibilidad != 1)
                         <option <?php echo $postulacion->disponibilidad == "Mañana" ? "selected" : "" ?> value="Mañana">Mañana</option>
                         <option <?php echo $postulacion->disponibilidad == "Tarde" ? "selected" : "" ?> value="Tarde">Tarde</option>
                         <option <?php echo $postulacion->disponibilidad == "Mañana y Tarde" ? "selected" : "" ?> value="Mañana y Tarde">Mañana y Tarde</option>
