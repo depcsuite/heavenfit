@@ -88,7 +88,7 @@
                             <li><a href="/nosotros">Nosotros</a></li>
                             <li><a href="/profesores">Profesores</a></li>
                             <li><a href="/clases">Clases</a></li>
-                            <li><a href="/clases">Planes</a></li>
+                            <li><a href="/planes">Planes</a></li>
                             <li><a href="/contacto">Contacto</a></li>
                         </ul>
                     </nav>
