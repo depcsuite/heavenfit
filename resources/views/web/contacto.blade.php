@@ -46,12 +46,13 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="#">
-                            <input type="text" placeholder="Nombre">
-                            <input type="text" placeholder="Email">
-                            <input type="text" placeholder="Asunto">
-                            <textarea placeholder="Mensaje"></textarea>
-                            <button type="submit">Enviar</button>
+                        <form action="" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
+                            <input type="text" placeholder="Nombre" name="txtNombre" require>
+                            <input type="text" placeholder="Email" name="txtEmail" require>
+                            <input type="text" placeholder="Asunto" name="txtAsunto" require>
+                            <textarea placeholder="Mensaje" name="txtMensaje" require></textarea>
+                            <button type="submit" name="btnEnviar">Enviar</button>
                         </form>
                     </div>
                 </div>
