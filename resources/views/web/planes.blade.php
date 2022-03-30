@@ -6,10 +6,10 @@
             <div class="row">
                   <div class="col-lg-12 text-center">
                         <div class="breadcrumb-text">
-                              <h2>About us</h2>
+                              <h2>Planes</h2>
                               <div class="bt-option">
-                                    <a href="./index.html">Home</a>
-                                    <span>About</span>
+                                    <a href="./index.html">Inicio</a>
+                                    <span>Planes</span>
                               </div>
                         </div>
                   </div>
@@ -23,32 +23,26 @@
             <div class="row">
                   <div class="col-lg-12">
                         <div class="section-title">
-                              <span>Our Plan</span>
-                              <h2>Choose your pricing plan</h2>
+                              <span>Nuestros planes</span>
+                              <h2>Elegi el plan que mas se adapte a tu objetivo</h2>
                         </div>
                   </div>
             </div>
             <div class="row justify-content-center">
-                  <div class="col-lg-4 col-md-8">
-                        @foreach(array_planes as $plan)
+                  @foreach($array_planes as $plan)
+                  <div class="col-lg-4 col-md-8">     
                         <div class="ps-item">
-                              <h3>{{ $plan-nombre }}</h3>
+                              <h3>{{ $plan->nombre }}</h3>
                               <div class="pi-price">
-                                    <h2>$ 39.0</h2>
-                                    <span>SINGLE CLASS</span>
+                                    <h2>${{$plan->precio}}</h2>                                    
                               </div>
                               <ul>
-                                    <li>Free riding</li>
-                                    <li>Unlimited equipments</li>
-                                    <li>Personal trainer</li>
-                                    <li>Weight losing classes</li>
-                                    <li>Month to mouth</li>
-                                    <li>No time restriction</li>
+                                  <li> {{$plan->descripcion}} </li>  
                               </ul>
-                              <a href="#" class="primary-btn pricing-btn">Enroll now</a>
-                              <a href="#" class="thumb-icon"><i class="fa fa-picture-o"></i></a>
-                        </div>
+                              <a href="#" class="primary-btn pricing-btn">Inscribirme</a>
+                        </div>                        
                   </div>
+                  @endforeach
             </div>
       </div>
 </section>

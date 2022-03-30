@@ -10,6 +10,6 @@ class ControladorWebPlanes extends Controller
         $plan = new Plan();
         $array_planes = $plan->obtenerTodos();
 
-        return view("web.planes", compact($array_planes));
+        return view("web.planes", compact('array_planes'));
     }
 }
