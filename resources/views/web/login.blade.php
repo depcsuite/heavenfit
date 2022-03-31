@@ -5,7 +5,7 @@
 <section class="contact-section spad">
         <div class="container">
             <div class="row">                
-                <div class="col-lg-6 offset-3 py-5">
+                <div class="col-lg-6 offset-3 pt-5">
                     <div class="leave-comment">
                         <form action="#">
                             <input type="text" placeholder="Correo">
