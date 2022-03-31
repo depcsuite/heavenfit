@@ -12,8 +12,8 @@
                             <input type="password" placeholder="Contraseña">
                             <button type="submit">Ingresar</button>
                         </form>
-                        <a href="/recuperar-clave">Recuperar clave</a>
-                        <a href="/registro">Aun no estas registrado? registrate</a>
+                        <a href="/recuperar-clave">Recuperar clave</a><br>
+                        <a href="/registro">¿Aún no estas registrado? Registrate</a>
                     </div>
                 </div>
             </div>            
