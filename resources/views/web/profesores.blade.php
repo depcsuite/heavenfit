@@ -6,10 +6,10 @@
             <div class="row">
                   <div class="col-lg-12 text-center">
                         <div class="breadcrumb-text">
-                              <h2>About us</h2>
+                              <h2>Profesores</h2>
                               <div class="bt-option">
-                                    <a href="./index.html">Home</a>
-                                    <span>About</span>
+                                    <a href="./index.html">Inicio</a>
+                                    <span>Profesores</span>
                               </div>
                         </div>
                   </div>
@@ -25,10 +25,10 @@
                   <div class="col-lg-12">
                         <div class="team-title">
                               <div class="section-title">
-                                    <span>Our Team</span>
-                                    <h2>TRAIN WITH EXPERTS</h2>
+                                    <span>Nuestro equipo</span>
+                                    <h2>Profesores y nutricionistas</h2>
                               </div>
-                              <a href="#" class="primary-btn btn-normal appoinment-btn">appointment</a>
+                              <a href="/reserva" class="primary-btn btn-normal appoinment-btn">Rerservar</a>
                         </div>
                   </div>
             </div>
@@ -37,8 +37,8 @@
                         <div class="col-lg-4">
                               <div class="ts-item set-bg" data-setbg="{{ asset('web/img/team/team-1.jpg') }}">
                                     <div class="ts_text">
-                                          <h4>Athart Rachel</h4>
-                                          <span>Gym Trainer</span>
+                                          <h4>Lourdes Yorio</h4>
+                                          <span>Directora</span>
                                     </div>
                               </div>
                         </div>

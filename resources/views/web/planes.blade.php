@@ -1,7 +1,7 @@
 @extends('web.plantilla')
 @section('contenido')
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="{{ asset('web/img/breadcrumb-bg.jpg') }}">
+<section class="breadcrumb-section set-bg" data-setbg="{{ asset('web/img/breadcrumb-bg4.jpg') }}">
       <div class="container">
             <div class="row">
                   <div class="col-lg-12 text-center">
@@ -39,7 +39,7 @@
                               <ul>
                                   <li> {{$plan->descripcion}} </li>  
                               </ul>
-                              <a href="#" class="primary-btn pricing-btn">Inscribirme</a>
+                              <a href="#" class="primary-btn pricing-btn">Reservar</a>
                         </div>                        
                   </div>
                   @endforeach

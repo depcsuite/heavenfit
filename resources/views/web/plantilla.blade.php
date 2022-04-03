@@ -7,7 +7,7 @@
     <meta name="keywords" content="Gym, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gym | Template</title>
+    <title>Heaven Fit</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -77,7 +77,7 @@
                 <div class="col-lg-3">
                     <div class="logo">
                         <a href="./index.html">
-                            <img src="{{ asset('web/img/logo.png') }}" alt="">
+                            <img class="img-logo" src="{{ asset('web/img/logo.png') }}" alt="">
                         </a>
                     </div>
                 </div>
@@ -112,67 +112,72 @@
 
     @yield('contenido')
 
+    <!-- Get In Touch Section Begin -->
+<div class="gettouch-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-2">
+                <div class="gt-text">
+                    <i class="fa fa-mobile"></i>
+                    <ul>
+                        <li>+54 2478 471095</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gt-text email">
+                    <i class="fa fa-envelope"></i>
+                    <p>lourdesyorio51@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Get In Touch Section End -->
+
     <!-- Footer Section Begin -->
     <section class="footer-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-4 offset-2">
                     <div class="fs-about">
                         <div class="fa-logo">
-                            <a href="#"><img src="{{ asset('web/img/logo.png') }}" alt=""></a>
+                            <a href="#"><img class="img-logo" src="{{ asset('web/img/logo.png') }}" alt=""></a>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore dolore magna aliqua endisse ultrices gravida lorem.</p>
+                        <p>En Heaven Fit buscamos lograr un entrenamiento sano, conciente y entretenido, creemos en la idea de que entrenar puede ser placentero
+                            y en eso nos basamos a la hora de planificar las clases.
+                        </p>
                         <div class="fa-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
                             <a href="#"><i class="fa  fa-envelope-o"></i></a>
+                            <a href="#"><i class="fa  fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
                     <div class="fs-widget">
-                        <h4>Useful links</h4>
+                        <h4>Links utiles</h4>
                         <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Classes</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="/nosotros">Nosotros</a></li>
+                            <li><a href="/profesores">Profesores</a></li>
+                            <li><a href="/clases">Clases</a></li>
+                            <li><a href="/planes">Planes</a></li>
+                            <li><a href="/contacto">Contacto</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
                     <div class="fs-widget">
-                        <h4>Support</h4>
+                        <h4>Soporte</h4>
                         <ul>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">My account</a></li>
-                            <li><a href="#">Subscribe</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="#">Mi cuenta</a></li>
+                            <li><a href="#">Reserva</a></li>
+                            <li><a href="/contacto">Contacto</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="fs-widget">
-                        <h4>Tips & Guides</h4>
-                        <div class="fw-recent">
-                            <h6><a href="#">Physical fitness may help prevent depression, anxiety</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div>
-                        <div class="fw-recent">
-                            <h6><a href="#">Fitness: The best exercise to lose belly fat and tone up...</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">

@@ -42,6 +42,23 @@ Class Plan extends Model{
             return $lstRetorno;
       }
 
+      public function obtenerSeleccionados() {
+            $sql = "SELECT 
+                        idplan,
+                        nombre,
+                        descripcion,
+                        precio,
+                        precioDolar
+                        FROM planes 
+                        WHERE idplan=3 OR idplan=2 OR idplan=9
+                        ORDER BY precio";
+                        
+            $lstRetorno = DB::select($sql);
+      
+            
+            return $lstRetorno;
+      }
+
       public function obtenerPorId($idplan) {
             $sql = "SELECT 
                         idplan,

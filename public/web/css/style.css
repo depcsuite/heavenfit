@@ -333,6 +333,10 @@ ol {
 	z-index: 99;
 }
 
+.img-logo{
+	border-radius: 50%;
+	height: 90px;
+}
 .logo a {
 	display: inline-block;
 }

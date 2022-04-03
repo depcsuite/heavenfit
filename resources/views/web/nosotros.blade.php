@@ -1,14 +1,14 @@
 @extends('web.plantilla')
 @section('contenido')
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('web/img/breadcrumb-bg.jpg') }}">
+    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('web/img/breadcrumb-bg2.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb-text">
                         <h2>Sobre Nosotros</h2>
                         <div class="bt-option">
-                            <a href="./index.html">Home</a>
+                            <a href="./index.html">Inicio</a>
                             <span>Nosotros</span>
                         </div>
                     </div>
@@ -18,57 +18,61 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- ChoseUs Section Begin -->
-    <section class="choseus-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <span>Why chose us?</span>
-                        <h2>PUSH YOUR LIMITS FORWARD</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="cs-item">
-                        <span class="flaticon-034-stationary-bike"></span>
-                        <h4>Modern equipment</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            dolore facilisis.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="cs-item">
-                        <span class="flaticon-033-juice"></span>
-                        <h4>Healthy nutrition plan</h4>
-                        <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
-                            facilisis.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="cs-item">
-                        <span class="flaticon-002-dumbell"></span>
-                        <h4>Proffesponal training plan</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            dolore facilisis.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="cs-item">
-                        <span class="flaticon-014-heart-beat"></span>
-                        <h4>Unique to your needs</h4>
-                        <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
-                            facilisis.</p>
-                    </div>
+   <!-- ChoseUs Section Begin -->
+<section class="choseus-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>¿Por qué elegirnos?</span>
+                    <h2>ENTRENAR YA NO ES LO QUE ERA</h2>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- ChoseUs Section End -->
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-018-scale"></span>
+                    <h4>Alcanzamos la meta</h4>
+                    <p>Nos interesa trazar un plan hacia tu objetivo de manera sana, conciente y disciplinada</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-033-juice"></span>
+                    <h4>Plan nutrional saludable</h4>
+                    <p>Desde Heaven Fit te ofrecemos la posibilidad de armar tu propio plan nutricional enfocado
+                        en tu meta. Es el complemento perfecto para tu entrenamiento
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-002-dumbell"></span>
+                    <h4>¿Te cuesta entrenar?</h4>
+                    <p>Traemos una novedosa forma de entrenar donde nos enfocamos en que disfrutes hasta que
+                        alcances los resultados. Con nosotros no te va a costar entrenar!
+
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-014-heart-beat"></span>
+                    <h4>Te cuidamos</h4>
+                    <p>En Heaven fit tenemos mucha experiencia tratando con distintos tipos
+                        de lesiones y enfermedades. Para que a la hora de entrenar eso no sea
+                        un obstaculo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ChoseUs Section End -->
 
     <!-- About US Section Begin -->
-    <section class="aboutus-section">
+    <section class="choseus-section spad">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 p-0">
@@ -80,7 +84,7 @@
                 <div class="col-lg-6 p-0">
                     <div class="about-text">
                         <div class="section-title">
-                            <span>About Us</span>
+                            <span>Sobre nosotros</span>
                             <h2>What we have done</h2>
                         </div>
                         <div class="at-desc">
@@ -88,36 +92,7 @@
                                 ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
                                 viverra maecenas accumsan lacus vel facilisis. aliquip ex ea commodo consequat sit amet,
                                 consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                        </div>
-                        <div class="about-bar">
-                            <div class="ab-item">
-                                <p>Body building</p>
-                                <div id="bar1" class="barfiller">
-                                    <span class="fill" data-percentage="80"></span>
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ab-item">
-                                <p>Training</p>
-                                <div id="bar2" class="barfiller">
-                                    <span class="fill" data-percentage="85"></span>
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ab-item">
-                                <p>Fitness</p>
-                                <div id="bar3" class="barfiller">
-                                    <span class="fill" data-percentage="75"></span>
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
             </div>
@@ -141,94 +116,7 @@
     </section>
     <!-- Banner Section End -->
 
-    <!-- Testimonial Section Begin -->
-    <section class="testimonial-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <span>Testimonial</span>
-                        <h2>Our cilent say</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="ts_slider owl-carousel">
-                <div class="ts_item">
-                    <div class="row">
-                        <div class="col-lg-12 text-center">
-                            <div class="ti_pic">
-                                <img src="{{ asset('web/img/testimonial/testimonial-1.jpg') }}" alt="">
-                            </div>
-                            <div class="ti_text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt<br /> ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
-                                    gravida. Risus commodo<br /> viverra maecenas accumsan lacus vel facilisis.</p>
-                                <h5>Marshmello Gomez</h5>
-                                <div class="tt-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ts_item">
-                    <div class="row">
-                        <div class="col-lg-12 text-center">
-                            <div class="ti_pic">
-                                <img src="{{ asset('web/img/testimonial/testimonial-2.jpg') }}" alt="">
-                            </div>
-                            <div class="ti_text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt<br /> ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
-                                    gravida. Risus commodo<br /> viverra maecenas accumsan lacus vel facilisis.</p>
-                                <h5>Marshmello Gomez</h5>
-                                <div class="tt-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Testimonial Section End -->
+   
 
-    <!-- Get In Touch Section Begin -->
-    <div class="gettouch-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="gt-text">
-                        <i class="fa fa-map-marker"></i>
-                        <p>333 Middle Winchendon Rd, Rindge,<br/> NH 03461</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gt-text">
-                        <i class="fa fa-mobile"></i>
-                        <ul>
-                            <li>125-711-811</li>
-                            <li>125-668-886</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gt-text email">
-                        <i class="fa fa-envelope"></i>
-                        <p>Support.gymcenter@gmail.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Get In Touch Section End -->
+   
 @endsection
