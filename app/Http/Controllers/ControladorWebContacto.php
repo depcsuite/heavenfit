@@ -24,7 +24,6 @@ class ControladorWebContacto extends Controller
 
       $body = "Nombre: $nombre <br>
                   Email: $email <br>
-                  Asunto: $asunto <br>
                   Mensaje: $mensaje";
       //Instancia y configuraciones de PHPMailer
       $mail = new PHPMailer(true);
@@ -44,9 +43,9 @@ class ControladorWebContacto extends Controller
 
       //Contenido del mail
       $mail->isHTML(true);
-      $mail->Subject = $subject;
+      $mail->Subject = $asunto;
       $mail->Body = $body;
       //$mail->send();
-      return view(); //Retorna vista para confirmar el envio
+      return view("web.mensaje-enviado",compact($nombre)); //Retorna vista para confirmar el envio
     }
 }
