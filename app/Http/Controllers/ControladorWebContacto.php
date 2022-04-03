@@ -46,6 +46,6 @@ class ControladorWebContacto extends Controller
       $mail->Subject = $asunto;
       $mail->Body = $body;
       //$mail->send();
-      return view(); //Retorna vista para confirmar el envio
+      return view("web.mensaje-enviado",compact($nombre)); //Retorna vista para confirmar el envio
     }
 }
