@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('web/css/magnific-popup.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/style.css') }}" type="text/css">
+
 </head>
 
 <body>
@@ -84,12 +85,12 @@
                 <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
-                            <li class="active"><a href="/">Inicio</a></li>
-                            <li><a href="/nosotros">Nosotros</a></li>
-                            <li><a href="/profesores">Profesores</a></li>
-                            <li><a href="/clases">Clases</a></li>
-                            <li><a href="/planes">Planes</a></li>
-                            <li><a href="/contacto">Contacto</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/" ? 'class="active"' : ""; ?>> <a  href="/"> Inicio</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/nosotros" ? 'class="active"' : ""; ?>> <a  href="/nosotros">  Nosotros</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/profesores" ? 'class="active"' : ""; ?>> <a  href="/profesores"> Profesores</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/clases" ? 'class="active"' : ""; ?>> <a  href="/clases">Clases</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/planes" ? 'class="active"' : ""; ?>> <a  href="/planes">Planes</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/contacto" ? 'class="active"' : ""; ?>> <a  href="/contacto">Contacto</a></li>
                         </ul>
                     </nav>
                 </div>

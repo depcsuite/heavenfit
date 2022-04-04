@@ -14,6 +14,7 @@
 /*Route::get('/time' , function(){$date =new Carbon;echo $date ; } );*/
 
 
+
 Route::group(array('domain' => '127.0.0.1'), function () {
 
     Route::get('/', 'ControladorWebHome@index');
@@ -25,8 +26,10 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/login', 'ControladorWebLogin@index');
     Route::get('/recuperar-clave', 'ControladorWebRecuperarClave@index');
     Route::get('/registrarse', 'ControladorWebRegistrarse@index');
+    Route::post('/registrarse', 'ControladorWebRegistrarse@guardar');
     Route::post('/contacto', 'ControladorWebContacto@enviar');
     Route::get('/contacto/mensaje-enviado', 'ControladorWebMensajeEnviado@index');
+    Route::get('/perfil-usuario', 'ControladorWebPerfilUsuario@index');
     
 
     Route::get('/admin', 'ControladorHome@index');
