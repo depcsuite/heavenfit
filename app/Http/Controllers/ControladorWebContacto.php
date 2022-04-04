@@ -21,6 +21,7 @@ class ControladorWebContacto extends Controller
       $email = $request->input('txtEmail');
       $asunto = $request->input('txtAsunto');
       $mensaje = $request->input('txtMensaje');
+      $address = "lourdesyorio51@gmail.com";
 
       $body = "Nombre: $nombre <br>
                   Email: $email <br>
@@ -37,9 +38,8 @@ class ControladorWebContacto extends Controller
       $mail->Port = env('MAIL_PORT');
       //Destinatarios
       $mail->setFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME')); //Dirección desde
-      $mail->addAddress($email); //Dirección para
-      $mail->addReplyTo($replyTo); //Dirección de reply no-reply
-      $mail->addBCC($copiaOculta); //Dirección de CCO
+      $mail->addAddress($address); //Dirección para
+      //$mail->addReplyTo($replyTo); //Dirección de reply no-reply
 
       //Contenido del mail
       $mail->isHTML(true);

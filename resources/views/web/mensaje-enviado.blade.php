@@ -24,8 +24,8 @@
             <div class="row">
                   <div class="col-lg-12">
                         <div class="section-title">
-                        <span>Gracias por su mensaje {{}}!</span>
-                        <h2>Estaremos respondiendo a la brevedad.</h2>
+                        <span>Gracias por tu mensaje!</span>
+                        <h2>Te estaremos respondiendo a la brevedad.</h2>
                         </div>
                   </div>
             </div>
