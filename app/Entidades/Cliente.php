@@ -11,53 +11,55 @@ class Cliente extends Model
     public $timestamps = false;
 
     protected $fillable = [
-      'idcliente',
-      'nombre',
-      'correo',
-      'telefono',
-      'edad',
-      'peso',
-      'altura',
-      'deportes',
-      'lesiones',
-      'enfermedades',
-      'medicamento',
-      'materiales',
-      'objetivo',
-      'fecha_nac',
-      'nutricion',
-      'fk_idpais',
-      'foto',
-      'clave'
+        'idcliente',
+        'nombre',
+        'correo',
+        'telefono',
+        'edad',
+        'peso',
+        'altura',
+        'deportes',
+        'lesiones',
+        'enfermedades',
+        'medicamento',
+        'materiales',
+        'objetivo',
+        'fecha_nac',
+        'nutricion',
+        'fk_idpais',
+        'foto',
+        'clave',
     ];
 
     protected $hidden = [
 
     ];
 
-    public function cargarDesdeRequest($request) {
-      $this->idcliente = $request->input('id') != "0" ? $request->input('id') : $this->idcliente;
-      $this->nombre = $request->input('txtNombre');
-      $this->edad = $request->input('txtEdad');
-      $this->correo = $request->input('txtCorreo');
-      $this->telefono = $request->input('txtTelefono');      
-      $this->peso = $request->input('txtPeso');
-      $this->altura = $request->input('txtAltura');
-      $this->deportes = $request->input('txtDeportes');
-      $this->lesiones = $request->input('txtLesiones');
-      $this->enfermedades = $request->input('txtEnfermedades');
-      $this->medicamento = $request->input('txtMedicamento');
-      $this->materiales = $request->input('txtMateriales');
-      $this->objetivo = $request->input('txtObjetivo');
-      $this->fecha_nac = $request->input('txtFechaNac');
-      $this->nutricion = $request->input('txtNutricion');
-      $this->fk_idpais = $request->input('lstNacionalidad');
-      $this->foto = $request->input('txtFoto');
-      $this->clave = $request->input('txtClave');
+    public function cargarDesdeRequest($request)
+    {
+        $this->idcliente = $request->input('id') != "0" ? $request->input('id') : $this->idcliente;
+        $this->nombre = $request->input('txtNombre');
+        $this->edad = $request->input('txtEdad');
+        $this->correo = $request->input('txtCorreo');
+        $this->telefono = $request->input('txtTelefono');
+        $this->peso = $request->input('txtPeso');
+        $this->altura = $request->input('txtAltura');
+        $this->deportes = $request->input('txtDeportes');
+        $this->lesiones = $request->input('txtLesiones');
+        $this->enfermedades = $request->input('txtEnfermedades');
+        $this->medicamento = $request->input('txtMedicamento');
+        $this->materiales = $request->input('txtMateriales');
+        $this->objetivo = $request->input('txtObjetivo');
+        $this->fecha_nac = $request->input('txtFechaNac');
+        $this->nutricion = $request->input('txtNutricion');
+        $this->fk_idpais = $request->input('lstNacionalidad');
+        $this->foto = $request->input('txtFoto');
+        $this->clave = $request->input('txtClave');
     }
 
-    public function obtenerTodos() {
-        $sql = "SELECT 
+    public function obtenerTodos()
+    {
+        $sql = "SELECT
                   A.idcliente,
                   A.nombre,
                   A.edad,
@@ -82,8 +84,9 @@ class Cliente extends Model
         return $lstRetorno;
     }
 
-    public function obtenerPorId($idcliente) {
-      $sql = "SELECT 
+    public function obtenerPorId($idcliente)
+    {
+        $sql = "SELECT
                 idcliente,
                 nombre,
                 edad,
@@ -102,36 +105,37 @@ class Cliente extends Model
                 fk_idpais,
                 foto,
                 clave
-              FROM clientes 
+              FROM clientes
               WHERE idcliente=$idcliente";
-      $lstRetorno = DB::select($sql);
+        $lstRetorno = DB::select($sql);
 
-      if (count($lstRetorno) > 0) {
-        $this->idcliente = $lstRetorno[0]->idcliente;
-        $this->nombre = $lstRetorno[0]->nombre;
-        $this->edad = $lstRetorno[0]->edad;
-        $this->correo = $lstRetorno[0]->correo;
-        $this->telefono = $lstRetorno[0]->telefono;
-        $this->peso = $lstRetorno[0]->peso;
-        $this->altura = $lstRetorno[0]->altura;
-        $this->deportes = $lstRetorno[0]->deportes;
-        $this->lesiones = $lstRetorno[0]->lesiones;
-        $this->enfermedades = $lstRetorno[0]->enfermedades;
-        $this->medicamento = $lstRetorno[0]->medicamento;
-        $this->materiales = $lstRetorno[0]->materiales;
-        $this->objetivo = $lstRetorno[0]->objetivo;
-        $this->fecha_nac = $lstRetorno[0]->fecha_nac;
-        $this->nutricion = $lstRetorno[0]->nutricion;
-        $this->fk_idpais = $lstRetorno[0]->fk_idpais;
-        $this->foto = $lstRetorno[0]->foto;
-        $this->clave = $lstRetorno[0]->clave;
-        return $this;
-      }
-      return null;
+        if (count($lstRetorno) > 0) {
+            $this->idcliente = $lstRetorno[0]->idcliente;
+            $this->nombre = $lstRetorno[0]->nombre;
+            $this->edad = $lstRetorno[0]->edad;
+            $this->correo = $lstRetorno[0]->correo;
+            $this->telefono = $lstRetorno[0]->telefono;
+            $this->peso = $lstRetorno[0]->peso;
+            $this->altura = $lstRetorno[0]->altura;
+            $this->deportes = $lstRetorno[0]->deportes;
+            $this->lesiones = $lstRetorno[0]->lesiones;
+            $this->enfermedades = $lstRetorno[0]->enfermedades;
+            $this->medicamento = $lstRetorno[0]->medicamento;
+            $this->materiales = $lstRetorno[0]->materiales;
+            $this->objetivo = $lstRetorno[0]->objetivo;
+            $this->fecha_nac = $lstRetorno[0]->fecha_nac;
+            $this->nutricion = $lstRetorno[0]->nutricion;
+            $this->fk_idpais = $lstRetorno[0]->fk_idpais;
+            $this->foto = $lstRetorno[0]->foto;
+            $this->clave = $lstRetorno[0]->clave;
+            return $this;
+        }
+        return null;
     }
 
-    public function guardar() {
-      $sql = "UPDATE clientes SET
+    public function guardar()
+    {
+        $sql = "UPDATE clientes SET
             nombre=?,
             edad=?,
             correo=?,
@@ -151,34 +155,36 @@ class Cliente extends Model
             clave=?
             WHERE idcliente=?";
         $affected = DB::update($sql, [
-          $this->nombre,
-          $this->edad,
-          $this->correo,
-          $this->telefono,
-          $this->peso,
-          $this->altura,
-          $this->deportes,
-          $this->lesiones,
-          $this->enfermedades,
-          $this->medicamento,
-          $this->materiales,
-          $this->objetivo,
-          $this->fecha_nac,
-          $this->nutricion,
-          $this->fk_idpais,
-          $this->foto,
-          password_hash($this->clave, PASSWORD_DEFAULT),
-          $this->idcliente
+            $this->nombre,
+            $this->edad,
+            $this->correo,
+            $this->telefono,
+            $this->peso,
+            $this->altura,
+            $this->deportes,
+            $this->lesiones,
+            $this->enfermedades,
+            $this->medicamento,
+            $this->materiales,
+            $this->objetivo,
+            $this->fecha_nac,
+            $this->nutricion,
+            $this->fk_idpais,
+            $this->foto,
+            password_hash($this->clave, PASSWORD_DEFAULT),
+            $this->idcliente,
         ]);
     }
 
-    public function eliminar() {
-      $sql = "DELETE FROM clientes WHERE idcliente=?";
-      $affected = DB::delete($sql, [$this->idcliente]);
+    public function eliminar()
+    {
+        $sql = "DELETE FROM clientes WHERE idcliente=?";
+        $affected = DB::delete($sql, [$this->idcliente]);
     }
 
-    public function insertar() {
-      $sql = "INSERT INTO clientes (
+    public function insertar()
+    {
+        $sql = "INSERT INTO clientes (
               nombre,
               edad,
               correo,
@@ -197,26 +203,26 @@ class Cliente extends Model
               foto,
               clave
               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-      $result = DB::insert($sql, [
-        $this->nombre,
-        $this->edad,
-        $this->correo,
-        $this->telefono,
-        $this->peso,
-        $this->altura,
-        $this->deportes,
-        $this->lesiones,
-        $this->enfermedades,
-        $this->medicamento,
-        $this->materiales,
-        $this->objetivo,
-        $this->fecha_nac,
-        $this->nutricion,
-        $this->fk_idpais,
-        $this->foto,
-        password_hash($this->clave, PASSWORD_DEFAULT)
-      ]);
-      return $this->idcliente = DB::getPdo()->lastInsertId();
+        $result = DB::insert($sql, [
+            $this->nombre,
+            $this->edad,
+            $this->correo,
+            $this->telefono,
+            $this->peso,
+            $this->altura,
+            $this->deportes,
+            $this->lesiones,
+            $this->enfermedades,
+            $this->medicamento,
+            $this->materiales,
+            $this->objetivo,
+            $this->fecha_nac,
+            $this->nutricion,
+            $this->fk_idpais,
+            $this->foto,
+            password_hash($this->clave, PASSWORD_DEFAULT),
+        ]);
+        return $this->idcliente = DB::getPdo()->lastInsertId();
     }
 
     public function obtenerFiltrado()
@@ -248,5 +254,32 @@ class Cliente extends Model
         $lstRetorno = DB::select($sql);
 
         return $lstRetorno;
+    }
+
+    public function login($usuario, $clave)
+    {
+        $sql = "SELECT
+                idcliente,
+                nombre,
+                correo,
+                clave
+              FROM clientes
+              WHERE correo=?";
+        $lstRetorno = DB::select($sql, [$usuario]);
+
+        if (count($lstRetorno) > 0) {
+         
+            $this->idcliente = $lstRetorno[0]->idcliente;
+            $this->nombre = $lstRetorno[0]->nombre;
+            $this->correo = $lstRetorno[0]->correo;
+            $this->clave = $lstRetorno[0]->clave;
+            if (password_verify($clave, $this->clave)) {
+                return $this;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
     }
 }

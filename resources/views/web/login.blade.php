@@ -12,10 +12,10 @@
                         <?php echo $mensaje?>
                     </div>
                     @endif
-                    <form method="post">
+                    <form method="POST" action="">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
-                        <input type="text" placeholder="Correo">
-                        <input type="password" placeholder="Contraseña">
+                        <input type="text" placeholder="Correo" name="txtCorreo" id="txtCorreo">
+                        <input type="password" placeholder="Contraseña" name="txtClave" id="txtClave">
                         <button type="submit">Ingresar</button>
                     </form>
                     <a href="/recuperar-clave">Recuperar clave</a><br>
