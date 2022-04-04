@@ -254,13 +254,13 @@
                     <div class="row">
                         <div class="col-lg-12 text-center">
                             <div class="ti_pic">
-                                <img src="{{ asset('web/img/testimonial/testimonial-1.jpg') }}" alt="">
+                                <img src="{{ asset('web/img/testimonial/testimonial-3.jpg') }}" alt="">
                             </div>
                             <div class="ti_text">
                                 <p>Excelentes clases y muy divertidas!! nada mejor que <br />
                                    entrenar desde casa y respetando el ritmo al que vayas <br />
                                    Súper recomendada, una genia!!! :)</p>
-                                <h5>Amadí</h5>
+                                <h5>Amadí Hinostroza</h5>
                                 <div class="tt-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -276,7 +276,7 @@
                     <div class="row">
                         <div class="col-lg-12 text-center">
                             <div class="ti_pic">
-                                <img src="{{ asset('web/img/testimonial/testimonial-2.jpg') }}" alt="">
+                                <img src="{{ asset('web/img/testimonial/testimonial-4.jpg') }}" alt="">
                             </div>
                             <div class="ti_text">
                                 <p>Excelente profe que se enfoca en lo que vos buscas y lo que te sirve, <br />

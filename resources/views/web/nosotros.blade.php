@@ -1,24 +1,24 @@
 @extends('web.plantilla')
 @section('contenido')
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('web/img/breadcrumb-bg2.jpg') }}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb-text">
-                        <h2>Sobre Nosotros</h2>
-                        <div class="bt-option">
-                            <a href="./index.html">Inicio</a>
-                            <span>Nosotros</span>
-                        </div>
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="{{ asset('web/img/breadcrumb-bg2.jpg') }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb-text">
+                    <h2>Sobre Nosotros</h2>
+                    <div class="bt-option">
+                        <a href="./index.html">Inicio</a>
+                        <span>Nosotros</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Breadcrumb Section End -->
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
 
-   <!-- ChoseUs Section Begin -->
+<!-- ChoseUs Section Begin -->
 <section class="choseus-section spad">
     <div class="container">
         <div class="row">
@@ -71,52 +71,53 @@
 </section>
 <!-- ChoseUs Section End -->
 
-    <!-- About US Section Begin -->
-    <section class="choseus-section spad">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 p-0">
-                    <div class="about-video set-bg" data-setbg="{{ asset('web/img/about-us.jpg') }}">
-                        <a href="https://www.youtube.com/watch?v=EzKkl64rRbM" class="play-btn video-popup"><i
-                                class="fa fa-caret-right"></i></a>
-                    </div>
+<!-- About US Section Begin -->
+<section class="choseus-section spad">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 p-0">
+                <div class="about-video set-bg" data-setbg="{{ asset('web/img/about-us.jpg') }}">
+                    <a href="https://www.youtube.com/watch?v=EzKkl64rRbM" class="play-btn video-popup"><i class="fa fa-caret-right"></i></a>
                 </div>
-                <div class="col-lg-6 p-0">
-                    <div class="about-text">
-                        <div class="section-title">
-                            <span>Sobre nosotros</span>
-                            <h2>What we have done</h2>
-                        </div>
-                        <div class="at-desc">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                                viverra maecenas accumsan lacus vel facilisis. aliquip ex ea commodo consequat sit amet,
-                                consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                        </div>                        
+            </div>
+            <div class="col-lg-6 p-0">
+                <div class="about-text">
+                    <div class="section-title">
+                        <span>Sobre nosotros</span>
+                        <h2>Heaven Fit</h2>
+                    </div>
+                    <div class="at-desc">
+                        <p>Misión: cambiar la perspectiva del deporte. Disfrutar el proceso<br><br>
+                           Visión: lograr los objetivos deportivos de las personas <br><br>
+                           Valores: liderazgo, calidad, pasión, integridad, honestidad, empatía, 
+                           optimismo, paciencia, perseverancia, puntualidad, superación, servicial, 
+                           voluntad, respeto, esfuerzo y gratitud.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- About US Section End -->
+    </div>
+</section>
+<!-- About US Section End -->
 
-    <!-- Banner Section Begin -->
-    <section class="banner-section set-bg" data-setbg="{{ asset('web/img/banner-bg.jpg') }}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="bs-text">
-                        <h2>registration now to get more deals</h2>
-                        <div class="bt-tips">Where health, beauty and fitness meet.</div>
-                        <a href="#" class="primary-btn  btn-normal">Appointment</a>
-                    </div>
+<!-- Banner Section Begin -->
+<section class="banner-section set-bg" data-setbg="{{ asset('web/img/banner-bg.jpg') }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="bs-text">
+                    <h2>Entrenamiento empresarial</h2>
+                    <div class="bt-tips">Contactanos</div>
+                    <a href="/contacto" class="primary-btn  btn-normal">Contacto</a>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Banner Section End -->
+    </div>
+</section>
+<!-- Banner Section End -->
 
-   
 
-   
+
+
 @endsection
