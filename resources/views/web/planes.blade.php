@@ -39,7 +39,15 @@
                               <ul>
                                   <li> {{$plan->descripcion}} </li>  
                               </ul>
-                              <a href="#" class="primary-btn pricing-btn">Reservar</a>
+                              @if($plan->fk_idtipo_plan == 1)
+                                    <a href="/contratar-invididual" class="primary-btn pricing-btn">Reservar</a>
+                              @endif
+                              @if($plan->fk_idtipo_plan == 2)
+                                    <a href="/contratar-grupal" class="primary-btn pricing-btn">Reservar</a>
+                              @endif
+                              @if($plan->fk_idtipo_plan == 3)
+                                    <a href="/contratar-invididual-multiple" class="primary-btn pricing-btn">Reservar</a>
+                              @endif
                         </div>                        
                   </div>
                   @endforeach
