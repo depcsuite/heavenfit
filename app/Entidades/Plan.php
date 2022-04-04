@@ -14,7 +14,8 @@ Class Plan extends Model{
             'nombre',
             'descripcion',
             'precio',
-            'precioDolar'
+            'precioDolar',
+            'fk_idtipo_plan'
       ];
   
       protected $hidden = [
@@ -27,6 +28,7 @@ Class Plan extends Model{
             $this->descripcion = $request->input('txtDescripcion');
             $this->precio = $request->input('txtPrecio');
             $this->precioDolar = $request->input('txtPrecioDolar');
+            $this->fk_idtipo_plan = $request->input('lstTipoPlan');
           }
 
       public function obtenerTodos() {
@@ -35,7 +37,8 @@ Class Plan extends Model{
                   A.nombre,
                   A.descripcion,
                   A.precio,
-                  A.precioDolar
+                  A.precioDolar,
+                  A.fk_idtipo_plan
                   FROM planes A
                   ORDER BY A.precio";
             $lstRetorno = DB::select($sql);
@@ -65,7 +68,8 @@ Class Plan extends Model{
                         nombre,
                         descripcion,
                         precio,
-                        precioDolar
+                        precioDolar,
+                        fk_idtipo_plan
                         FROM planes 
                         WHERE idplan=$idplan";
             $lstRetorno = DB::select($sql);
@@ -76,6 +80,7 @@ Class Plan extends Model{
                   $this->descripcion = $lstRetorno[0]->descripcion;
                   $this->precio = $lstRetorno[0]->precio;
                   $this->precioDolar = $lstRetorno[0]->precioDolar;
+                  $this->fk_idtipo_plan = $lstRetorno[0]->fk_idtipo_plan;
                   return $this;
             }
             return null;
@@ -86,13 +91,15 @@ Class Plan extends Model{
                         nombre=?,
                         descripcion=?,
                         precio=?,
-                        precioDolar=?
+                        precioDolar=?,
+                        fk_idtipo_plan
                   WHERE idplan=?";
               $affected = DB::update($sql, [
                 $this->nombre,
                 $this->descripcion,
                 $this->precio,
                 $this->precioDolar,
+                $this->fk_idtipo_plan,
                 $this->idplan
               ]);
       }
@@ -107,8 +114,9 @@ Class Plan extends Model{
                         nombre,
                         descripcion,
                         precio,
-                        precioDolar
-                        ) VALUES (?, ?, ?, ?);";
+                        precioDolar,
+                        fk_idtipo_plan
+                        ) VALUES (?, ?, ?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->nombre,
                   $this->descripcion,
