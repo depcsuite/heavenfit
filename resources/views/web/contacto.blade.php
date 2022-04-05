@@ -48,7 +48,7 @@
                     <div class="leave-comment">
                         <form action="" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
-                            <input type="text" placeholder="Nombre" name="txtNombre" required>
+                            <input type="text" placeholder="Nombre y Apellido" name="txtNombre" required>
                             <input type="text" placeholder="Email" name="txtEmail" required>
                             <input type="text" placeholder="Asunto" name="txtAsunto" required>
                             <textarea placeholder="Mensaje" name="txtMensaje" required></textarea>

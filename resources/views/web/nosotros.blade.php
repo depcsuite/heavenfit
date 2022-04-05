@@ -117,7 +117,47 @@
 </section>
 <!-- Banner Section End -->
 
-
-
+<!-- Contact Section Begin -->
+<section class="contact-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title contact-title">
+                        <h2>Sumate a nuestro equipo!</h2>
+                    </div>
+                    <div class="leave-comment">
+                        <form action="" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
+                            <input type="text" placeholder="Nombre y Apellido" name="txtNombre" required>
+                            <input type="text" placeholder="Experiencia" name="txtExperiencia" required>
+                            <input type="text" placeholder="Correo" name="txtCorreo" required>
+                            <input type="text" placeholder="Telefono" name="txtTelefono" required>
+                            <input type="text" placeholder="Edad" name="txtEdad" required>
+                            <select name="lstSexo" id="lstSexo" class="custom-select my-2 mx-0">
+                                <option selected disabled>Sexo</option>
+                                <option  value="femenino">Femenino</option>
+                                <option  value="masculino">Masculino</option>     
+                            </select>      
+                            <select name="lstDisponibilidad" id="lstDisponibilidad" class="custom-select my-2 mx-0">
+                                <option selected disabled>Disponibilidad</option>
+                                <option  value="mañana">Mañana</option>
+                                <option  value="tarde">Tarde</option>  
+                                <option  value="mañana y tarde">Mañana y Tarde</option>
+                            </select>
+                            <label for="" class="form-label text-light">Cargar CV:</label>
+                            <input type="file" name="txtCv" class="form-control">
+                            <button type="submit" name="btnEnviar">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="set-bg" data-setbg="{{ asset('web/img/about-us.jpg') }}">
+                        <a href="" class="play-btn video-popup"><i class="fa fa-caret-right"></i></a>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </section>
+    <!-- Contact Section End -->
 
 @endsection
