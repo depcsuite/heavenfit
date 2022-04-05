@@ -9,10 +9,14 @@ use Session;
 
 class ControladorWebHome extends Controller
 {
+    
     public function index()
     {
+       
+
         $plan = new Plan();
         $array_planes = $plan->obtenerSeleccionados();
+
         return view("web.index", compact('array_planes'));
     }
 }

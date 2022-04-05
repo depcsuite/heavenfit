@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('web/css/magnific-popup.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/style.css') }}" type="text/css">
+
 </head>
 
 <body>
@@ -84,19 +85,24 @@
                 <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
-                            <li class="active"><a href="/">Inicio</a></li>
-                            <li><a href="/nosotros">Nosotros</a></li>
-                            <li><a href="/profesores">Profesores</a></li>
-                            <li><a href="/clases">Clases</a></li>
-                            <li><a href="/planes">Planes</a></li>
-                            <li><a href="/contacto">Contacto</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/" ? 'class="active"' : ""; ?>> <a  href="/"> Inicio</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/nosotros" ? 'class="active"' : ""; ?>> <a  href="/nosotros">  Nosotros</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/profesores" ? 'class="active"' : ""; ?>> <a  href="/profesores"> Profesores</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/clases" ? 'class="active"' : ""; ?>> <a  href="/clases">Calendario</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/planes" ? 'class="active"' : ""; ?>> <a  href="/planes">Planes</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/contacto" ? 'class="active"' : ""; ?>> <a  href="/contacto">Contacto</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="top-option">                        
-                        <div class="to-social">                            
-                            <a href="/login">Ingresar</a>
+                        <div class="to-social">   
+                            @if(Session::get('usuario_id') > 0)
+                                <a href="/perfil-usuario">Mi cuenta</a>
+                                <a href="/logout">Cerrar sesión</a>
+                            @else
+                                <a href="/login">Ingresar</a>
+                            @endif     
                             <a href="#"><i class="fa fa-whatsapp"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
                         </div>
