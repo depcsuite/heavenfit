@@ -2500,24 +2500,42 @@ ol {
 	background: transparent;
 	margin-bottom: 20px;
 }
-
-.leave-comment form input::-webkit-input-placeholder {
+.select{
+	font-size: 13px;
+	color: #c4c4c4;
+	width: 100%;
+	height: 46px;
+	border: 1px solid #363636;
+	padding-left: 20px;
+	padding-right: 5px;
+	background: transparent;
+	margin-bottom: 20px;
+}
+option{
+	background-color: #363636;
+	color: #c4c4c4;
+}
+label{
 	color: #c4c4c4;
 }
 
-.leave-comment form input::-moz-placeholder {
+.leave-comment form label input::-webkit-input-placeholder {
 	color: #c4c4c4;
 }
 
-.leave-comment form input:-ms-input-placeholder {
+.leave-comment form label input::-moz-placeholder {
 	color: #c4c4c4;
 }
 
-.leave-comment form input::-ms-input-placeholder {
+.leave-comment form label input:-ms-input-placeholder {
 	color: #c4c4c4;
 }
 
-.leave-comment form input::placeholder {
+.leave-comment form label input::-ms-input-placeholder {
+	color: #c4c4c4;
+}
+
+.leave-comment form label input::placeholder {
 	color: #c4c4c4;
 }
 
@@ -2647,6 +2665,20 @@ ol {
 .map iframe {
 	width: 100%;
 }
+
+/*---------------------
+  Opciones de pago
+-----------------------*/
+
+.gris{
+	-webkit-filter: grayscale(100%);
+    	filter: grayscale(100%);
+}
+.gris:hover{
+	-webkit-filter: grayscale(0%);
+    	filter: grayscale(0%);
+}
+
 
 /*---------------------
   404 Section

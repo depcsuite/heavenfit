@@ -17,7 +17,7 @@ class ControladorWebRegistrarse extends Controller
         $cliente->nombre = $request->input("txtNombre");
         $cliente->correo = $request->input("txtCorreo");
         $cliente->telefono = $request->input("txtTelefono");        
-        $cliente->clave = $request->input("txtclave");
+        $cliente->clave = $request->input("txtClave");
         $cliente->insertar();
         $mensaje = "Registro completado";
         return view("web.login", compact('mensaje'));

@@ -85,24 +85,36 @@
                 <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
-                            <li <?php echo $_SERVER["REQUEST_URI"] == "/" ? 'class="active"' : ""; ?>> <a  href="/"> Inicio</a></li>
-                            <li <?php echo $_SERVER["REQUEST_URI"] == "/nosotros" ? 'class="active"' : ""; ?>> <a  href="/nosotros">  Nosotros</a></li>
-                            <li <?php echo $_SERVER["REQUEST_URI"] == "/profesores" ? 'class="active"' : ""; ?>> <a  href="/profesores"> Profesores</a></li>
-                            <li <?php echo $_SERVER["REQUEST_URI"] == "/clases" ? 'class="active"' : ""; ?>> <a  href="/clases">Calendario</a></li>
-                            <li <?php echo $_SERVER["REQUEST_URI"] == "/planes" ? 'class="active"' : ""; ?>> <a  href="/planes">Planes</a></li>
-                            <li <?php echo $_SERVER["REQUEST_URI"] == "/contacto" ? 'class="active"' : ""; ?>> <a  href="/contacto">Contacto</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/" ? 'class="active"' : ""; ?>> <a href="/"> Inicio</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/nosotros" ? 'class="active"' : ""; ?>> <a href="/nosotros"> Nosotros</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/profesores" ? 'class="active"' : ""; ?>> <a href="/profesores"> Profesores</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/clases" ? 'class="active"' : ""; ?>> <a href="/clases">Calendario</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/planes" ? 'class="active"' : ""; ?>> <a href="/planes">Planes</a></li>
+                            <li <?php echo $_SERVER["REQUEST_URI"] == "/contacto" ? 'class="active"' : ""; ?>> <a href="/contacto">Contacto</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
-                    <div class="top-option">                        
-                        <div class="to-social">   
+                    <div class="top-option">
+                        <div class="to-social">
                             @if(Session::get('usuario_id') > 0)
-                                <a href="/perfil-usuario">Mi cuenta</a>
-                                <a href="/logout">Cerrar sesión</a>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                    Mi cuenta <span class="caret"></span>
+                                </button>
+
+                                <ul class="dropdown-menu bg-secondary" role="menu">
+                                    <li><a href="#">Ficha cliente</a></li>
+                                    <li><a href="#">Reservas</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Cerrar sesion</a></li>
+                                </ul>
+                            </div>
+                            <!--    <a href="/perfil-usuario">Mi cuenta</a>
+                                <a href="/logout">Cerrar sesión</a> -->
                             @else
-                                <a href="/login">Ingresar</a>
-                            @endif     
+                            <a href="/login">Ingresar</a>
+                            @endif
                             <a href="#"><i class="fa fa-whatsapp"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
                         </div>
@@ -119,27 +131,27 @@
     @yield('contenido')
 
     <!-- Get In Touch Section Begin -->
-<div class="gettouch-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-2">
-                <div class="gt-text">
-                    <i class="fa fa-mobile"></i>
-                    <ul>
-                        <li>+54 2478 471095</li>
-                    </ul>
+    <div class="gettouch-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 offset-2">
+                    <div class="gt-text">
+                        <i class="fa fa-mobile"></i>
+                        <ul>
+                            <li>+54 2478 471095</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="gt-text email">
-                    <i class="fa fa-envelope"></i>
-                    <p>lourdesyorio51@gmail.com</p>
+                <div class="col-md-4">
+                    <div class="gt-text email">
+                        <i class="fa fa-envelope"></i>
+                        <p>lourdesyorio51@gmail.com</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Get In Touch Section End -->
+    <!-- Get In Touch Section End -->
 
     <!-- Footer Section Begin -->
     <section class="footer-section">
@@ -183,14 +195,18 @@
                         </ul>
                     </div>
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="copyright-text">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>
+                                document.write(new Date().getFullYear());
+                            </script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
                     </div>
                 </div>
             </div>
@@ -210,6 +226,7 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
+    <script src="{{ asset('web/js/popper.min.js') }}"></script>
     <script src="{{ asset('web/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('web/js/jquery.magnific-popup.min.js') }}"></script>

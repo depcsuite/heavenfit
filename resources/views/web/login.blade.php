@@ -5,7 +5,7 @@
 <section class="contact-section spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 offset-3 pt-5">
+            <div class="col-lg-6 offset-3 pt-5 spad">
                 <div class="leave-comment">
                     @if(isset($mensaje))
                     <div class="alert alert-primary" role="alert">
