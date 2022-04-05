@@ -32,8 +32,9 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/contacto/mensaje-enviado', 'ControladorWebMensajeEnviado@index');
     Route::get('/perfil-usuario', 'ControladorWebPerfilUsuario@index');
     Route::get('/logout', 'ControladorWebLogin@logout');
-    Route::get('/contratar-grupal', 'ControladorWebContratarGrupal@comprar');
-    
+    Route::get('/contratar-individual', 'ControladorWebContratarIndividual@index');
+    Route::get('/contratar-individual-multiple', 'ControladorWebContratarIndividualMultiple@index');
+    Route::get('/contratar-grupal', 'ControladorWebContratarGrupal@index');
 
     Route::get('/admin', 'ControladorHome@index');
     
