@@ -16,8 +16,9 @@ use MercadoPago\SDK;
 class ControladorWebContratarGrupal extends Controller
 {
       public function index($idPlan){
- 
+        if (Session::get("usuario_id")) {
           return view("web.opciones-pago", compact('idPlan'));
+        }
       }
 
     public function comprar(Request $request)

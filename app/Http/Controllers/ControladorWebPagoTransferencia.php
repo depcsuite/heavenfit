@@ -19,7 +19,7 @@ class ControladorWebPagoTransferencia extends Controller
       $plan = new Plan();
       $plan->obtenerPorId($idPlan);
       return view("web.pago-transferencia", compact('idPlan', 'plan'));
-      }
+      }else
     }
 
     public function guardar($idPlan, Request $request){
