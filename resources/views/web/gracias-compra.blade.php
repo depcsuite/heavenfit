@@ -11,23 +11,13 @@
                         <a href="../">Home</a>
                         <span>Planes</span>
                   </div>
+            </div>
+            <div class="row spad">
+                  <div class="col-12 text-white">
+                        <h3>Vamos a confirmar que el pago haya llegado correctamente y le va a estar llegando un correo con los links de acceso para las clases grupales</h3>
                   </div>
             </div>
       </div>
       </div>
 </section>
 <!-- Breadcrumb Section End -->
-
-      <!-- ChoseUs Section Begin -->
-<section class="choseus-section spad">
-      <div class="container">
-            <div class="row">
-                  <div class="col-lg-12">
-                        <div class="section-title">
-                        <h2>Gracias por tu compra!</h2>
-                        </div>
-                  </div>
-            </div>
-      </div>
-</section>
-<!-- ChoseUs Section End -->

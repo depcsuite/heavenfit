@@ -12,11 +12,14 @@ use Session;
 
 class ControladorWebPagoTransferencia extends Controller
 {
+
     public function index($idPlan)
     {
+      if (Session::get("usuario_id")) {
       $plan = new Plan();
       $plan->obtenerPorId($idPlan);
       return view("web.pago-transferencia", compact('idPlan', 'plan'));
+      }
     }
 
     public function guardar($idPlan, Request $request){
