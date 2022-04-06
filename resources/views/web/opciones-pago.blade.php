@@ -14,7 +14,7 @@
                         <div class="row">
                               <div class="col-12 center">
                                     <div class="card mx-auto" style="width: 18rem;">
-                                         <a href=""> <img src="{{ asset('web/img/pago/transferencia-bancaria.jpg') }}" class="card-img-top gris" alt=""> </a>
+                                         <a href="/pago-transferencia/{{ $idPlan }}"> <img src="{{ asset('web/img/pago/transferencia-bancaria.jpg') }}" class="card-img-top gris" alt=""> </a>
                                     </div>
                               </div>
                         </div>

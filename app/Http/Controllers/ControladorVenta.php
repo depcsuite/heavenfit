@@ -66,6 +66,10 @@ class ControladorVenta extends Controller{
                     $msg["ESTADO"] = MSG_ERROR;
                     $msg["MSG"] = "Complete todos los datos";
                 } else {
+                    //Si el estado anterior (BBDD) es pendiente y 
+                    //ahora ($request->input("lstEstado")) cambia a guardado 
+                    //que dispare el correo con datos de acceso
+                    
                     if ($_POST["id"] > 0) {
                         //Es actualizacion
                         $entidad->guardar();
@@ -79,6 +83,7 @@ class ControladorVenta extends Controller{
                         $msg["ESTADO"] = MSG_SUCCESS;
                         $msg["MSG"] = OKINSERT;
                     }
+                    
                     
                     $_POST["id"] = $entidad->idventa;
                     return view('venta.venta-listar', compact('titulo', 'msg'));
@@ -115,7 +120,6 @@ class ControladorVenta extends Controller{
           $inicio = $request['start'];
           $registros_por_pagina = $request['length'];
   
-  
           for ($i = $inicio; $i < count($aVentas) && $cont < $registros_por_pagina; $i++) {
               $row = array();
               $row[] = '<a class="btn btn-secondary" href="/admin/venta/'.$aVentas[$i]->idventa .'"><i class="fa-solid fa-pencil"></i></a>';
@@ -123,7 +127,12 @@ class ControladorVenta extends Controller{
               $row[] =  '<a href="/admin/cliente/'.$aVentas[$i]->fk_idcliente.'">'.$aVentas[$i]->cliente.'</a>';
               $row[] = '$' . $aVentas[$i]->precio;
               $row[] = $aVentas[$i]->estado_pago;
-              $row[] = date_format(date_create($aVentas[$i]->fecha_vencimiento),"d/m/Y"  );
+          
+              if($aVentas[$i]->fecha_vencimiento){
+                $row[] = date_format(date_create($aVentas[$i]->fecha_vencimiento),"d/m/Y"  );
+              } else {
+                  $row[] = "";
+              }
               $cont++;
               $data[] = $row;
           }

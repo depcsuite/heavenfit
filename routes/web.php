@@ -37,8 +37,9 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/logout', 'ControladorWebLogin@logout');
     Route::get('/contratar-individual', 'ControladorWebContratarIndividual@index');
     Route::get('/contratar-individual-multiple', 'ControladorWebContratarIndividualMultiple@index');
-    Route::get('/contratar-grupal', 'ControladorWebContratarGrupal@index');
-    Route::get('/opciones-pago', 'ControladorWebOpcionesPago@index');
+    Route::get('/contratar-grupal/{id}', 'ControladorWebContratarGrupal@index');
+    Route::get('/pago-transferencia/{id}', 'ControladorWebPagoTransferencia@index');
+    Route::post('/pago-transferencia/{id}', 'ControladorWebPagoTransferencia@guardar');
 
     Route::get('/admin', 'ControladorHome@index');
     

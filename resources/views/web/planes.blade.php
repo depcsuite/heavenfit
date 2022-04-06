@@ -43,7 +43,7 @@
                                     <a href="/contratar-invididual" class="primary-btn pricing-btn">Reservar</a>
                               @endif
                               @if($plan->fk_idtipo_plan == 2)
-                                    <a href="/contratar-grupal" class="primary-btn pricing-btn">Reservar</a>
+                                    <a href="/contratar-grupal/<?php echo $plan->idplan; ?>" class="primary-btn pricing-btn">Reservar</a>
                               @endif
                               @if($plan->fk_idtipo_plan == 3)
                                     <a href="/contratar-invididual-multiple" class="primary-btn pricing-btn">Reservar</a>
