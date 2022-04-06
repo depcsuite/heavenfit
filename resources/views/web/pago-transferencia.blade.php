@@ -20,19 +20,19 @@
                               </tr>
                               <tr>
                                     <th>CBU:</th>
-                                    <td></td>
+                                    <td>2850584840095163463928</td>
                               </tr>
                               <tr>
                                     <th>Alias:</th>
-                                    <td></td>
+                                    <td>GANCHO.SUR.JARRA</td>
                               </tr>
                               <tr>
                                     <th>Nombre:</th>
-                                    <td></td>
+                                    <td>Lourdes Yorio</td>
                               </tr>
                               <tr>
                                     <th>CUIT:</th>
-                                    <td></td>
+                                    <td>27425402000</td>
                               </tr>
                               <tr>
                                     <th>Importe:</th>
@@ -55,11 +55,11 @@
                               </tr>
                               <tr>
                                     <th>Nombre:</th>
-                                    <td></td>
+                                    <td>Lourdes Yorio</td>
                               </tr>
                               <tr>
                                     <th>CUIT:</th>
-                                    <td></td>
+                                    <td>27425402000</td>
                               </tr>
                               <tr>
                                     <th>Importe:</th>

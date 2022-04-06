@@ -40,6 +40,7 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/contratar-grupal/{id}', 'ControladorWebContratarGrupal@index');
     Route::get('/pago-transferencia/{id}', 'ControladorWebPagoTransferencia@index');
     Route::post('/pago-transferencia/{id}', 'ControladorWebPagoTransferencia@guardar');
+    Route::get('/gracias-compra', 'ControladorWebGraciasCompra@index');
 
     Route::get('/admin', 'ControladorHome@index');
     
