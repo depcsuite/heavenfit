@@ -24,7 +24,7 @@
             <div class="row">
                   <div class="col-lg-12">
                         <div class="section-title">
-                        <span>Gracias por tu contacto!</span>
+                        <span>Gracias por tu postulación!</span>
                         </div>
                   </div>
             </div>
