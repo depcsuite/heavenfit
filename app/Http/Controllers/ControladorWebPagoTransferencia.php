@@ -38,9 +38,23 @@ class ControladorWebPagoTransferencia extends Controller
       $venta->fecha_vencimiento = date("Y-m-d", strtotime("+1 month", strtotime(date("Y-m-d"))));
       $venta->fk_idmedio = 1;
       $venta->fk_idestado_pago = 1;
-      $venta->insertar();
 
-      return view("web.gracias-compra");
+      if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {//Se adjunta imagen
+        $nombreArchivo = $_FILES["archivo"]["name"];
+      
+        $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+     //   print_r($extension);exit;
+        if($extension == "png" || $extension == "gif" || $extension == "jpeg" || $extension == "jpg"){
+            $nombre = date("Ymdhmsi") . ".$extension";
+            $archivo = $_FILES["archivo"]["tmp_name"];
+            move_uploaded_file($archivo, env('APP_PATH') . "/public/files/$nombre"); //guardaelarchivo
+            $venta->archivo = $nombre;
+        } else{
+            exit;
+        }
+      }
+      $venta->insertar();
+      return redirect ("gracias-compra");
     }
 
 }

@@ -1,5 +1,6 @@
 @extends('web.plantilla')
 @section('contenido')
+<!-- Breadcrumb Section Begin -->
 <section class="contact-section spad">
       <div class="container">
             <div class="row">
@@ -16,3 +17,5 @@
             </div>
       </div>
 </section>
+
+<!-- Breadcrumb Section End -->

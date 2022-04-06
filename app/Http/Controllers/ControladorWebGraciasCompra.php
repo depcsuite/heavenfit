@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Entidades\Sistema\Patente;
+use App\Entidades\Sistema\Usuario;
+use Session;
+
 class ControladorWebGraciasCompra extends Controller
 {
     public function index()
     {
-        return view("web.gracias-compra");
+            return view("web.gracias-compra");
     }
 }
