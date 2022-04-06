@@ -19,6 +19,6 @@ class ControladorWebNosotros extends Controller
         $postulacion->cargarDesdeRequest($request);
         $postulacion->insertar();
 
-        return view("web.nosotros"); //Retorna vista para confirmar el envio
+        return view("web.postulacion"); //Retorna vista para confirmar el envio
     }
 }
