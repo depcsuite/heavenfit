@@ -28,6 +28,7 @@ class Cliente extends Model
         'nutricion',
         'fk_idpais',
         'foto',
+        'fk_idestado',
         'clave',
     ];
 
@@ -42,6 +43,7 @@ class Cliente extends Model
         $this->edad = $request->input('txtEdad');
         $this->correo = $request->input('txtCorreo');
         $this->telefono = $request->input('txtTelefono');
+        $this->emergencias = $request->input('txtEmergencias');
         $this->peso = $request->input('txtPeso');
         $this->altura = $request->input('txtAltura');
         $this->deportes = $request->input('txtDeportes');
@@ -54,6 +56,7 @@ class Cliente extends Model
         $this->nutricion = $request->input('txtNutricion');
         $this->fk_idpais = $request->input('lstNacionalidad');
         $this->foto = $request->input('txtFoto');
+        $this->fk_idestado = $request->input('lstEstado');
         $this->clave = $request->input('txtClave');
     }
 
@@ -65,6 +68,7 @@ class Cliente extends Model
                   A.edad,
                   A.correo,
                   A.telefono,
+                  A.emergencias,
                   A.peso,
                   A.altura,
                   A.deportes,
@@ -77,6 +81,7 @@ class Cliente extends Model
                   A.nutricion,
                   A.fk_idpais,
                   A.foto,
+                  A.fk_idestado,
                   A.clave
                 FROM clientes A
                 ORDER BY A.nombre";
@@ -92,6 +97,7 @@ class Cliente extends Model
                 edad,
                 correo,
                 telefono,
+                emergencias,
                 peso,
                 altura,
                 deportes,
@@ -104,6 +110,7 @@ class Cliente extends Model
                 nutricion,
                 fk_idpais,
                 foto,
+                fk_idestado,
                 clave
               FROM clientes
               WHERE idcliente=$idcliente";
@@ -115,6 +122,7 @@ class Cliente extends Model
             $this->edad = $lstRetorno[0]->edad;
             $this->correo = $lstRetorno[0]->correo;
             $this->telefono = $lstRetorno[0]->telefono;
+            $this->emergencias = $lstRetorno[0]->emergencias;
             $this->peso = $lstRetorno[0]->peso;
             $this->altura = $lstRetorno[0]->altura;
             $this->deportes = $lstRetorno[0]->deportes;
@@ -127,6 +135,7 @@ class Cliente extends Model
             $this->nutricion = $lstRetorno[0]->nutricion;
             $this->fk_idpais = $lstRetorno[0]->fk_idpais;
             $this->foto = $lstRetorno[0]->foto;
+            $this->fk_idestado = $lstRetorno[0]->fk_idestado;
             $this->clave = $lstRetorno[0]->clave;
             return $this;
         }
@@ -140,6 +149,7 @@ class Cliente extends Model
             edad=?,
             correo=?,
             telefono=?,
+            emergencias=?,
             peso=?,
             altura=?,
             deportes=?,
@@ -152,6 +162,7 @@ class Cliente extends Model
             nutricion=?,
             fk_idpais=?,
             foto=?,
+            fk_idestado=?,
             clave=?
             WHERE idcliente=?";
         $affected = DB::update($sql, [
@@ -159,6 +170,7 @@ class Cliente extends Model
             $this->edad,
             $this->correo,
             $this->telefono,
+            $this->emergencias,
             $this->peso,
             $this->altura,
             $this->deportes,
@@ -171,6 +183,7 @@ class Cliente extends Model
             $this->nutricion,
             $this->fk_idpais,
             $this->foto,
+            $this->fk_idestado,
             password_hash($this->clave, PASSWORD_DEFAULT),
             $this->idcliente,
         ]);
@@ -189,6 +202,7 @@ class Cliente extends Model
               edad,
               correo,
               telefono,
+              emergencias,
               peso,
               altura,
               deportes,
@@ -201,13 +215,15 @@ class Cliente extends Model
               nutricion,
               fk_idpais,
               foto,
+              fk_idestado,
               clave
-              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         $result = DB::insert($sql, [
             $this->nombre,
             $this->edad,
             $this->correo,
             $this->telefono,
+            $this->emergencias,
             $this->peso,
             $this->altura,
             $this->deportes,
@@ -220,6 +236,7 @@ class Cliente extends Model
             $this->nutricion,
             $this->fk_idpais,
             $this->foto,
+            $this->fk_idestado,
             password_hash($this->clave, PASSWORD_DEFAULT),
         ]);
         return $this->idcliente = DB::getPdo()->lastInsertId();

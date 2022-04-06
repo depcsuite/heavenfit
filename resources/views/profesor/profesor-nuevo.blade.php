@@ -104,6 +104,10 @@ if (isset($msg)) {
                   <label for="txtFoto">Foto: </label>
                   <input type="file" name="txtFoto" id="txtFoto" class="form-control" value="{{ $profesor->foto }}">
             </div>
+            <div class="col-12 col-sm-6">
+                  <label for="txtTelefono">Correo: *</label>
+                  <input type="text" name="txtCorreo" id="txtCorreo" class="form-control" value="{{ $profesor->correo }}" required>
+            </div>
         </div>
     </form>
     <div class="modal fade" id="mdlEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
