@@ -19,7 +19,8 @@ class Venta extends Model
             'cantidad',
             'fecha_vencimiento',
             'fk_idmedio',
-            'fk_idestado_pago'
+            'fk_idestado_pago',
+            'archivo'
       ];
 
       protected $hidden = [];
@@ -35,6 +36,7 @@ class Venta extends Model
             $this->fecha_vencimiento = $request->input('txtFechaVencimiento');
             $this->fk_idmedio = $request->input('lstMedio');
             $this->fk_idestado_pago = $request->input('lstEstado_pago');
+            $this->archivo = $request->input('archivo');
       }
 
       public function obtenerTodos()
@@ -48,7 +50,8 @@ class Venta extends Model
                   cantidad,
                   fecha_vencimiento,
                   fk_idmedio,
-                  fk_idestado_pago                
+                  fk_idestado_pago,
+                  archivo              
                 FROM ventas  ORDER BY fecha";
             $lstRetorno = DB::select($sql);
             return $lstRetorno;
@@ -65,7 +68,8 @@ class Venta extends Model
                   cantidad,
                   fecha_vencimiento,
                   fk_idmedio,
-                  fk_idestado_pago
+                  fk_idestado_pago,
+                  archivo
                 FROM ventas WHERE idventa = $idventa";
             $lstRetorno = DB::select($sql);
 
@@ -79,6 +83,7 @@ class Venta extends Model
                   $this->fecha_vencimiento = $lstRetorno[0]->fecha_vencimiento;
                   $this->fk_idmedio = $lstRetorno[0]->fk_idmedio;
                   $this->fk_idestado_pago = $lstRetorno[0]->fk_idestado_pago;
+                  $this->archivo = $lstRetorno[0]->archivo;
                   return $this;
             }
             return null;
@@ -95,7 +100,8 @@ class Venta extends Model
                   cantidad,
                   fecha_vencimiento,
                   fk_idmedio,
-                  fk_idestado_pago
+                  fk_idestado_pago,
+                  archivo
                 FROM ventas WHERE fk_idcliente = $idcliente";
             $lstRetorno = DB::select($sql);
 
@@ -113,7 +119,8 @@ class Venta extends Model
                   cantidad,
                   fecha_vencimiento,
                   fk_idmedio,
-                  fk_idestado_pago
+                  fk_idestado_pago,
+                  archivo
                 FROM ventas WHERE fk_idplan = $idplan";
             $lstRetorno = DB::select($sql);
 
@@ -131,7 +138,8 @@ class Venta extends Model
                   cantidad,
                   fecha_vencimiento,
                   fk_idmedio,
-                  fk_idestado_pago
+                  fk_idestado_pago,
+                  archivo
                 FROM ventas WHERE fk_idmedio = $idmedio";
             $lstRetorno = DB::select($sql);
 
@@ -149,7 +157,8 @@ class Venta extends Model
                   cantidad,
                   fecha_vencimiento,
                   fk_idmedio,
-                  fk_idestado_pago
+                  fk_idestado_pago,
+                  archivo
                 FROM ventas WHERE fk_idestado_pago = $idestados_pagos";
             $lstRetorno = DB::select($sql);
 
@@ -168,7 +177,8 @@ class Venta extends Model
             cantidad=?,
             fecha_vencimiento=?,
             fk_idmedio=?,
-            fk_idestado_pago=?
+            fk_idestado_pago=?,
+            archivo=?
             WHERE idventa=?";
             $affected = DB::update($sql, [
                   $this->fecha,
@@ -179,6 +189,7 @@ class Venta extends Model
                   $this->fecha_vencimiento,
                   $this->fk_idmedio,
                   $this->fk_idestado_pago,
+                  $this->archivo,
                   $this->idventa
             ]);
       }
@@ -199,8 +210,9 @@ class Venta extends Model
                   cantidad,
                   fecha_vencimiento,
                   fk_idmedio,
-                  fk_idestado_pago
-              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+                  fk_idestado_pago,
+                  archivo
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->fecha,
                   $this->fk_idcliente,
@@ -210,6 +222,7 @@ class Venta extends Model
                   $this->fecha_vencimiento,
                   $this->fk_idmedio,
                   $this->fk_idestado_pago,
+                  $this->archivo,
             ]);
             return $this->idventa = DB::getPdo()->lastInsertId();
       }

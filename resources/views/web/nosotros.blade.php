@@ -127,7 +127,7 @@
                         <h2>Sumate a nuestro equipo!</h2>
                     </div>
                     <div class="leave-comment align-self-start">
-                        <form action="" method="POST">
+                        <form action="" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
                             <input type="text" placeholder="Nombre y Apellido" name="txtNombre" required>
                             <input type="text" placeholder="Experiencia" name="txtExperiencia" required>
@@ -146,7 +146,8 @@
                                 <option  value="mañana y tarde">Mañana y Tarde</option>
                             </select>
                             <label for="" class="form-label text-light">Cargar CV:</label>
-                            <input type="file" name="txtCv" class="form-control">
+                            <small class="text-light">(.PDF, .doc, .docx)</small>
+                            <input type="file" name="txtCv" class="form-control" accept=".doc, .docx, .pdf">
                             <button type="submit" name="btnEnviar">Enviar</button>
                         </form>
                     </div>
