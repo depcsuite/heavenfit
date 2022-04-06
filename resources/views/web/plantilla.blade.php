@@ -104,14 +104,13 @@
                                 </button>
 
                                 <ul class="dropdown-menu bg-secondary" role="menu">
-                                    <li><a href="#">Ficha cliente</a></li>
+                                    <li><a href="/perfil-usuario">Ficha cliente</a></li>
                                     <li><a href="#">Reservas</a></li>
+                                    <li><a href="/opciones-pago">Pagos</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Cerrar sesion</a></li>
+                                    <li><a href="/logout">Cerrar sesion</a></li>
                                 </ul>
                             </div>
-                            <!--    <a href="/perfil-usuario">Mi cuenta</a>
-                                <a href="/logout">Cerrar sesión</a> -->
                             @else
                             <a href="/login">Ingresar</a>
                             @endif
