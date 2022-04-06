@@ -73,7 +73,7 @@
 
 <!-- About US Section Begin -->
 <section class="choseus-section spad">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-lg-6 p-0">
                 <div class="about-video set-bg" data-setbg="{{ asset('web/img/about-us.jpg') }}">
@@ -117,15 +117,16 @@
 </section>
 <!-- Banner Section End -->
 
-<!-- Contact Section Begin -->
-<section class="contact-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="section-title contact-title">
+<section class="choseus-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="container">
+                    <div class="section-title">
+                        <span>Heaven Fit</span>
                         <h2>Sumate a nuestro equipo!</h2>
                     </div>
-                    <div class="leave-comment">
+                    <div class="leave-comment align-self-start">
                         <form action="" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
                             <input type="text" placeholder="Nombre y Apellido" name="txtNombre" required>
@@ -150,14 +151,13 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="set-bg" data-setbg="{{ asset('web/img/about-us.jpg') }}">
-                        <a href="" class="play-btn video-popup"><i class="fa fa-caret-right"></i></a>
-                    </div>
+            </div>
+            <div class="col-lg-6 p-0 align-self-center mt-5 pt-5">
+            <div class="breadcrumb-section set-bg" data-setbg="{{ asset('web/img/equipo2.jpg') }}">
+                    <a href="https://www.youtube.com/watch?v=EzKkl64rRbM" class="play-btn video-popup"><i class="fa fa-caret-right"></i></a>
                 </div>
-            </div>            
+            </div>
         </div>
-    </section>
-    <!-- Contact Section End -->
-
+    </div>
+</section>
 @endsection

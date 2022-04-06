@@ -69,6 +69,10 @@ if (isset($msg)) {
             <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" required value="{{ $cliente->telefono }}">
         </div>
         <div class="col-12 col-sm-6">
+            <label for="txtTelefono">Contacto de Emergencias: *</label>
+            <input type="text" name="txtEmergencias" id="txtEmergencias" class="form-control" required value="{{ $cliente->emergencias }}">
+        </div>
+        <div class="col-12 col-sm-6">
             <label for="txtPeso">Peso (kg): *</label>
             <input type="text" name="txtPeso" id="txtPeso" class="form-control" placeholder="Ej.: 56.5" required value="{{ $cliente->peso }}">
         </div>
@@ -130,8 +134,21 @@ if (isset($msg)) {
             <label for="txtClave">Clave: *</label>
             <input type="password" name="txtClave" id="txtClave" class="form-control" required>
         </div>
+
+        <div class="col-12 col-sm-6">
+        <label for="lstEstado">Estado: </label>
+            <select name="lstEstado" id="lstEstado" class="form-control">Estado
+            <option selected value=""></option>
+                @for ($i = 0; $i < count($array_estados); $i++)
+                    @if (isset($cliente) and $array_estados[$i]->idestado == $cliente->fk_idestado)
+                        <option selected value="{{ $array_estados[$i]->idestado }}">{{ $array_estados[$i]->descripcion }}</option>
+                    @else
+                        <option value="{{ $array_estados[$i]->idestado }}">{{ $array_estados[$i]->descripcion }}</option>
+                    @endif
+                @endfor
+            </select>
         </div>
-        
+            
     </form>
     <div class="modal fade" id="mdlEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">

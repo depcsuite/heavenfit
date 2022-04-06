@@ -8,6 +8,7 @@ use App\Entidades\Sistema\Usuario;
 use App\Entidades\Venta;
 use App\Entidades\Reserva;
 use App\Entidades\Pais;
+use App\Entidades\Estado;
 use Illuminate\Http\Request;
 
 
@@ -42,7 +43,9 @@ class ControladorCliente extends Controller
                 $cliente = new Cliente();
                 $pais = new Pais();
                 $array_nacionalidad = $pais->obtenerTodos();
-                return view("cliente.cliente-nuevo", compact('titulo', 'cliente', 'array_nacionalidad'));
+                $estado = new Estado();
+                $array_estados = $estado->obtenerTodos();
+                return view("cliente.cliente-nuevo", compact('titulo', 'cliente', 'array_nacionalidad','array_estados'));
             }
         } else {
             return redirect('admin/login');
@@ -90,7 +93,10 @@ class ControladorCliente extends Controller
         $pais = new Pais();
         $array_nacionalidad = $pais->obtenerTodos();    
 
-        return view('cliente.cliente-nuevo', compact('msg', 'cliente', 'titulo', 'array_nacionalidad')) . '?id=' . $cliente->idcliente;
+        $estado = new Estado();
+        $array_estados = $estado->obtenerTodos();
+        
+        return view('cliente.cliente-nuevo', compact('msg', 'cliente', 'titulo', 'array_nacionalidad', 'array_estados')) . '?id=' . $cliente->idcliente;
     }
 
      public function cargarGrilla()
@@ -140,8 +146,11 @@ class ControladorCliente extends Controller
 
                 $pais = new Pais();
                 $array_nacionalidad = $pais->obtenerTodos();
+                
+                $estado = new Estado();
+                $array_estados = $estado->obtenerTodos();
 
-                return view('cliente.cliente-nuevo', compact('cliente', 'titulo' ,'array_nacionalidad'));
+                return view('cliente.cliente-nuevo', compact('cliente', 'titulo' ,'array_nacionalidad', 'array_estados'));
             }
         } else {
             return redirect('admin/login');
