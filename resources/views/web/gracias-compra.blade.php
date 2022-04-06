@@ -1,15 +1,13 @@
 @extends('web.plantilla')
 @section('contenido')
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="{{ asset('web/img/breadcrumb-bg.jpg') }}">
+<section class="contact-section spad">
       <div class="container">
-      <div class="row">
-            <div class="col-lg-12 text-center">
-                  <div class="breadcrumb-text">
-                  <h2>Planes</h2>
-                  <div class="bt-option">
-                        <a href="../">Home</a>
-                        <span>Planes</span>
+            <div class="row">
+                  <div class="col-12">
+                        <div class="section-title h2 mt-5">
+                              <h2>Gracias por su compra!</h2>
+                        </div>
                   </div>
             </div>
             <div class="row spad">
@@ -18,6 +16,6 @@
                   </div>
             </div>
       </div>
-      </div>
 </section>
+
 <!-- Breadcrumb Section End -->
