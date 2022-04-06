@@ -19,7 +19,10 @@ class ControladorWebPagoTransferencia extends Controller
       $plan = new Plan();
       $plan->obtenerPorId($idPlan);
       return view("web.pago-transferencia", compact('idPlan', 'plan'));
-      }else
+      }else{
+        $mensaje = "Tiene que estar logueado para acceder";
+        return view("web.login", compact('mensaje'));
+      }
     }
 
     public function guardar($idPlan, Request $request){
