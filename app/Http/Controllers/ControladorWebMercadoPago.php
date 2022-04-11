@@ -82,7 +82,7 @@ class ControladorWebMercadoPago extends Controller
             }
         } else {
             $mensaje = "Tiene que estar logueado para acceder";
-            return view("web.login", compact('mensaje'));
+            return redirect("/login");
         }
     }
 
@@ -103,7 +103,7 @@ class ControladorWebMercadoPago extends Controller
         $venta->obtenerPorId($idVenta);
         $venta->fk_idestado_pago = 1;
         $venta->guardar();
-        return redirect("/gracias-compra");
+        return redirect("/gracias-compra-pendiente");
     }
 
     public function error($idVenta){
@@ -111,7 +111,7 @@ class ControladorWebMercadoPago extends Controller
         $venta->obtenerPorId($idVenta);
         $venta->fk_idestado_pago = 3;
         $venta->guardar();
-        return redirect("/gracias-compra");
+        return redirect("/gracias-compra-error");
     }
 
 }
