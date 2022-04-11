@@ -15,6 +15,7 @@
                               <div class="col-12 center">
                                     <div class="card mx-auto" style="width: 18rem;">
                                          <a href="/pago-transferencia/{{ $idPlan }}"> <img src="{{ asset('web/img/pago/transferencia-bancaria.jpg') }}" class="card-img-top gris" alt=""> </a>
+                                         <p>Los pagos por transferencia tienen un 10% de descuento!</p>
                                     </div>
                               </div>
                         </div>
