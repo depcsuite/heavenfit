@@ -16,6 +16,9 @@ class ControladorWebPerfilUsuario extends Controller
 
     public function guardar(Request $request){
         $cliente = new Cliente();
+        $pais = new Pais();
+        $array_nacionalidad = $pais->obtenerTodos();
+
         $cliente->edad = $request->input("txtEdad");
         $cliente->peso = $request->input("txtPeso");
         $cliente->altura = $request->input("txtAltura");        
@@ -30,6 +33,6 @@ class ControladorWebPerfilUsuario extends Controller
         $cliente->pais = $request->input("lstNacionalidad");
         $cliente->insertar();
         $mensaje = "Registro completado";
-        return view("web.perfil-usuario", compact('mensaje'));
+        return view("web.perfil-usuario", compact('mensaje','array_nacionalidad'));
     }
 }
