@@ -27,7 +27,18 @@
             <div class="row">
                   <div class="col-lg-6">
                         @foreach($array_profesores as $profesor)
-                            <a href="/contratar-profesor/{$profesor->idprofesor}">{{ $profesor->nombre }}</a>
+                              <div>
+                                    <h3>{{ $profesor->nombre }}</h3>
+                              </div>    
+                              <div>
+                                   <select name="" id="">
+                                         <option value="" disabled selected>Seleccionar</option>
+                                         @foreach($array_horarios[$profesor->idprofesor] as $horario)
+                                                <option value="" >{{ date_format(date_create($horario->fecha_desde), "d/m/Y H:i") }} hasta {{ date_format(date_create($horario->fecha_desde), "H:i")}}</option>
+                                         @endforeach
+                                   </select> 
+                              </div>
+
                         @endforeach
                   </div>
             </div>

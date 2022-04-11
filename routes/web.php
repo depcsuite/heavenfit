@@ -45,8 +45,8 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/mercado-pago/aprobado/{idVenta}', 'ControladorWebMercadoPago@aprobado');
     Route::get('/mercado-pago/pendiente/{idVenta}', 'ControladorWebMercadoPago@pendiente');
     Route::get('/mercado-pago/error/{idVenta}', 'ControladorWebMercadoPago@error');
-    Route::get('contratar-invididual-profesores', 'ControladorWebContratarProfesores@index');
-
+    Route::get('/contratar-invididual-profesores', 'ControladorWebContratarProfesores@index');
+ 
     Route::get('/admin', 'ControladorHome@index');
     
 
