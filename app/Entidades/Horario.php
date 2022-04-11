@@ -26,8 +26,7 @@ class Horario extends Model{
                   A.fecha_desde,
                   A.fecha_hasta,
                   A.fk_idprofesor
-                FROM paises A
-                ORDER BY A.nombre";
+                FROM horarios A;
         $lstRetorno = DB::select($sql);
         return $lstRetorno;
       }
