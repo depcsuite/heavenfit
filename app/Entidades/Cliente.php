@@ -13,6 +13,7 @@ class Cliente extends Model
     protected $fillable = [
         'idcliente',
         'nombre',
+        'documento',
         'correo',
         'telefono',
         'edad',
@@ -40,6 +41,7 @@ class Cliente extends Model
     {
         $this->idcliente = $request->input('id') != "0" ? $request->input('id') : $this->idcliente;
         $this->nombre = $request->input('txtNombre');
+        $this->documento = $request->input('txtDocumento');
         $this->edad = $request->input('txtEdad');
         $this->correo = $request->input('txtCorreo');
         $this->telefono = $request->input('txtTelefono');
@@ -65,6 +67,7 @@ class Cliente extends Model
         $sql = "SELECT
                   A.idcliente,
                   A.nombre,
+                  A.documento,
                   A.edad,
                   A.correo,
                   A.telefono,
@@ -94,6 +97,7 @@ class Cliente extends Model
         $sql = "SELECT
                 idcliente,
                 nombre,
+                documento,
                 edad,
                 correo,
                 telefono,
@@ -119,6 +123,7 @@ class Cliente extends Model
         if (count($lstRetorno) > 0) {
             $this->idcliente = $lstRetorno[0]->idcliente;
             $this->nombre = $lstRetorno[0]->nombre;
+            $this->documento = $lstRetorno[0]->documento;
             $this->edad = $lstRetorno[0]->edad;
             $this->correo = $lstRetorno[0]->correo;
             $this->telefono = $lstRetorno[0]->telefono;
@@ -146,6 +151,7 @@ class Cliente extends Model
     {
         $sql = "UPDATE clientes SET
             nombre=?,
+            documento=?,
             edad=?,
             correo=?,
             telefono=?,
@@ -167,6 +173,7 @@ class Cliente extends Model
             WHERE idcliente=?";
         $affected = DB::update($sql, [
             $this->nombre,
+            $this->documento,
             $this->edad,
             $this->correo,
             $this->telefono,
@@ -199,6 +206,7 @@ class Cliente extends Model
     {
         $sql = "INSERT INTO clientes (
               nombre,
+              documento,
               edad,
               correo,
               telefono,
@@ -217,9 +225,10 @@ class Cliente extends Model
               foto,
               fk_idestado,
               clave
-              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         $result = DB::insert($sql, [
             $this->nombre,
+            $this->documento,
             $this->edad,
             $this->correo,
             $this->telefono,
