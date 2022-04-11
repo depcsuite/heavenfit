@@ -41,6 +41,10 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/pago-transferencia/{id}', 'ControladorWebPagoTransferencia@index');
     Route::post('/pago-transferencia/{id}', 'ControladorWebPagoTransferencia@guardar');
     Route::get('/gracias-compra', 'ControladorWebGraciasCompra@index');
+    Route::get('/pago-mercadopago/{id}', 'ControladorWebMercadoPago@index');
+    Route::get('/mercado-pago/aprobado/{idVenta}', 'ControladorWebMercadoPago@aprobado');
+    Route::get('/mercado-pago/pendiente/{idVenta}', 'ControladorWebMercadoPago@pendiente');
+    Route::get('/mercado-pago/error/{idVenta}', 'ControladorWebMercadoPago@error');
 
     Route::get('/admin', 'ControladorHome@index');
     
