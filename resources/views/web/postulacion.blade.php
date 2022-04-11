@@ -31,3 +31,4 @@
       </div>
 </section>
 <!-- ChoseUs Section End -->
+@endsection
