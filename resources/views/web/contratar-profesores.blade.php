@@ -25,22 +25,25 @@
                 </div>
             </div>
             <div class="row">
-                  <div class="col-lg-6">
+                  <form action="" method="POST">
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>        
                         @foreach($array_profesores as $profesor)
+                        <div class="col-6">
                               <div>
-                                    <h3>{{ $profesor->nombre }}</h3>
+                                    <h3 class="text-light">{{ $profesor->nombre }}</h3>
                               </div>    
                               <div>
-                                   <select name="" id="">
-                                         <option value="" disabled selected>Seleccionar</option>
-                                         @foreach($array_horarios[$profesor->idprofesor] as $horario)
-                                                <option value="" >{{ date_format(date_create($horario->fecha_desde), "d/m/Y H:i") }} hasta {{ date_format(date_create($horario->fecha_desde), "H:i")}}</option>
-                                         @endforeach
-                                   </select> 
+                                    <select name="lstHorario" id="lstHorario" class="form-control">
+                                          <option value="" disabled selected>Seleccionar</option>
+                                          @foreach($array_horarios[$profesor->idprofesor] as $horario)
+                                                <option value="{{ $horario->idhorario }}" >{{ date_format(date_create($horario->fecha_desde), "d/m/Y H:i") }} a {{ date_format(date_create($horario->fecha_hasta), "H:i")}} hs.</option>
+                                          @endforeach
+                                    </select> 
                               </div>
-
+                        </div>
                         @endforeach
-                  </div>
+                        <button type="submit" class="btn text-white">Reservar</button>
+                  </form>
             </div>
         </div>
     </section>

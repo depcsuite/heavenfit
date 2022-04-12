@@ -40,7 +40,7 @@
                                   <li> {{$plan->descripcion}} </li>  
                               </ul>
                               @if($plan->fk_idtipo_plan == 1)
-                                    <a href="/contratar-invididual-profesores" class="primary-btn pricing-btn">Reservar</a>
+                                    <a href="/contratar-invididual-disciplina/<?php echo $plan->idplan; ?>" class="primary-btn pricing-btn">Reservar</a>
                               @endif
                               @if($plan->fk_idtipo_plan == 2)
                                     <a href="/contratar-grupal/<?php echo $plan->idplan; ?>" class="primary-btn pricing-btn">Reservar</a>

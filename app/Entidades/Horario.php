@@ -20,13 +20,13 @@ class Horario extends Model{
   
       ];
 
-      public function obtenerPorProfesor(){
-            $sql = "SELECT 
-                  A.idhorario,
-                  A.fecha_desde,
-                  A.fecha_hasta,
-                  A.fk_idprofesor
-                FROM horarios A;
+      public function obtenerPorProfesor($idProfesor){
+        $sql = "SELECT 
+                    A.idhorario,
+                    A.fecha_desde,
+                    A.fecha_hasta,
+                    A.fk_idprofesor
+                FROM horarios A WHERE fk_idprofesor = $idProfesor";
         $lstRetorno = DB::select($sql);
         return $lstRetorno;
       }

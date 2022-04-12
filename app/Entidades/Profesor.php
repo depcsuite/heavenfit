@@ -59,6 +59,26 @@ class Profesor extends Model{
             $lstRetorno = DB::select($sql);
             return $lstRetorno;
       }
+      public function obtenerTodosPorDisciplina($idDisciplina) {
+            $sql = "SELECT 
+                  A.idprofesor,
+                  A.nombre,
+                  A.fk_idpais,
+                  A.idioma,
+                  A.telefono,
+                  A.correo,
+                  A.dni,
+                  A.fk_idmodalidad,
+                  A.edad,
+                  A.descripcion,
+                  A.foto
+                  FROM profesores A 
+                  INNER JOIN profesor_disciplina B ON A.idprofesor = B.fk_idprofesor
+                  WHERE B.fk_iddisciplina = $idDisciplina
+                  ORDER BY A.nombre";
+            $lstRetorno = DB::select($sql);
+            return $lstRetorno;
+      }
 
       public function obtenerPorId($idprofesor) {
             $sql = "SELECT 
