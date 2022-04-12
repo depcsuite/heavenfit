@@ -28,7 +28,7 @@
                   <form action="" method="POST">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>        
                         @foreach($array_profesores as $profesor)
-                        <div class="col-6">
+                        <div class="col">
                               <div>
                                     <h3 class="text-light">{{ $profesor->nombre }}</h3>
                               </div>    

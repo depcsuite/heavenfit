@@ -12,11 +12,9 @@ Class Reserva extends Model{
       protected $fillable = [
             'idreserva',
             'fk_idcliente',
-            'fk_idprofesor',
-            'fk_idmodalidad',
-            'fk_iddisciplina',
-            'fecha_desde',
-            'fecha_hasta'
+            'fk_idhorario',
+            'fk_idplan',
+            'fk_iddisciplina'
       ];
   
       protected $hidden = [
@@ -37,11 +35,10 @@ Class Reserva extends Model{
             $sql = "SELECT 
                   A.idreserva,
                   A.fk_idcliente,
-                  A.fk_idprofesor,
-                  A.fk_idmodalidad,
+                  A.fk_idhorario,
+                  A.fk_idplan,
                   A.fk_iddisciplina,
-                  A.fecha_desde,
-                  A.fecha_hasta
+
                   FROM reservas A
                   ORDER BY A.idreserva";
             $lstRetorno = DB::select($sql);
@@ -52,11 +49,10 @@ Class Reserva extends Model{
             $sql = "SELECT 
                         idreserva,
                         fk_idcliente,
-                        fk_idprofesor,
-                        fk_idmodalidad,
-                        fk_iddisciplina,
-                        fecha_desde,
-                        fecha_hasta
+                        fk_idhorario,
+                        fk_idplan,
+                        fk_iddisciplina
+
                         FROM reservas
                         WHERE idreserva=$idrserva";
             $lstRetorno = DB::select($sql);
@@ -64,11 +60,9 @@ Class Reserva extends Model{
             if (count($lstRetorno) > 0) {
                   $this->idreserva = $lstRetorno[0]->idreserva;
                   $this->fk_idcliente = $lstRetorno[0]->fk_idcliente;
-                  $this->fk_idprofesor = $lstRetorno[0]->fk_idprofesor;
-                  $this->fk_idmodalidad = $lstRetorno[0]->fk_idmodalidad;
+                  $this->fk_idhorario = $lstRetorno[0]->fk_idhorario;
+                  $this->fk_idplan = $lstRetorno[0]->fk_idplan;
                   $this->fk_iddisciplina = $lstRetorno[0]->fk_iddisciplina;
-                  $this->fecha_desde = $lstRetorno[0]->fecha_desde;
-                  $this->fecha_hasta = $lstRetorno[0]->fecha_hasta;
                   return $this;
             }
             return null;
@@ -76,13 +70,11 @@ Class Reserva extends Model{
 
       public function obtenerPorIdCliente($idcliente) {
             $sql = "SELECT 
-                        idreserva,
+                         idreserva,
                         fk_idcliente,
-                        fk_idprofesor,
-                        fk_idmodalidad,
-                        fk_iddisciplina,
-                        fecha_desde,
-                        fecha_hasta
+                        fk_idhorario,
+                        fk_idplan,
+                        fk_iddisciplina
                         FROM reservas
                         WHERE fk_idcliente = $idcliente";
             $lstRetorno = DB::select($sql);     
@@ -91,13 +83,11 @@ Class Reserva extends Model{
       }
       public function obtenerPorIdProfesor($idprofesor) {
             $sql = "SELECT 
-                        idreserva,
+                         idreserva,
                         fk_idcliente,
-                        fk_idprofesor,
-                        fk_idmodalidad,
-                        fk_iddisciplina,
-                        fecha_desde,
-                        fecha_hasta
+                        fk_idhorario,
+                        fk_idplan,
+                        fk_iddisciplina
                         FROM reservas
                         WHERE fk_idprofesor = $idprofesor";
             $lstRetorno = DB::select($sql);     
@@ -105,29 +95,25 @@ Class Reserva extends Model{
             return $lstRetorno;
       }
       public function obtenerPorIdModalidad($idmodalidad) {
-            $sql = "SELECT 
-                        idreserva,
+          /*  $sql = "SELECT 
+                         idreserva,
                         fk_idcliente,
-                        fk_idprofesor,
-                        fk_idmodalidad,
-                        fk_iddisciplina,
-                        fecha_desde,
-                        fecha_hasta
+                        fk_idhorario,
+                        fk_idplan,
+                        fk_iddisciplina
                         FROM reservas
                         WHERE fk_idmodalidad = $idmodalidad";
             $lstRetorno = DB::select($sql);     
           
-            return $lstRetorno;
+            return $lstRetorno;*/
       }
       public function obtenerPorIdDisciplina($iddisciplina) {
             $sql = "SELECT 
-                        idreserva,
+                         idreserva,
                         fk_idcliente,
-                        fk_idprofesor,
-                        fk_idmodalidad,
-                        fk_iddisciplina,
-                        fecha_desde,
-                        fecha_hasta
+                        fk_idhorario,
+                        fk_idplan,
+                        fk_iddisciplina
                         FROM reservas
                         WHERE fk_iddisciplina = $iddisciplina";
             $lstRetorno = DB::select($sql);     
@@ -138,19 +124,15 @@ Class Reserva extends Model{
       public function guardar() {
             $sql = "UPDATE reservas SET
                         fk_idcliente=?,
-                        fk_idprofesor=?,
-                        fk_idmodalidad=?,
-                        fk_iddisciplina=?,
-                        fecha_desde,
-                        fecha_hsata
+                        fk_idhorario=?,
+                        fk_idplan=?,
+                        fk_iddisciplina=?
                   WHERE idreserva=?";
               $affected = DB::update($sql, [
                 $this->fk_idcliente,
-                $this->fk_idprofesor,
-                $this->fk_idmodalidad,
+                $this->fk_idhorario,
+                $this->fk_idplan,
                 $this->fk_iddisciplina,
-                $this->fecha_desde,
-                $this->fecha_hasta,
                 $this->idreserva
               ]);
       }
@@ -163,19 +145,15 @@ Class Reserva extends Model{
       public function insertar() {
             $sql = "INSERT INTO reservas (
                         fk_idcliente,
-                        fk_idprofesor,
-                        fk_idmodalidad,
-                        fk_iddisciplina,
-                        fecha_desde,
-                        fecha_hasta
-                        ) VALUES (?, ?, ?, ?, ?, ?);";
+                        fk_idhorario,
+                        fk_idplan,
+                        fk_iddisciplina
+                        ) VALUES (?, ?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->fk_idcliente,
-                  $this->fk_idprofesor,
-                  $this->fk_idmodalidad,
-                  $this->fk_iddisciplina,
-                  $this->fecha_desde,
-                  $this->fecha_hasta
+                  $this->fk_idhorario,
+                  $this->fk_idplan,
+                  $this->fk_iddisciplina
 
             ]);
             return $this->idreserva = DB::getPdo()->lastInsertId();

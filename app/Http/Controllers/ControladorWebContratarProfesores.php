@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Entidades\Profesor;
 use App\Entidades\Reserva;
 use App\Entidades\Horario;
-
+use Session;
 class ControladorWebContratarProfesores extends Controller
 {
 
@@ -30,7 +30,7 @@ class ControladorWebContratarProfesores extends Controller
         $reserva->fk_idplan=$idPlan;
         $reserva->fk_iddisciplina=$idDisciplina;
         $reserva->insertar();
-        return redirect("web.gracias-reserva");
+        return redirect("/gracias-reserva");
     }
 
  
