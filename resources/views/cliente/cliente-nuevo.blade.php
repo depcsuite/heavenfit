@@ -57,6 +57,10 @@ if (isset($msg)) {
             <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Nombre y Apellido" required value="{{ $cliente->nombre }}">
         </div>
         <div class="col-12 col-sm-6">
+            <label for="txtEdad">Documento: *</label>
+            <input type="text" name="txtDocumento" id="txtDocumento" class="form-control" required value="{{ $cliente->documento }}">
+        </div>
+        <div class="col-12 col-sm-6">
             <label for="txtEdad">Edad: *</label>
             <input type="text" name="txtEdad" id="txtEdad" class="form-control" required value="{{ $cliente->edad }}">
         </div>
@@ -127,18 +131,16 @@ if (isset($msg)) {
                         <option value="{{ $array_nacionalidad[$i]->idpais }}">{{ $array_nacionalidad[$i]->nombre }}</option>
                     @endif
                 @endfor
-            </select>
-            
+            </select> 
         </div>
         <div class="col-12 col-sm-6">
             <label for="txtClave">Clave: *</label>
             <input type="password" name="txtClave" id="txtClave" class="form-control" required>
         </div>
-
         <div class="col-12 col-sm-6">
         <label for="lstEstado">Estado: </label>
             <select name="lstEstado" id="lstEstado" class="form-control">Estado
-            <option selected value=""></option>
+            <option selected disabled value="">Seleccionar estado del Cliente..</option>
                 @for ($i = 0; $i < count($array_estados); $i++)
                     @if (isset($cliente) and $array_estados[$i]->idestado == $cliente->fk_idestado)
                         <option selected value="{{ $array_estados[$i]->idestado }}">{{ $array_estados[$i]->descripcion }}</option>
@@ -147,8 +149,7 @@ if (isset($msg)) {
                     @endif
                 @endfor
             </select>
-        </div>
-            
+        </div>  
     </form>
     <div class="modal fade" id="mdlEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">

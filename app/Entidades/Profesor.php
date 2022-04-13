@@ -16,11 +16,12 @@ class Profesor extends Model{
             'idioma',
             'telefono',
             'correo',
-            'dni',
+            'documento',
             'fk_idmodalidad',
             'edad',
             'descripcion',
-            'foto'
+            'foto',
+            'fk_idestado'
       ];
   
       protected $hidden = [
@@ -34,11 +35,12 @@ class Profesor extends Model{
             $this->idioma = $request->input('txtIdioma');
             $this->telefono = $request->input('txtTelefono');
             $this->correo = $request->input('txtCorreo');
-            $this->dni = $request->input('txtDni');
+            $this->documento = $request->input('txtDni');
             $this->fk_idmodalidad = $request->input('lstModalidad');
             $this->edad = $request->input('txtEdad');
             $this->descripcion = $request->input('txtDescripcion');
             $this->foto = $request->input('txtFoto');
+            $this->fk_idestado = $request->input('lstEstado');
           }
 
       public function obtenerTodos() {
@@ -49,11 +51,12 @@ class Profesor extends Model{
                   A.idioma,
                   A.telefono,
                   A.correo,
-                  A.dni,
+                  A.documento,
                   A.fk_idmodalidad,
                   A.edad,
                   A.descripcion,
-                  A.foto
+                  A.foto,
+                  A.fk_idestado
                   FROM profesores A
                   ORDER BY A.nombre";
             $lstRetorno = DB::select($sql);
@@ -67,11 +70,12 @@ class Profesor extends Model{
                   A.idioma,
                   A.telefono,
                   A.correo,
-                  A.dni,
+                  A.documento,
                   A.fk_idmodalidad,
                   A.edad,
                   A.descripcion,
-                  A.foto
+                  A.foto,
+                  A.fk_idestado
                   FROM profesores A 
                   INNER JOIN profesor_disciplina B ON A.idprofesor = B.fk_idprofesor
                   WHERE B.fk_iddisciplina = $idDisciplina
@@ -88,11 +92,12 @@ class Profesor extends Model{
                         idioma,
                         telefono,
                         correo,
-                        dni,
+                        documento,
                         fk_idmodalidad,
                         edad,
                         descripcion,
-                        foto
+                        foto,
+                        fk_idestado
                         FROM profesores 
                         WHERE idprofesor=$idprofesor";
             $lstRetorno = DB::select($sql);
@@ -104,11 +109,12 @@ class Profesor extends Model{
                   $this->idioma = $lstRetorno[0]->idioma;
                   $this->telefono = $lstRetorno[0]->telefono;
                   $this->correo = $lstRetorno[0]->correo;
-                  $this->dni = $lstRetorno[0]->dni;
+                  $this->documento = $lstRetorno[0]->documento;
                   $this->fk_idmodalidad = $lstRetorno[0]->fk_idmodalidad;
                   $this->edad = $lstRetorno[0]->edad;
                   $this->descripcion = $lstRetorno[0]->descripcion;
                   $this->foto = $lstRetorno[0]->foto;
+                  $this->fk_idestado = $lstRetorno[0]->fk_idestado;
                   return $this;
             }
             return null;
@@ -121,11 +127,12 @@ class Profesor extends Model{
                         idioma=?,
                         telefono=?,
                         correo=?,
-                        dni=?,
+                        documento=?,
                         fk_idmodalidad=?,
                         edad=?,
                         descripcion=?,
-                        foto=?
+                        foto=?,
+                        fk_idestado=?
                   WHERE idprofesor=?";
               $affected = DB::update($sql, [
                 $this->nombre,
@@ -133,11 +140,12 @@ class Profesor extends Model{
                 $this->idioma,
                 $this->telefono,
                 $this->correo,
-                $this->dni,
+                $this->documento,
                 $this->fk_idmodalidad,
                 $this->edad,
                 $this->descripcion,
                 $this->foto,
+                $this->fk_idestado,
                 $this->idprofesor
               ]);
       }
@@ -154,23 +162,25 @@ class Profesor extends Model{
                         idioma,
                         telefono,
                         correo,
-                        dni,
+                        documento,
                         fk_idmodalidad,
                         edad,
                         descripcion,
-                        foto
-                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                        foto,
+                        fk_idestado
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->nombre,
                   $this->fk_idpais,
                   $this->idioma,
                   $this->telefono,
                   $this->correo,
-                  $this->dni,
+                  $this->documento,
                   $this->fk_idmodalidad,
                   $this->edad,
                   $this->descripcion,
-                  $this->foto
+                  $this->foto,
+                  $this->fk_idestado
             ]);
             return $this->idprofesor = DB::getPdo()->lastInsertId();
       }

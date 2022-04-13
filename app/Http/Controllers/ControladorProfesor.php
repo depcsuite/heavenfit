@@ -7,6 +7,7 @@ use App\Entidades\Pais;
 use App\Entidades\Modalidad;
 use App\Entidades\Clase;
 use App\Entidades\Reserva;
+use App\Entidades\Estado;
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -44,7 +45,9 @@ class ControladorProfesor extends Controller
                 $titulo = "Nuevo profesor";
                 $modalidad = new Modalidad();
                 $array_modalidad = $modalidad->obtenerTodos();
-                return view("profesor.profesor-nuevo", compact('titulo', 'profesor', 'array_nacionalidad','array_modalidad'));
+                $estado = new Estado();
+                $array_estados = $estado->obtenerTodos();
+                return view("profesor.profesor-nuevo", compact('titulo', 'profesor', 'array_nacionalidad','array_modalidad', 'array_estados'));
             }
         } else {
             return redirect('admin/login');
@@ -93,7 +96,9 @@ class ControladorProfesor extends Controller
             $array_nacionalidad = $pais->obtenerTodos();
             $modalidad = new Modalidad();
             $array_modalidad = $modalidad->obtenerTodos();
-            return view('profesor.profesor-listar', compact('titulo', 'msg', 'profesor', 'array_nacionalidad','array_modalidad')). '?id=' . $profesor->idprofesor;
+            $estado = new Estado();
+            $array_estados = $estado->obtenerTodos();
+            return view('profesor.profesor-listar', compact('titulo', 'msg', 'profesor', 'array_nacionalidad','array_modalidad', 'array_estados')). '?id=' . $profesor->idprofesor;
       }
 
 
@@ -150,7 +155,10 @@ class ControladorProfesor extends Controller
                 $modalidad = new Modalidad();
                 $array_modalidad = $modalidad->obtenerTodos();
 
-                return view('profesor.profesor-nuevo', compact('profesor', 'titulo' ,'array_nacionalidad', 'array_modalidad'));
+                $estado = new Estado();
+                $array_estados = $estado->obtenerTodos();
+
+                return view('profesor.profesor-nuevo', compact('profesor', 'titulo' ,'array_nacionalidad', 'array_modalidad', 'array_estados'));
             }
         } else {
             return redirect('admin/login');

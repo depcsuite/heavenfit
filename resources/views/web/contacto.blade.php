@@ -28,19 +28,14 @@
                     </div>
                     <div class="contact-widget">
                         <div class="cw-text">
-                            <i class="fa fa-map-marker"></i>
-                            <p>333 Middle Winchendon Rd, Rindge,<br/> NH 03461</p>
-                        </div>
-                        <div class="cw-text">
                             <i class="fa fa-mobile"></i>
                             <ul>
-                                <li>125-711-811</li>
-                                <li>125-668-886</li>
+                                <li>+54 2478 471095</li>
                             </ul>
                         </div>
                         <div class="cw-text email">
                             <i class="fa fa-envelope"></i>
-                            <p>Support.gymcenter@gmail.com</p>
+                            <p>lourdesyorio51@gmail.com</p>
                         </div>
                     </div>
                 </div>
