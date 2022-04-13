@@ -29,7 +29,9 @@ if (isset($msg)) {
             <th></th>
             <th>Cliente</th>
             <th>Profesor</th>
-            <th>fecha</th>
+            <th>Plan</th>
+            <th>fecha desde</th>
+            <th>fecha hasta</th>
         </tr>
     </thead>
 </table> 

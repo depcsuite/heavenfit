@@ -166,30 +166,35 @@ Class Reserva extends Model{
             $request = $_REQUEST;
             $columns = array(
                   0 => 'A.idreserva',
-                  1 => 'C.nombre',
-                  2 => 'B.nombre',
-                  3 => 'A.fecha_desde',
+                  1 => 'D.nombre',
+                  2 => 'C.nombre',
+                  3 => 'E.nombre',
+                  4 => 'B.fecha_desde',
+                  5 => 'B.fecha_hasta',
             );
             $sql = "SELECT DISTINCT
-                  
                   A.idreserva,
                   A.fk_idcliente,
-                  C.nombre AS cliente,
-                  A.fk_idprofesor,
-                  B.nombre AS profesor,
-                  A.fecha_desde
+                  A.fk_idhorario,
+                  A.fk_idplan,
+                  B.fecha_desde,
+                  B.fecha_hasta,
+                  C.nombre AS Nombre_Profesor,
+                  D.nombre AS Nombre_Cliente,
+                  E.nombre AS Nombre_Plan
                   FROM reservas A 
-                  INNER JOIN profesores B  ON A.fk_idprofesor = B.idprofesor
-                  LEFT JOIN clientes C  ON A.fk_idcliente = C.idcliente
-   
-                WHERE 1=1
+                  INNER JOIN horarios B ON B.idhorario = A.fk_idhorario
+                  INNER JOIN profesores C ON C.idprofesor = B.fk_idprofesor
+                  INNER JOIN clientes D ON D.idcliente = A.fk_idcliente
+                  INNER JOIN planes E ON E.idplan = A.fk_idplan
+                  WHERE 1=1
                 ";
 
             //Realiza el filtrado
             if (!empty($request['search']['value'])) {
-                  $sql .= " AND ( C.nombre LIKE '%" . $request['search']['value'] . "%' ";
-                  $sql .= " OR B.nombre LIKE '%" . $request['search']['value'] . "%' ";
-                  $sql .= " OR A.fecha_desde LIKE '%" . $request['search']['value'] . "%' )";
+                  $sql .= " AND ( D.nombre LIKE '%" . $request['search']['value'] . "%' ";
+                  $sql .= " OR B.fecha_desde LIKE '%" . $request['search']['value'] . "%' ";
+                  $sql .= " OR B.fecha_hasta LIKE '%" . $request['search']['value'] . "%' )";
             }
             $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
 

@@ -126,20 +126,23 @@ class ControladorReserva extends Controller
 
         $entidad = new Reserva();
         $aReservas = $entidad->obtenerFiltrado();
-
+        //print_r($aReservas); exit;
         $data = array();
         $cont = 0;
 
         $inicio = $request['start'];
         $registros_por_pagina = $request['length'];
 
-
+       
         for ($i = $inicio; $i < count($aReservas) && $cont < $registros_por_pagina; $i++) {
             $row = array();
             $row[] = '<a class="btn btn-secondary" href="/admin/reserva/' . $aReservas[$i]->idreserva . '"><i class="fa-solid fa-pencil"></i></a>';
-            $row[] = $aReservas[$i]->cliente;
-            $row[] = $aReservas[$i]->profesor;
-            $row[] = date_format(date_create($aReservas[$i]->fecha_desde), "d/m/Y h:i");
+            $row[] = $aReservas[$i]->Nombre_Cliente;
+            $row[] = $aReservas[$i]->Nombre_Profesor;
+            $row[] = $aReservas[$i]->Nombre_Plan;
+            $row[] = $aReservas[$i]->fecha_desde;
+            $row[] = $aReservas[$i]->fecha_hasta;
+            //$row[] = date_format(date_create($aReservas[$i]->fecha_desde), "d/m/Y h:i");
             $cont++;
             $data[] = $row;
         }
