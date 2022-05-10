@@ -185,6 +185,7 @@
                     <ul>
                         <li> {{$plan->descripcion}} </li>
                     </ul>
+                    
                     @if($plan->fk_idtipo_plan == 1)
                                     <a href="/contratar-invididual-disciplina/<?php echo $plan->idplan; ?>" class="primary-btn pricing-btn">Reservar</a>
                               @endif

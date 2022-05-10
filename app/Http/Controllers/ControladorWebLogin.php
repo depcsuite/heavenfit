@@ -21,7 +21,7 @@ class ControladorWebLogin extends Controller
             if($cliente->login($usuario, $clave)){
                 Session::put("usuario_id", $cliente->idcliente);
                 Session::put("usuario_nombre", $cliente->nombre);
-                return redirect("/perfil-usuario");
+                return redirect("/planes");
             } else {
                 $mensaje = "Usuario o clave incorrecto";
                 return view("web.login", compact("mensaje"));

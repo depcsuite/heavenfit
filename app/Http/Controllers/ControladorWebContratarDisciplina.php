@@ -13,6 +13,18 @@ class ControladorWebContratarDisciplina extends Controller
     public function index()
     {
         if (Session::get("usuario_id")) {
+            return view("web.reserva-individual");
+        } else {
+            $mensaje = "Tiene que estar logueado para acceder";
+            return redirect("/login");
+        }
+        
+    }
+
+    /*
+    public function index()
+    {
+        if (Session::get("usuario_id")) {
             $disciplina = new Disciplina();
             $array_disciplinas = $disciplina->obtenerTodos();
             return view("web.contratar-disciplinas", compact('array_disciplinas'));
@@ -27,4 +39,5 @@ class ControladorWebContratarDisciplina extends Controller
         $idDisciplina = $request->input("lstDisciplina");
         return redirect("/contratar-invididual-profesores/$idPlan/$idDisciplina");
     }
+    */
 }

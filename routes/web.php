@@ -49,7 +49,7 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::post('/contratar-invididual-disciplina/{idPlan}', 'ControladorWebContratarDisciplina@siguiente');
     Route::get('/contratar-invididual-profesores/{idPlan}/{idDisciplina}', 'ControladorWebContratarProfesores@index');
     Route::post('/contratar-invididual-profesores/{idPlan}/{idDisciplina}', 'ControladorWebContratarProfesores@reservar');
- 
+
     Route::get('/admin', 'ControladorHome@index');
     
 

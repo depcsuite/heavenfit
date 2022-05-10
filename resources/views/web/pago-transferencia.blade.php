@@ -47,11 +47,11 @@
                               </tr>
                               <tr>
                                     <th>CVU:</th>
-                                    <td></td>
+                                    <td>0000003100028331923153</td>
                               </tr>
                               <tr>
                                     <th>Alias:</th>
-                                    <td></td>
+                                    <td>Heaven.Fit</td>
                               </tr>
                               <tr>
                                     <th>Nombre:</th>

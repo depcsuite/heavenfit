@@ -37,36 +37,20 @@
         <div class="canvas-close">
             <i class="fa fa-close"></i>
         </div>
-        <div class="canvas-search search-switch">
-            <i class="fa fa-search"></i>
-        </div>
         <nav class="canvas-menu mobile-menu">
             <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about-us.html">About Us</a></li>
-                <li><a href="./classes.html">Classes</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./team.html">Our Team</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="dropdown">
-                        <li><a href="./about-us.html">About us</a></li>
-                        <li><a href="./class-timetable.html">Classes timetable</a></li>
-                        <li><a href="./bmi-calculator.html">Bmi calculate</a></li>
-                        <li><a href="./team.html">Our team</a></li>
-                        <li><a href="./gallery.html">Gallery</a></li>
-                        <li><a href="./blog.html">Our blog</a></li>
-                        <li><a href="./404.html">404</a></li>
-                    </ul>
-                </li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/nosotros">Nosotros</a></li>
+                <li><a href="/profesores">Profesores</a></li>
+                <li><a href="/clases">Calendario</a></li>
+                <li><a href="/planes">Planes</a></li>
+                <li><a href="/contacto">Contacto</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-youtube-play"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="http://wa.me/5492478471095"><i class="fa fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/_heavenfit/"><i class="fa fa-instagram"></i></a>
         </div>
     </div>
     <!-- Offcanvas Menu Section End -->
@@ -97,6 +81,7 @@
                 <div class="col-lg-3">
                     <div class="top-option">
                         <div class="to-social">
+                            
                             @if(Session::get('usuario_id') > 0)
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -105,8 +90,6 @@
 
                                 <ul class="dropdown-menu bg-secondary" role="menu">
                                     <li><a href="/perfil-usuario">Ficha cliente</a></li>
-                                    <li><a href="#">Reservas</a></li>
-                                    <li><a href="/opciones-pago">Pagos</a></li>
                                     <li class="divider"></li>
                                     <li><a href="/logout">Cerrar sesion</a></li>
                                 </ul>
@@ -133,7 +116,7 @@
     <div class="gettouch-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 offset-2">
+                <div class="col-md-4 offset-md-2">
                     <div class="gt-text">
                         <i class="fa fa-mobile"></i>
                         <ul>
@@ -156,7 +139,7 @@
     <section class="footer-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 offset-2">
+                <div class="col-lg-4 offset-md-2">
                     <div class="fs-about">
                         <div class="fa-logo">
                             <a href="#"><img class="img-logo" src="{{ asset('web/img/logo.png') }}" alt=""></a>
@@ -188,8 +171,6 @@
                         <h4>Soporte</h4>
                         <ul>
                             <li><a href="/login">Login</a></li>
-                            <li><a href="#">Mi cuenta</a></li>
-                            <li><a href="#">Reserva</a></li>
                             <li><a href="/contacto">Contacto</a></li>
                         </ul>
                     </div>
@@ -212,17 +193,6 @@
         </div>
     </section>
     <!-- Footer Section End -->
-
-    <!-- Search model Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search model end -->
 
     <!-- Js Plugins -->
     <script src="{{ asset('web/js/popper.min.js') }}"></script>

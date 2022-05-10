@@ -9,10 +9,10 @@ class ControladorWebContratarGrupal extends Controller
 {
       public function index($idPlan){
         if (Session::get("usuario_id")) {
-          return view("web.opciones-pago", compact('idPlan'));
+          return view("web.reserva-grupal", compact('idPlan'));
         }else{
           $mensaje = "Tiene que estar logueado para acceder";
-          return view("web.login", compact('mensaje'));
+          return redirect("/login");
         }
       }
 

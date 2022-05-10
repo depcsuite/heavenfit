@@ -26,14 +26,14 @@
     <section class="class-timetable-section class-details-timetable spad pb-0">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 offset-md-1">
                     <div class="class-details-timetable_title mt-5">
                         <h5>Calendario clases grupales</h5>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12 offset-1">
+                <div class="col-lg-12 offset-md-1">
                     <div class="class-timetable details-timetable">
                         <table>
                             <thead>
@@ -107,7 +107,7 @@
     <section class="class-details-section spad pt-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 offset-2">
+                <div class="col-lg-8 offset-md-2">
                     <div class="class-details-text">
                         <div class="cd-text">
                             <div class="cd-single-item">

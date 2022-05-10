@@ -134,12 +134,12 @@
                             <input type="text" placeholder="Correo" name="txtCorreo" required>
                             <input type="text" placeholder="Telefono" name="txtTelefono" required>
                             <input type="text" placeholder="Edad" name="txtEdad" required>
-                            <select name="lstSexo" id="lstSexo" class="custom-select my-2 mx-0">
+                            <select name="lstSexo" id="lstSexo" class="select my-2 mx-0">
                                 <option selected disabled>Sexo</option>
                                 <option  value="femenino">Femenino</option>
                                 <option  value="masculino">Masculino</option>     
                             </select>      
-                            <select name="lstDisponibilidad" id="lstDisponibilidad" class="custom-select my-2 mx-0">
+                            <select name="lstDisponibilidad" id="lstDisponibilidad" class="select my-2 mx-0">
                                 <option selected disabled>Disponibilidad</option>
                                 <option  value="mañana">Mañana</option>
                                 <option  value="tarde">Tarde</option>  
