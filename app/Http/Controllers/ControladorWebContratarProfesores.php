@@ -30,7 +30,7 @@ class ControladorWebContratarProfesores extends Controller
         $reserva->fk_idplan=$idPlan;
         $reserva->fk_iddisciplina=$idDisciplina;
         $reserva->insertar();
-        return redirect("/gracias-reserva");
+        return view("/web.opciones-pago" , compact('idPlan'));
     }
 
  

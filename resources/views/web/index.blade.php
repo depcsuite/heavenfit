@@ -10,7 +10,7 @@
                         <div class="hi-text">
                             <span>Clases 100% personalizadas</span>
                             <h1>Primera clase <strong>Gratis</strong></h1>
-                            <a href="#" class="primary-btn">Reserva!</a>
+                            <a href="/planes" class="primary-btn">Reserva!</a>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         <div class="hi-text">
                             <span>Clases online y presenciales</span>
                             <h1>Entrenar es <strong>Placer</strong> </h1>
-                            <a href="#" class="primary-btn">Reserva!</a>
+                            <a href="/planes" class="primary-btn">Reserva!</a>
                         </div>
                     </div>
                 </div>
@@ -185,7 +185,15 @@
                     <ul>
                         <li> {{$plan->descripcion}} </li>
                     </ul>
-                    <a href="#" class="primary-btn pricing-btn">Reservar</a>
+                    @if($plan->fk_idtipo_plan == 1)
+                                    <a href="/contratar-invididual-disciplina/<?php echo $plan->idplan; ?>" class="primary-btn pricing-btn">Reservar</a>
+                              @endif
+                              @if($plan->fk_idtipo_plan == 2)
+                                    <a href="/contratar-grupal/<?php echo $plan->idplan; ?>" class="primary-btn pricing-btn">Reservar</a>
+                              @endif
+                              @if($plan->fk_idtipo_plan == 3)
+                                    <a href="/contratar-invididual-multiple" class="primary-btn pricing-btn">Reservar</a>
+                              @endif
                 </div>
             </div>
             @endforeach
@@ -299,73 +307,66 @@
     </section>
     <!-- Testimonial Section End -->
 
+
 <!-- Team Section Begin -->
 <section class="team-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="team-title">
-                    <div class="section-title">
-                        <span>Our Team</span>
-                        <h2>TRAIN WITH EXPERTS</h2>
-                    </div>
-                    <a href="#" class="primary-btn btn-normal appoinment-btn">appointment</a>
-                </div>
+      <div class="container">
+            <div class="row">
+                  <div class="col-lg-12">
+                        <div class="team-title">
+                              <div class="section-title">
+                                    <span>Nuestro equipo</span>
+                                    <h2>Profesores y nutricionistas</h2>
+                              </div>
+                              <a href="/planes" class="primary-btn btn-normal appoinment-btn">Rerservar</a>
+                        </div>
+                  </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="ts-slider owl-carousel">
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="{{ asset('web/img/team/team-1.jpg') }}">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
+            <div class="row">
+                  <div class="ts-slider owl-carousel">
+                        <div class="col-lg-4">
+                              <div class="ts-item set-bg" data-setbg="{{ asset('web/img/team/team-1.jpg') }}">
+                                    <div class="ts_text">
+                                          <h4>Lourdes Yorio</h4>
+                                          <span>Directora</span>
+                                    </div>
+                              </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="{{ asset('web/img/team/team-2.jpg') }}">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
+                        <div class="col-lg-4">
+                              <div class="ts-item set-bg" data-setbg="{{ asset('web/img/team/team-2.jpg') }}">
+                                    <div class="ts_text">
+                                          <h4>Fabiana Valle</h4>
+                                          <span>Entrenadora</span>
+                                    </div>
+                              </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="{{ asset('web/img/team/team-3.jpg') }}">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
+                        <div class="col-lg-4">
+                              <div class="ts-item set-bg" data-setbg="{{ asset('web/img/team/team-3.jpg') }}">
+                                    <div class="ts_text">
+                                          <h4>Camila Coelho</h4>
+                                          <span>Entrenadora</span>
+                                    </div>
+                              </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="{{ asset('web/img/team/team-4.jpg') }}">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
+                        <div class="col-lg-4">
+                              <div class="ts-item set-bg" data-setbg="{{ asset('web/img/team/team-4.jpg') }}">
+                                    <div class="ts_text">
+                                          <h4>Miriam Ruhl</h4>
+                                          <span>Entrenadora</span>
+                                    </div>
+                              </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="{{ asset('web/img/team/team-5.jpg') }}">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="{{ asset('web/img/team/team-6.jpg') }}">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
+                        <div class="col-lg-4">
+                              <div class="ts-item set-bg" data-setbg="{{ asset('web/img/team/team-5.jpg') }}">
+                                    <div class="ts_text">
+                                          <h4>Jorgelina Lizzoli</h4>
+                                          <span>Nutricionista</span>
+                                    </div>
+                              </div>
+                        </div>                        
+                  </div>
             </div>
-        </div>
-    </div>
+      </div>
 </section>
 <!-- Team Section End -->
 

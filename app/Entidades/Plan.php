@@ -51,6 +51,7 @@ Class Plan extends Model{
                         nombre,
                         descripcion,
                         precio,
+                        fk_idtipo_plan,
                         precioDolar
                         FROM planes 
                         WHERE idplan=3 OR idplan=2 OR idplan=9

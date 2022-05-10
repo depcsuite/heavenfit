@@ -77,7 +77,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="logo">
-                        <a href="./index.html">
+                        <a href="/index.php">
                             <img class="img-logo" src="{{ asset('web/img/logo.png') }}" alt="">
                         </a>
                     </div>
@@ -114,10 +114,10 @@
                             @else
                             <a href="/login">Ingresar</a>
                             @endif
-                            <a href="#"><i class="fa fa-whatsapp"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="http://wa.me/5492478471095"  target="_blank" rel="noopener noreferrer"><i class="fa fa-whatsapp"></i></a>
+                            <a href="https://www.instagram.com/_heavenfit/"  target="_blank" rel="noopener noreferrer"><i class="fa fa-instagram"></i></a>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
             <div class="canvas-open">
@@ -165,9 +165,9 @@
                             y en eso nos basamos a la hora de planificar las clases.
                         </p>
                         <div class="fa-social">
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa  fa-envelope-o"></i></a>
-                            <a href="#"><i class="fa  fa-whatsapp"></i></a>
+                            <a href="https://www.instagram.com/_heavenfit/"><i class="fa fa-instagram"></i></a>
+                            <a href="mailto:lourdesyorio51@gmail.com"><i class="fa  fa-envelope-o"></i></a>
+                            <a href="http://wa.me/5492478471095"><i class="fa  fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>

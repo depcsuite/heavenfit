@@ -28,7 +28,7 @@
                                     <span>Nuestro equipo</span>
                                     <h2>Profesores y nutricionistas</h2>
                               </div>
-                              <a href="/reserva" class="primary-btn btn-normal appoinment-btn">Rerservar</a>
+                              <a href="/planes" class="primary-btn btn-normal appoinment-btn">Rerservar</a>
                         </div>
                   </div>
             </div>
@@ -132,17 +132,16 @@
                                                             <h4>Fabiana Valle</h4>
                                                             <span>Entrenadora</span>
                                                       </div>
-                                                      <p>Mi nombre es Lourdes Yorio y soy la creadora de Heaven Fit, empresa que buscar lograr que las personas amen el deporte. 
-                                                      Actualmente, realizo y preparo las rutinas a medida teniendo en cuenta las característica de los alumnos, 
-                                                      con el objetivo de que logren su meta entrenando sanamente. <br> <br> 
-                                                      Estudios: Instructora de musculación, personal trainer, profesora integral de yoga, instructora de spinning y Top Ride</p>
+                                                      <p>Mi nombre es Fabiana Valle. Soy profesora universitaria en educación física y deportes, 
+                                                      tambien soy profesora integral de yoga <br> <br> 
+                                                      Estudios: preparadora física, profesora integral de yoga y profesora universitaria de educación física y deportes</p>
                                                       
                                                       <ul class="trainer-info">
-                                                            <li><span>Edad</span>21</li>
-                                                            <li><span>Idiomas</span>Español/Ingles</li>
+                                                            <li><span>Edad</span>30</li>
+                                                            <li><span>Idiomas</span>Español/Ingles/Italiano</li>
                                                       </ul>
                                                       
-                                                      <p> Habilidades: Escucha activa, liderazgo, compromiso, puntualidad, optimismo, esfuerzo y empatía </p>
+                                                      <p> Habilidades: Educadora motivacional, comunicadora afectiva, gran conocimiento de las necesidades de salud y fitness de los alumnos</p>
                                                 </div>
                                           </div>
                                     </div>
@@ -166,17 +165,16 @@
                                                             <h4>Camila Coelho</h4>
                                                             <span>Entrenadora</span>
                                                       </div>
-                                                      <p>Mi nombre es Lourdes Yorio y soy la creadora de Heaven Fit, empresa que buscar lograr que las personas amen el deporte. 
-                                                      Actualmente, realizo y preparo las rutinas a medida teniendo en cuenta las característica de los alumnos, 
-                                                      con el objetivo de que logren su meta entrenando sanamente. <br> <br> 
-                                                      Estudios: Instructora de musculación, personal trainer, profesora integral de yoga, instructora de spinning y Top Ride</p>
+                                                      <p>Mi nombre es Camila Coelho. Soy insructora en entrenamieno personal y musculación estoy en el 
+                                                            tercer año del instructurado nacional de educación física <br> <br> 
+                                                      Estudios: Instructurado en entrenamiento personal y musculación (centro deportivo neofit), Profesorado educación física (3er año UNLU)</p>
                                                       
                                                       <ul class="trainer-info">
-                                                            <li><span>Edad</span>21</li>
-                                                            <li><span>Idiomas</span>Español/Ingles</li>
+                                                            <li><span>Edad</span>20</li>
+                                                            <li><span>Idiomas</span>Español</li>
                                                       </ul>
                                                       
-                                                      <p> Habilidades: Escucha activa, liderazgo, compromiso, puntualidad, optimismo, esfuerzo y empatía </p>
+                                                      <p> Habilidades: Flexible, capacidad para resolver problemas y adaptarme rapidamente, relaciónes interpersonles(confiable, dedicada, puntual, honesta, interes por los alumnos/as)</p>
                                                 </div>
                                           </div>
                                     </div>
@@ -200,17 +198,16 @@
                                                             <h4>Miriam Ruhl</h4>
                                                             <span>Entrenadora</span>
                                                       </div>
-                                                      <p>Mi nombre es Lourdes Yorio y soy la creadora de Heaven Fit, empresa que buscar lograr que las personas amen el deporte. 
-                                                      Actualmente, realizo y preparo las rutinas a medida teniendo en cuenta las característica de los alumnos, 
-                                                      con el objetivo de que logren su meta entrenando sanamente. <br> <br> 
-                                                      Estudios: Instructora de musculación, personal trainer, profesora integral de yoga, instructora de spinning y Top Ride</p>
+                                                      <p>Mi nombre es Mirim Ruhl. soy profesora de educación física soy poliglota y tengo amplia 
+                                                            experiencia en el manejo de grupos de entrenamiento <br> <br> 
+                                                      Estudios: Profesora de educación física</p>
                                                       
                                                       <ul class="trainer-info">
-                                                            <li><span>Edad</span>21</li>
-                                                            <li><span>Idiomas</span>Español/Ingles</li>
+                                                            <li><span>Edad</span>34</li>
+                                                            <li><span>Idiomas</span>Español/Ingles/Danes</li>
                                                       </ul>
                                                       
-                                                      <p> Habilidades: Escucha activa, liderazgo, compromiso, puntualidad, optimismo, esfuerzo y empatía </p>
+                                                      <p> Habilidades: capacidad de liderazgo, manejo de grupo, comunicacion interpesonal, escucha y entendimiento de los otros. Coaching y liderazgo educativó</p>
                                                 </div>
                                           </div>
                                     </div>
@@ -234,14 +231,12 @@
                                                             <h4>Jorgelina Lizzoli</h4>
                                                             <span>Nutricionista</span>
                                                       </div>
-                                                      <p>Mi nombre es Lourdes Yorio y soy la creadora de Heaven Fit, empresa que buscar lograr que las personas amen el deporte. 
-                                                      Actualmente, realizo y preparo las rutinas a medida teniendo en cuenta las característica de los alumnos, 
-                                                      con el objetivo de que logren su meta entrenando sanamente. <br> <br> 
-                                                      Estudios: Instructora de musculación, personal trainer, profesora integral de yoga, instructora de spinning y Top Ride</p>
+                                                      <p>Mi nombre es Jorgelina Lizzoli. Formo parte del equipo armando los planes alimenticios enfocados en los objetivos físicos <br> <br> 
+                                                      Estudios: Lic.Nutrición (Instituto Universitario Cemic), posgrado en alimentación vegetariana/vegana y dipomatura en nutrición digesto-absortiva(celiaquia)  </p>
                                                       
                                                       <ul class="trainer-info">
-                                                            <li><span>Edad</span>21</li>
-                                                            <li><span>Idiomas</span>Español/Ingles</li>
+                                                            <li><span>Edad</span>28</li>
+                                                            <li><span>Idiomas</span>Español</li>
                                                       </ul>
                                                       
                                                       <p> Habilidades: Escucha activa, liderazgo, compromiso, puntualidad, optimismo, esfuerzo y empatía </p>
