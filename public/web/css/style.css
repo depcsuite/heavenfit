@@ -3291,3 +3291,12 @@ label{
 		font-size: 28px;
 	}
 }
+
+
+.marco-img{
+	border-radius: 50%;
+	height: 12em;
+	width: 12em;
+	margin-top: 3em;
+	border: #3151af solid 5px;	
+}

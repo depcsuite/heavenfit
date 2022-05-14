@@ -19,6 +19,33 @@
                   </div>
 
             </div>
+            <div class="row">
+                  <div class="col-2">
+                       <!-- <div class="marco-img"></div> -->
+                       <img src="{{ asset('web/img/team/team-2.jpg') }}" class="marco-img" alt="">
+                  </div>
+                  <div class="col-2">
+                        <img src="{{ asset('web/img/team/team-3.jpg') }}" class="marco-img" alt="">
+                  </div>
+                  <div class="col-2">
+                        <img src="{{ asset('web/img/team/team-4.jpg') }}" class="marco-img" alt="">
+                  </div>
+                  <div class="col-2">
+                        <img src="{{ asset('web/img/team/team-5.jpg') }}" class="marco-img" alt="">
+                  </div>
+                  <div class="col-2">
+                       <img src="{{ asset('web/img/team/team-6.jpg') }}" class="marco-img" onclick="<?php seleccionar(12) ?>" alt="">
+                  </div>
+            </div>
+            @if(isset($seleccionar) && $seleccionar == 12)
+                    <div class="alert alert-primary" role="alert">
+                        <?php echo "prueba"?>
+                    </div>
+            @endif
       </div>
 </section>
 @endsection
+<?php function seleccionar($num){
+      $seleccionar = $num;
+      return $seleccionar;
+} ?>

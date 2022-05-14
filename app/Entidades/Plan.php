@@ -93,7 +93,7 @@ Class Plan extends Model{
                         descripcion=?,
                         precio=?,
                         precioDolar=?,
-                        fk_idtipo_plan
+                        fk_idtipo_plan=?
                   WHERE idplan=?";
               $affected = DB::update($sql, [
                 $this->nombre,
