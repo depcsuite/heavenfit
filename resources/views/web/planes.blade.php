@@ -8,7 +8,7 @@
                         <div class="breadcrumb-text">
                               <h2>Planes</h2>
                               <div class="bt-option">
-                                    <a href="./index.html">Inicio</a>
+                                    <a href="/">Inicio</a>
                                     <span>Planes</span>
                               </div>
                         </div>

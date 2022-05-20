@@ -1,5 +1,6 @@
 @extends('web.plantilla')
 @section('contenido')
+
 <section class="contact-section spad">
       <div class="container">
             <div class="row">
@@ -10,42 +11,120 @@
                   </div>
             </div>
             <div class="row">
-                  <div class="col-2">
-                  <a href="https://koalendar.com/u/PtcBFs47GYPEFuiDwc9zk4akelx1"> <img src="{{ asset('web/img/pago/calendario.png') }}" style="border-radius:50% ;" alt=""> </a>
-                  </div>
-                  <div class="col-8 mb-4">
-                        
-                        <h3 class="text-light pt-5">Toque el icono que lo llevará al calendario de reserva, ahí prodra elegir la profesora y el horario que mas le convenga </h3>
+                  <div class="col-md-8 col-12 mb-4 mx-auto">
+                        <h3 class="text-light pt-5 text-center">Toque el icono de la profesora que desee elegir y le aparecera el calendario para reservar la clase</h3>
                   </div>
 
             </div>
             <div class="row">
-                  <div class="col-2">
-                       <!-- <div class="marco-img"></div> -->
-                       <img src="{{ asset('web/img/team/team-2.jpg') }}" class="marco-img" alt="">
+                  <div class="col-2 ml-5">
+                        <!-- <div class="marco-img"></div> -->
+                        <img src="{{ asset('web/img/team/team-2.jpg') }}" id="profe1" class="marco-img" alt="">
                   </div>
                   <div class="col-2">
-                        <img src="{{ asset('web/img/team/team-3.jpg') }}" class="marco-img" alt="">
+                        <img src="{{ asset('web/img/team/team-3.jpg') }}" id="profe2" class="marco-img" alt="">
                   </div>
                   <div class="col-2">
-                        <img src="{{ asset('web/img/team/team-4.jpg') }}" class="marco-img" alt="">
+                        <img src="{{ asset('web/img/team/team-4.jpg') }}" id="profe3" class="marco-img" alt="">
                   </div>
                   <div class="col-2">
-                        <img src="{{ asset('web/img/team/team-5.jpg') }}" class="marco-img" alt="">
+                        <img src="{{ asset('web/img/team/team-5.jpg') }}" id="profe4" class="marco-img" alt="">
                   </div>
-                  <div class="col-2">
-                       <img src="{{ asset('web/img/team/team-6.jpg') }}" class="marco-img" onclick="<?php seleccionar(12) ?>" alt="">
+                  <div class="col-2 ">
+                        <img src="{{ asset('web/img/team/team-6.jpg') }}" id="profe5" class="marco-img" alt="">
                   </div>
+
             </div>
-            @if(isset($seleccionar) && $seleccionar == 12)
-                    <div class="alert alert-primary" role="alert">
-                        <?php echo "prueba"?>
-                    </div>
-            @endif
+            <div class="ifrm">
+
+            </div>
       </div>
+
+
 </section>
+
+<script>
+      const frame = document.querySelector(".ifrm");
+
+      const profe1 = document.getElementById("profe1");
+      const profe2 = document.getElementById("profe2");
+      const profe3 = document.getElementById("profe3");
+      const profe4 = document.getElementById("profe4");
+      const profe5 = document.getElementById("profe5");
+
+      profe1.addEventListener("click", () => {
+            profe1.classList.toggle('seleccionado');
+            profe2.classList.remove('seleccionado');
+            profe3.classList.remove('seleccionado');
+            profe4.classList.remove('seleccionado');
+            profe5.classList.remove('seleccionado');
+            frame.innerHTML = "";
+            var ifrm = document.createElement("iframe");
+            ifrm.setAttribute("src", "https://koalendar.com/e/fabiana?embed=true");
+            ifrm.style.width = "100%";
+            ifrm.style.height = "800px";
+            ifrm.frameBorder = 0;
+            frame.appendChild(ifrm);
+      });
+
+      profe2.addEventListener("click", () => {            
+            profe2.classList.toggle('seleccionado');
+            profe1.classList.remove('seleccionado');
+            profe3.classList.remove('seleccionado');
+            profe4.classList.remove('seleccionado');
+            profe5.classList.remove('seleccionado');
+            frame.innerHTML = "";
+            var ifrm = document.createElement("iframe");
+            ifrm.setAttribute("src", "https://koalendar.com/e/entrenamiento-personalizado?embed=true  ");
+            ifrm.style.width = "100%";
+            ifrm.style.height = "800px";
+            ifrm.frameBorder = 0;
+            frame.appendChild(ifrm);
+      });
+
+      profe3.addEventListener("click", () => {            
+            profe3.classList.toggle('seleccionado');
+            profe2.classList.remove('seleccionado');
+            profe1.classList.remove('seleccionado');
+            profe4.classList.remove('seleccionado');
+            profe5.classList.remove('seleccionado');
+            frame.innerHTML = "";
+            var ifrm = document.createElement("iframe");
+            ifrm.setAttribute("src", "https://koalendar.com/e/miriam?embed=true");
+            ifrm.style.width = "100%";
+            ifrm.style.height = "800px";
+            ifrm.frameBorder = 0;
+            frame.appendChild(ifrm);
+      });
+
+      profe4.addEventListener("click", () => {            
+            profe4.classList.toggle('seleccionado');
+            profe2.classList.remove('seleccionado');
+            profe3.classList.remove('seleccionado');
+            profe1.classList.remove('seleccionado');
+            profe5.classList.remove('seleccionado');
+            frame.innerHTML = "";
+            var ifrm = document.createElement("iframe");
+            ifrm.setAttribute("src", "https://koalendar.com/e/camila-castro?embed=true");
+            ifrm.style.width = "100%";
+            ifrm.style.height = "800px";
+            ifrm.frameBorder = 0;
+            frame.appendChild(ifrm);
+      });
+
+      profe5.addEventListener("click", () => {            
+            profe5.classList.toggle('seleccionado');
+            profe2.classList.remove('seleccionado');
+            profe3.classList.remove('seleccionado');
+            profe4.classList.remove('seleccionado');
+            profe1.classList.remove('seleccionado');
+            frame.innerHTML = "";   
+            var ifrm = document.createElement("iframe");
+            ifrm.setAttribute("src", "https://koalendar.com/e/maria-luz?embed=true");
+            ifrm.style.width = "100%";
+            ifrm.style.height = "800px";
+            ifrm.frameBorder = 0;
+            frame.appendChild(ifrm);
+      });
+</script>
 @endsection
-<?php function seleccionar($num){
-      $seleccionar = $num;
-      return $seleccionar;
-} ?>

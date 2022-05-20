@@ -3299,4 +3299,19 @@ label{
 	width: 12em;
 	margin-top: 3em;
 	border: #3151af solid 5px;	
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	-webkit-transition: all 0.7s ease; /*Fade to color for Chrome and Safari*/
+	-moz-transition: all 0.7s ease;
+  	/*-webkit-backface-visibility: hidden; /*Fix for transition flickering*/
+}
+
+.marco-img:hover{
+	filter: grayscale(0%);
+	-webkit-filter: grayscale(0%);
+}
+
+.seleccionado{
+	filter: grayscale(0%) !important;
+	-webkit-filter: grayscale(0%) !important;
 }
