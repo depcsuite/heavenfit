@@ -8,7 +8,7 @@
                     <div class="breadcrumb-text">
                         <h2>Contacto</h2>
                         <div class="bt-option">
-                            <a href="index.php">Inicio</a>
+                            <a href="/">Inicio</a>
                             <span>Contacto</span>
                         </div>
                     </div>
