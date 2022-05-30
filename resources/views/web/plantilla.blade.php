@@ -127,7 +127,7 @@
                 <div class="col-md-4">
                     <div class="gt-text email">
                         <i class="fa fa-envelope"></i>
-                        <p>lourdesyorio51@gmail.com</p>
+                        <p>info@heaven-fit.com</p>
                     </div>
                 </div>
             </div>

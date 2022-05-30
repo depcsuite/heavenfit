@@ -37,8 +37,8 @@ class ControladorWebContacto extends Controller
       $mail->SMTPSecure = env('MAIL_ENCRYPTION');
       $mail->Port = env('MAIL_PORT');
       //Destinatarios
-      $mail->setFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME')); //Dirección desde
-      $mail->addAddress($email); //Dirección para
+      $mail->setFrom(env('MAIL_FROM_ADDRESS')); //Dirección desde
+      $mail->addAddress(env('MAIL_FROM_ADDRESS')); //Dirección para
       //$mail->addReplyTo($replyTo); //Dirección de reply no-reply
 
       //Contenido del mail
