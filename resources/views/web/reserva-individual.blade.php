@@ -18,30 +18,43 @@
             </div>
             <div class="row">
                   <div class="col-md-2 ml-md-5">
-                        <!-- <div class="marco-img"></div> -->
-                        <img src="{{ asset('web/img/team/team-2.jpg') }}" id="profe1" class="marco-img" alt="">
+                        <div class="centrar">
+                              <img src="{{ asset('web/img/team/team-2.jpg') }}" id="profe1" class="marco-img" alt="">
+                        </div>
                   </div>
-                  <div class="ifrm1"></div>
+                  <div class="ifrm1"><iframe src="https://koalendar.com/e/fabiana?embed=true" width="100%" height="800px" frameborder="0"></iframe></div>
 
                   <div class="col-md-2">
-                        <img src="{{ asset('web/img/team/team-3.jpg') }}" id="profe2" class="marco-img" alt="">
+                        <div class="centrar">
+                              <img src="{{ asset('web/img/team/team-3.jpg') }}" id="profe2" class="marco-img" alt="">
+                        </div>
                   </div>
-                  <div class="ifrm2"></div>
+                  <div class="ifrm2"><iframe src="https://koalendar.com/e/entrenamiento-personalizado?embed=true" width="100%" height="800px" frameborder="0"></iframe></div>
 
                   <div class="col-md-2">
-                        <img src="{{ asset('web/img/team/team-4.jpg') }}" id="profe3" class="marco-img" alt="">
+                        <div class="centrar">
+                              <img src="{{ asset('web/img/team/team-4.jpg') }}" id="profe3" class="marco-img" alt="">
+                        </div>
+                        
                   </div>
-                  <div class="ifrm3"></div>
+                  <div class="ifrm3"><iframe src="https://koalendar.com/e/miriam?embed=true" width="100%" height="800px" frameborder="0"></iframe></div>
 
                   <div class="col-md-2">
-                        <img src="{{ asset('web/img/team/team-5.jpg') }}" id="profe4" class="marco-img" alt="">
+                        <div class="centrar">
+                              <img src="{{ asset('web/img/team/team-5.jpg') }}" id="profe4" class="marco-img" alt="">
+                        </div>
+                        
                   </div>
-                  <div class="ifrm4"></div>
+                  <div class="ifrm4"><iframe src="https://koalendar.com/e/camila-castro?embed=true" width="100%" height="800px" frameborder="0"></iframe></div>
 
                   <div class="col-md-2 ">
-                        <img src="{{ asset('web/img/team/team-6.jpg') }}" id="profe5" class="marco-img" alt="">
+                        <div class="centrar">
+                              <img src="{{ asset('web/img/team/team-6.jpg') }}" id="profe5" class="marco-img" alt="">
+                        </div>
+                        
                   </div>
-                  
+                  <div class="ifrm5"><iframe src="https://koalendar.com/e/maria-luz?embed=true" width="100%" height="800px" frameborder="0"></iframe></div>
+
 
             </div>
             <div class="ifrm"></div>
@@ -56,20 +69,22 @@
       const frame2 = document.querySelector(".ifrm2");
       const frame3 = document.querySelector(".ifrm3");
       const frame4 = document.querySelector(".ifrm4");
-      const media = window.matchMedia("(max-width:800px)");
+      const frame5 = document.querySelector(".ifrm5");
+      const media = window.matchMedia("(max-width:700px)");
       const profe1 = document.getElementById("profe1");
       const profe2 = document.getElementById("profe2");
       const profe3 = document.getElementById("profe3");
       const profe4 = document.getElementById("profe4");
       const profe5 = document.getElementById("profe5");
 
-      if(!media.matches){
+      if (!media.matches) {
             profe1.addEventListener("click", () => {
                   profe1.classList.toggle('seleccionado');
                   profe2.classList.remove('seleccionado');
                   profe3.classList.remove('seleccionado');
                   profe4.classList.remove('seleccionado');
                   profe5.classList.remove('seleccionado');
+
                   frame.innerHTML = "";
                   var ifrm = document.createElement("iframe");
                   ifrm.setAttribute("src", "https://koalendar.com/e/fabiana?embed=true");
@@ -79,7 +94,7 @@
                   frame.appendChild(ifrm);
             });
 
-            profe2.addEventListener("click", () => {            
+            profe2.addEventListener("click", () => {
                   profe2.classList.toggle('seleccionado');
                   profe1.classList.remove('seleccionado');
                   profe3.classList.remove('seleccionado');
@@ -94,7 +109,7 @@
                   frame.appendChild(ifrm);
             });
 
-            profe3.addEventListener("click", () => {            
+            profe3.addEventListener("click", () => {
                   profe3.classList.toggle('seleccionado');
                   profe2.classList.remove('seleccionado');
                   profe1.classList.remove('seleccionado');
@@ -109,7 +124,7 @@
                   frame.appendChild(ifrm);
             });
 
-            profe4.addEventListener("click", () => {            
+            profe4.addEventListener("click", () => {
                   profe4.classList.toggle('seleccionado');
                   profe2.classList.remove('seleccionado');
                   profe3.classList.remove('seleccionado');
@@ -124,13 +139,13 @@
                   frame.appendChild(ifrm);
             });
 
-            profe5.addEventListener("click", () => {            
+            profe5.addEventListener("click", () => {
                   profe5.classList.toggle('seleccionado');
                   profe2.classList.remove('seleccionado');
                   profe3.classList.remove('seleccionado');
                   profe4.classList.remove('seleccionado');
                   profe1.classList.remove('seleccionado');
-                  frame.innerHTML = "";   
+                  frame.innerHTML = "";
                   var ifrm = document.createElement("iframe");
                   ifrm.setAttribute("src", "https://koalendar.com/e/maria-luz?embed=true");
                   ifrm.style.width = "100%";
@@ -138,13 +153,20 @@
                   ifrm.frameBorder = 0;
                   frame.appendChild(ifrm);
             });
-      }else{
+      } else {
             profe1.addEventListener("click", () => {
                   profe1.classList.toggle('seleccionado');
                   profe2.classList.remove('seleccionado');
                   profe3.classList.remove('seleccionado');
                   profe4.classList.remove('seleccionado');
                   profe5.classList.remove('seleccionado');
+                  if (frame1.style.display == "none") {
+                        frame1.style.display = "block";
+                  } else {
+                        frame1.style.display = "none";
+                  }
+
+                  /*
                   frame.innerHTML = "";
                   var ifrm = document.createElement("iframe");
                   ifrm.setAttribute("src", "https://koalendar.com/e/fabiana?embed=true");
@@ -153,14 +175,21 @@
                   ifrm.frameBorder = 0;
                   
                   frame1.appendChild(ifrm);
+                  */
             });
 
-            profe2.addEventListener("click", () => {            
+            profe2.addEventListener("click", () => {
                   profe2.classList.toggle('seleccionado');
                   profe1.classList.remove('seleccionado');
                   profe3.classList.remove('seleccionado');
                   profe4.classList.remove('seleccionado');
                   profe5.classList.remove('seleccionado');
+                  if (frame2.style.display == "none") {
+                        frame2.style.display = "block";
+                  } else {
+                        frame2.style.display = "none";
+                  }
+                  /*
                   frame.innerHTML = "";
                   var ifrm = document.createElement("iframe");
                   ifrm.setAttribute("src", "https://koalendar.com/e/entrenamiento-personalizado?embed=true  ");
@@ -169,14 +198,22 @@
                   ifrm.frameBorder = 0;
                   
                   frame2.appendChild(ifrm);
+                  */
             });
 
-            profe3.addEventListener("click", () => {            
+            profe3.addEventListener("click", () => {
                   profe3.classList.toggle('seleccionado');
                   profe2.classList.remove('seleccionado');
                   profe1.classList.remove('seleccionado');
                   profe4.classList.remove('seleccionado');
                   profe5.classList.remove('seleccionado');
+                  if (frame3.style.display == "none") {
+                        frame3.style.display = "block";
+                  } else {
+                        frame3.style.display = "none";
+                  }
+
+                  /*
                   frame.innerHTML = "";
                   var ifrm = document.createElement("iframe");
                   ifrm.setAttribute("src", "https://koalendar.com/e/miriam?embed=true");
@@ -185,14 +222,21 @@
                   ifrm.frameBorder = 0;
                   
                   frame3.appendChild(ifrm);
+                  */
             });
 
-            profe4.addEventListener("click", () => {            
+            profe4.addEventListener("click", () => {
                   profe4.classList.toggle('seleccionado');
                   profe2.classList.remove('seleccionado');
                   profe3.classList.remove('seleccionado');
                   profe1.classList.remove('seleccionado');
                   profe5.classList.remove('seleccionado');
+                  if (frame4.style.display == "none") {
+                        frame4.style.display = "block";
+                  } else {
+                        frame4.style.display = "none";
+                  }
+                  /*
                   frame.innerHTML = "";
                   var ifrm = document.createElement("iframe");
                   ifrm.setAttribute("src", "https://koalendar.com/e/camila-castro?embed=true");
@@ -201,14 +245,21 @@
                   ifrm.frameBorder = 0;
                   
                   frame4.appendChild(ifrm);
+                  */
             });
 
-            profe5.addEventListener("click", () => {            
+            profe5.addEventListener("click", () => {
                   profe5.classList.toggle('seleccionado');
                   profe2.classList.remove('seleccionado');
                   profe3.classList.remove('seleccionado');
                   profe4.classList.remove('seleccionado');
                   profe1.classList.remove('seleccionado');
+                  if (frame5.style.display == "none") {
+                        frame5.style.display = "block";
+                  } else {
+                        frame5.style.display = "none";
+                  }
+                  /*
                   frame.innerHTML = "";   
                   var ifrm = document.createElement("iframe");
                   ifrm.setAttribute("src", "https://koalendar.com/e/maria-luz?embed=true");
@@ -217,6 +268,7 @@
                   ifrm.frameBorder = 0;
                   
                   frame.appendChild(ifrm);
+                  */
             });
       }
 </script>

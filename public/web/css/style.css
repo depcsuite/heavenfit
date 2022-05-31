@@ -3315,3 +3315,18 @@ label{
 	filter: grayscale(0%) !important;
 	-webkit-filter: grayscale(0%) !important;
 }
+
+.ifrm1,
+.ifrm2,
+.ifrm3,
+.ifrm4,
+.ifrm5{
+	display: none;
+	width: 100%;
+  }
+
+  @media (max-width: 800px){
+	.centrar{
+		margin: 10px 25%;
+	}
+  }
