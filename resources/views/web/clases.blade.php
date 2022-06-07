@@ -10,7 +10,7 @@
                     <div class="breadcrumb-text">
                         <h2>Detalle de clases</h2>
                         <div class="bt-option">
-                            <a href="./index.html">Inicio</a>
+                            <a href="/">Inicio</a>
                             <a href="#">Calendario</a>
                             <span>Calendario</span>
                         </div>

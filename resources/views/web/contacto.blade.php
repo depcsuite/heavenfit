@@ -8,7 +8,7 @@
                     <div class="breadcrumb-text">
                         <h2>Contacto</h2>
                         <div class="bt-option">
-                            <a href="index.php">Inicio</a>
+                            <a href="/">Inicio</a>
                             <span>Contacto</span>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="cw-text email">
                             <i class="fa fa-envelope"></i>
-                            <p>lourdesyorio51@gmail.com</p>
+                            <p>info@heaven-fit.com</p>
                         </div>
                     </div>
                 </div>

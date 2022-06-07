@@ -8,7 +8,7 @@
                 <div class="breadcrumb-text">
                     <h2>Sobre Nosotros</h2>
                     <div class="bt-option">
-                        <a href="./index.html">Inicio</a>
+                        <a href="/">Inicio</a>
                         <span>Nosotros</span>
                     </div>
                 </div>
@@ -75,10 +75,8 @@
 <section class="choseus-section spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 p-0">
-                <div class="about-video set-bg" data-setbg="{{ asset('web/img/about-us.jpg') }}">
-                    <a href="https://www.youtube.com/watch?v=EzKkl64rRbM" class="play-btn video-popup"><i class="fa fa-caret-right"></i></a>
-                </div>
+            <div class="col-lg-6 p-0 mb-5">
+                <div class="about-video set-bg" data-setbg="{{ asset('web/img/about-us.jpg') }}"></div>
             </div>
             <div class="col-lg-6 p-0">
                 <div class="about-text">
@@ -88,10 +86,10 @@
                     </div>
                     <div class="at-desc">
                         <p>Misión: cambiar la perspectiva del deporte. Disfrutar el proceso<br><br>
-                           Visión: lograr los objetivos deportivos de las personas <br><br>
-                           Valores: liderazgo, calidad, pasión, integridad, honestidad, empatía, 
-                           optimismo, paciencia, perseverancia, puntualidad, superación, servicial, 
-                           voluntad, respeto, esfuerzo y gratitud.
+                            Visión: lograr los objetivos deportivos de las personas <br><br>
+                            Valores: liderazgo, calidad, pasión, integridad, honestidad, empatía,
+                            optimismo, paciencia, perseverancia, puntualidad, superación, servicial,
+                            voluntad, respeto, esfuerzo y gratitud.
                         </p>
                     </div>
                 </div>
@@ -136,14 +134,14 @@
                             <input type="text" placeholder="Edad" name="txtEdad" required>
                             <select name="lstSexo" id="lstSexo" class="select my-2 mx-0">
                                 <option selected disabled>Sexo</option>
-                                <option  value="femenino">Femenino</option>
-                                <option  value="masculino">Masculino</option>     
-                            </select>      
+                                <option value="femenino">Femenino</option>
+                                <option value="masculino">Masculino</option>
+                            </select>
                             <select name="lstDisponibilidad" id="lstDisponibilidad" class="select my-2 mx-0">
                                 <option selected disabled>Disponibilidad</option>
-                                <option  value="mañana">Mañana</option>
-                                <option  value="tarde">Tarde</option>  
-                                <option  value="mañana y tarde">Mañana y Tarde</option>
+                                <option value="mañana">Mañana</option>
+                                <option value="tarde">Tarde</option>
+                                <option value="mañana y tarde">Mañana y Tarde</option>
                             </select>
                             <label for="" class="form-label text-light">Cargar CV:</label>
                             <small class="text-light">(.PDF, .doc, .docx)</small>
@@ -154,11 +152,8 @@
                 </div>
             </div>
             <div class="col-lg-6 p-0 align-self-center mt-5 pt-5">
-            <div class="breadcrumb-section set-bg" data-setbg="{{ asset('web/img/equipo2.jpg') }}">
-                    <a href="https://www.youtube.com/watch?v=EzKkl64rRbM" class="play-btn video-popup"><i class="fa fa-caret-right"></i></a>
-                </div>
+                <div class="breadcrumb-section set-bg" data-setbg="{{ asset('web/img/equipo2.jpg') }}"></div>
             </div>
         </div>
-    </div>
 </section>
 @endsection

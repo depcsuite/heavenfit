@@ -45,6 +45,7 @@
                 <li><a href="/clases">Calendario</a></li>
                 <li><a href="/planes">Planes</a></li>
                 <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/login">ingresar</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -127,7 +128,7 @@
                 <div class="col-md-4">
                     <div class="gt-text email">
                         <i class="fa fa-envelope"></i>
-                        <p>lourdesyorio51@gmail.com</p>
+                        <p>info@heaven-fit.com</p>
                     </div>
                 </div>
             </div>
