@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Entidades\Plan;
 use App\Entidades\Venta;
+use App\Entidades\Tipo_plan;
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
 use Illuminate\Http\Request;
+
 
 
 require app_path() . '/start/constants.php';
@@ -41,8 +43,9 @@ class ControladorPlan extends Controller
             } else {
                 $titulo = "Nueva Plan";
                 $plan = new Plan();
-
-                return view("Plan.Plan-nuevo", compact('titulo', 'plan'));
+                $tipoPlan = new Tipo_plan();
+                $arrayTipoPlan = $tipoPlan->obtenerTodos();
+                return view("Plan.Plan-nuevo", compact('titulo', 'plan', 'arrayTipoPlan'));
             }
         } else {
             return redirect('admin/login');
@@ -134,10 +137,9 @@ class ControladorPlan extends Controller
             } else {
                 $plan = new Plan();
                 $plan->obtenerPorId($id);
-
-
-
-                return view('plan.plan-nuevo', compact('plan', 'titulo'));
+                $tipoPlan = new Tipo_plan();
+                $arrayTipoPlan = $tipoPlan->obtenerTodos();
+                return view('plan.plan-nuevo', compact('plan', 'titulo', 'arrayTipoPlan'));
             }
         } else {
             return redirect('admin/login');

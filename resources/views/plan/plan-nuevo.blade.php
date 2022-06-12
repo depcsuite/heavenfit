@@ -71,6 +71,19 @@ if (isset($msg)) {
                         <label for="txtPrecioDolar">Precio Dolar: *</label>
                         <input type="text" name="txtPrecioDolar" id="txtPrecioDolar" value="{{$plan->precioDolar}}" class="form-control ">
                   </div>
+                  <div class="col-12 col-sm-6">
+                        <label for="lstTipoPlan">Tipo Plan: *</label>
+                        <select name="lstTipoPlan" id="lstTipoPlan" class="form-control">
+                              <option value="" selected disabled>Elija un tipo de plan</option>
+                              @for ($i = 0; $i < count($arrayTipoPlan); $i++) 
+                                    @if (isset($plan) and $arrayTipoPlan[$i]->idtipo_plan == $plan->fk_idtipo_plan)
+                                          <option selected value="{{ $arrayTipoPlan[$i]->idtipo_plan }}">{{ $arrayTipoPlan[$i]->nombre }}</option>
+                                    @else
+                                          <option value="{{ $arrayTipoPlan[$i]->idtipo_plan }}">{{ $arrayTipoPlan[$i]->nombre }}</option>
+                                    @endif
+                              @endfor
+                        </select>
+                  </div>
 
 
             </div>
